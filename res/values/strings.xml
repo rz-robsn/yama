@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, MorseActivity!</string>
+    <string name="app_name">Morse</string>
+    
+    <string name="welcome">Welcome To Morse Communicator</string>
+    <string name="choose_recipient">Choose Your Recipient</string>
+    <string name="communicate">Communicate !</string>
+
+</resources>
