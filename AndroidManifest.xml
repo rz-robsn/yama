@@ -25,22 +25,23 @@
 
         <!-- Declares Only C2DM servers can send messages to the app. If android:permission is not set, any other app can generate it -->
         <receiver
-            android:name=".MessageReceiver"
+            android:name=".C2dmReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >
 
-            <!-- Declares only cd2m RECEIVE intents sent from a component contained in the Morse app can be received -->
+            <!-- Declares .C2dmReceiver can receive cd2m.intent.RECEIVE intents sent from a component contained in the Morse app -->
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
 
                 <category android:name="robsoninc.morse.Morse" />
             </intent-filter>
-        </receiver>
-        <!-- Receive the registration id -->
-        <intent-filter>
-            <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
 
-            <category android:name="robsoninc.morse.Morse" />
-        </intent-filter>
+            <!-- Receive the registration id -->
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="robsoninc.morse.Morse" />
+            </intent-filter>
+        </receiver>
 
         <activity
             android:name=".MorseActivity"
