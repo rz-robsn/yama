@@ -1,12 +1,16 @@
 package robsoninc.morse;
 
+import java.util.UUID;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Log;
+import robsoninc.morse.ServerRegistrationThread;
 
-public class C2dmReceiver extends BroadcastReceiver {
+public class C2dmReceiver extends BroadcastReceiver {	
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
@@ -45,15 +49,14 @@ public class C2dmReceiver extends BroadcastReceiver {
 
 		} else if (registration != null) {
 			Log.d("c2dm", registration);
-			Editor editor = context.getSharedPreferences(Constants.PREF_FILE,
-					Context.MODE_PRIVATE).edit();
-			editor.putString("c2dmKey", registration);
+
+			/* saving registration key */
+			SharedPreferences settings = context.getSharedPreferences(
+					Constants.PREF_FILE, Context.MODE_PRIVATE);
+			Editor editor = settings.edit();
+			editor.putString(Constants.C2DM_ID_KEY, registration);
 			editor.commit();
-			// Send the registration ID to the 3rd party site that is sending
-			// the messages.
-			// This should be done in a separate thread.
-			// When done, remember that all registration is done.
-			Log.d("c2dm", "Application registered.");
+
 		} else {
 			Log.d("c2dm", "registration=null.");
 		}
