@@ -1,14 +1,11 @@
 package robsoninc.morse;
 
-import java.util.UUID;
-
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Log;
-import robsoninc.morse.ServerRegistrationThread;
 
 public class C2dmReceiver extends BroadcastReceiver {	
 
