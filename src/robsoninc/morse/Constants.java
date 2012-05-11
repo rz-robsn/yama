@@ -6,6 +6,7 @@ public class Constants {
 	public final static String C2DM_EMAIL = "rz.robsn@gmail.com";
 	public final static String SERVER_URL = "http://morsecom.info.tm";
 	public final static String REGISTRATION_URL = SERVER_URL + "/c2dmregister";
+	public final static String USRLIST_URL = SERVER_URL + "/userlist";
 	
 	/* Preference files parameters */
 	public final static String PREF_FILE = "UserPref";

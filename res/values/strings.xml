@@ -7,5 +7,6 @@
     <string name="welcome">Welcome To Morse Communicator</string>
     <string name="choose_recipient">Choose Your Recipient</string>
     <string name="communicate">Communicate !</string>
+    <string name="test">Test Registration</string>
 
 </resources>

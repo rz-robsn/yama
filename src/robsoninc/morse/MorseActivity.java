@@ -34,6 +34,18 @@ public class MorseActivity extends Activity {
 
 					@Override
 					public void onClick(View v) {
+						Intent i = new Intent(v.getContext(),
+								UserListActivity.class);
+						startActivity(i);
+
+					}
+				});
+
+		findViewById(R.id.button3).setOnClickListener(
+				new View.OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
 
 						SharedPreferences settings = getSharedPreferences(
 								Constants.PREF_FILE, MODE_PRIVATE);

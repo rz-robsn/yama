@@ -70,6 +70,8 @@ public class ServerRegistrationThread extends Thread {
 			// TODO Auto-generated catch block
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
