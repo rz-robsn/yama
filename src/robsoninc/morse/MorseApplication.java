@@ -17,7 +17,7 @@ public class MorseApplication extends Application {
 
 		SharedPreferences settings = getSharedPreferences(Constants.PREF_FILE,
 				MODE_PRIVATE);
-		if (settings.getString(Constants.USER_ID_KEY, "").isEmpty()) {
+		if (settings.getString(Constants.USER_ID_KEY, "").length() == 0) {
 			// Create new User id
 			String uuid = UUID.randomUUID().toString();
 			Editor editor = settings.edit();
@@ -33,7 +33,7 @@ public class MorseApplication extends Application {
 		registrationIntent.putExtra("sender", Constants.C2DM_EMAIL);
 		startService(registrationIntent);
 
-		if (!settings.getString(Constants.C2DM_ID_KEY, "").isEmpty()) {
+		if (!(settings.getString(Constants.C2DM_ID_KEY, "").length() == 0)) {
 
 			// Send the registration ID to the 3rd party site that is sending
 			// the messages in a separate thread
