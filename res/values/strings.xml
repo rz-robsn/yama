@@ -11,7 +11,8 @@
     <string name="short_value">Short</string>
     <string name="long_value">Long</string>
     <string name="space_value">Space</string>
+    <string name="send_message_activity_title">Send message to User :</string>
     <string name="send">Send</string>
-    <string name="message_to_send">Message To send :</string>
+    <string name="message_to_send">Message To send :</string>    
 
 </resources>

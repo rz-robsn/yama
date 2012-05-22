@@ -6,14 +6,17 @@ import java.util.List;
 import org.json.JSONArray;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class UserListActivity extends ListActivity {
 
@@ -42,24 +45,22 @@ public class UserListActivity extends ListActivity {
 						lv.getContext(), R.layout.list_item, usrList);
 				setListAdapter(userAdapt);
 
-				lv.setOnItemSelectedListener(new OnItemSelectedListener() {
+				lv.setOnItemClickListener(new OnItemClickListener() {
 
 					@Override
-					public void onItemSelected(AdapterView<?> parent,
-							View view, int position, long id) {
-
-						
-					}
-
-					@Override
-					public void onNothingSelected(AdapterView<?> arg0) {
+					public void onItemClick(AdapterView<?> adapter, View view,
+							int arg2, long arg3) {
 						// TODO Auto-generated method stub
+						TextView textView = (TextView) view;
 
+						Intent i = new Intent(view.getContext(),
+								SendMessageActivity.class);
+						i.putExtra("robsoninc.morse.recipient_user_id",
+								textView.getText().toString());
+						startActivity(i);
 					}
 				});
 
-				Log.d("nbr of Children",
-						Integer.toString(getListView().getChildCount()));
 			}
 		}.execute(prefs, Constants.USRLIST_URL);
 	}
