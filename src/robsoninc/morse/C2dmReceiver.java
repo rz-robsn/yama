@@ -53,6 +53,13 @@ public class C2dmReceiver extends BroadcastReceiver {
 			Editor editor = settings.edit();
 			editor.putString(Constants.C2DM_ID_KEY, registration);
 			editor.commit();
+			
+			// Send the registration ID to the 3rd party site that is sending
+			// the messages in a separate thread
+			ServerRegistrationThread regThread = new ServerRegistrationThread(
+					settings.getString(Constants.C2DM_ID_KEY, ""),
+					settings.getString(Constants.USER_ID_KEY, ""));
+			regThread.start();
 
 		} else {
 			Log.d("c2dm", "registration=null.");
