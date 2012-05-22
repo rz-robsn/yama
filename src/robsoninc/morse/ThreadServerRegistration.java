@@ -22,7 +22,7 @@ import android.os.Message;
 /**
  * Thread for registering the app into the webserver
  * */
-public class ServerRegistrationThread extends Thread {
+public class ThreadServerRegistration extends Thread {
 
 	private String registration_id;
 	private String user_id;
@@ -33,7 +33,7 @@ public class ServerRegistrationThread extends Thread {
 		this.mHandlerObserver = mHandlerObserver;
 	}
 
-	public ServerRegistrationThread(String registration_id, String user_id) {
+	public ThreadServerRegistration(String registration_id, String user_id) {
 		super();
 		this.registration_id = registration_id;
 		this.user_id = user_id;

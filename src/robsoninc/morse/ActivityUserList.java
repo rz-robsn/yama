@@ -9,16 +9,14 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class UserListActivity extends ListActivity {
+public class ActivityUserList extends ListActivity {
 
 	@Override
 	protected void onResume() {
@@ -27,7 +25,7 @@ public class UserListActivity extends ListActivity {
 		SharedPreferences prefs = getSharedPreferences(Constants.PREF_FILE,
 				MODE_PRIVATE);
 
-		new DownloadUserListTask() {
+		new TaskDownloadUserList() {
 
 			@Override
 			protected void onPostExecute(JSONArray users) {
@@ -54,7 +52,7 @@ public class UserListActivity extends ListActivity {
 						TextView textView = (TextView) view;
 
 						Intent i = new Intent(view.getContext(),
-								SendMessageActivity.class);
+								ActivitySendMessage.class);
 						i.putExtra("robsoninc.morse.recipient_user_id",
 								textView.getText().toString());
 						startActivity(i);

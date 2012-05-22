@@ -4,7 +4,7 @@ import org.json.JSONArray;
 
 import android.os.AsyncTask;
 
-public class DownloadUserListTask extends AsyncTask<Object, Void, JSONArray> {
+public class TaskDownloadUserList extends AsyncTask<Object, Void, JSONArray> {
 
 	@Override
 	protected JSONArray doInBackground(Object... params) {

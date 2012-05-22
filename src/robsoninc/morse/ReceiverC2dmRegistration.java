@@ -7,7 +7,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Log;
 
-public class C2dmReceiver extends BroadcastReceiver {	
+public class ReceiverC2dmRegistration extends BroadcastReceiver {	
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
@@ -56,7 +56,7 @@ public class C2dmReceiver extends BroadcastReceiver {
 			
 			// Send the registration ID to the 3rd party site that is sending
 			// the messages in a separate thread
-			ServerRegistrationThread regThread = new ServerRegistrationThread(
+			ThreadServerRegistration regThread = new ThreadServerRegistration(
 					settings.getString(Constants.C2DM_ID_KEY, ""),
 					settings.getString(Constants.USER_ID_KEY, ""));
 			regThread.start();

@@ -9,14 +9,14 @@ import android.os.Message;
 import android.view.View;
 import android.widget.Toast;
 
-public class MorseActivity extends Activity {
+public class ActivityMain extends Activity {
 
 	private class OnResponseReceivedHandler extends Handler {
 
 		@Override
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
-			Toast.makeText(MorseActivity.this,
+			Toast.makeText(ActivityMain.this,
 					msg.getData().getString("response"), Toast.LENGTH_SHORT)
 					.show();
 		}
@@ -34,7 +34,7 @@ public class MorseActivity extends Activity {
 					@Override
 					public void onClick(View v) {
 						Intent i = new Intent(v.getContext(),
-								UserListActivity.class);
+								ActivityUserList.class);
 						startActivity(i);
 
 					}
@@ -52,7 +52,7 @@ public class MorseActivity extends Activity {
 						// Send the registration ID to the 3rd party site that
 						// is sending
 						// the messages in a separate thread
-						ServerRegistrationThread regThread = new ServerRegistrationThread(
+						ThreadServerRegistration regThread = new ThreadServerRegistration(
 								settings.getString(Constants.C2DM_ID_KEY, ""),
 								settings.getString(Constants.USER_ID_KEY, ""));
 						regThread.setmHandlerObserver(new OnResponseReceivedHandler());

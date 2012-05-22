@@ -3,7 +3,7 @@ package robsoninc.morse;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class SendMessageActivity extends Activity {
+public class ActivitySendMessage extends Activity {
 
 	private String recipientId;
 

@@ -22,13 +22,13 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".MorseApplication"
+        android:name=".ApplicationMorse"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
 
         <!-- Declares Only C2DM servers can send messages to the app. If android:permission is not set, any other app can generate it -->
         <receiver
-            android:name=".C2dmReceiver"
+            android:name=".ReceiverC2dmRegistration"
             android:permission="com.google.android.c2dm.permission.SEND" >
 
             <!-- Declares .C2dmReceiver can receive cd2m.intent.RECEIVE intents sent from a component contained in the Morse app -->
@@ -47,7 +47,7 @@
         </receiver>
 
         <activity
-            android:name=".MorseActivity"
+            android:name=".ActivityMain"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -56,11 +56,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UserListActivity"
+            android:name=".ActivityUserList"
             android:label="@string/app_name" >
         </activity>
         <activity
-            android:name=".SendMessageActivity"
+            android:name=".ActivitySendMessage"
             android:label="@string/app_name" >
         </activity>        
     </application>
