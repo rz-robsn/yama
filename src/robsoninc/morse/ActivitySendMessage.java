@@ -21,7 +21,7 @@ public class ActivitySendMessage extends Activity {
 
 		recipientId = getIntent().getExtras().getString(
 				"robsoninc.morse.recipient_user_id");
-		this.setTitle(String.format("%s : %s",
+		this.setTitle(String.format("%s %s",
 				getString(R.string.send_message_activity_title),
 				this.recipientId));
 	}
