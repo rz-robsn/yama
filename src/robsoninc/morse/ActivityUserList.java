@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.json.JSONArray;
 
+import robsoninc.morse.utilities.TaskDownloadUserList;
+
 import android.app.ListActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;

@@ -1,5 +1,6 @@
 package robsoninc.morse;
 
+import robsoninc.morse.utilities.ThreadServerRegistration;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -55,7 +56,8 @@ public class ActivityMain extends Activity {
 						ThreadServerRegistration regThread = new ThreadServerRegistration(
 								settings.getString(Constants.C2DM_ID_KEY, ""),
 								settings.getString(Constants.USER_ID_KEY, ""));
-						regThread.setmHandlerObserver(new OnResponseReceivedHandler());
+						regThread
+								.setmHandlerObserver(new OnResponseReceivedHandler());
 						regThread.start();
 					}
 				});

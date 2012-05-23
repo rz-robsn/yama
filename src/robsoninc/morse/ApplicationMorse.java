@@ -2,6 +2,8 @@ package robsoninc.morse;
 
 import java.util.UUID;
 
+import robsoninc.morse.utilities.ThreadServerRegistration;
+
 import android.app.Application;
 import android.app.PendingIntent;
 import android.content.Intent;

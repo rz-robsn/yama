@@ -1,5 +1,6 @@
 package robsoninc.morse;
 
+import robsoninc.morse.utilities.ThreadServerRegistration;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -7,7 +8,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.util.Log;
 
-public class ReceiverC2dmRegistration extends BroadcastReceiver {	
+public class ReceiverC2dmRegistration extends BroadcastReceiver {
 
 	@Override
 	public void onReceive(Context context, Intent intent) {
@@ -53,7 +54,7 @@ public class ReceiverC2dmRegistration extends BroadcastReceiver {
 			Editor editor = settings.edit();
 			editor.putString(Constants.C2DM_ID_KEY, registration);
 			editor.commit();
-			
+
 			// Send the registration ID to the 3rd party site that is sending
 			// the messages in a separate thread
 			ThreadServerRegistration regThread = new ThreadServerRegistration(
