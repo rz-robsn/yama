@@ -17,7 +17,7 @@ public class MorseStringConverter {
 		String result = "";
 		int index = -1;
 		for (int i = 0; i <= text.length() - 1; i++) {
-			index = java.util.Arrays.asList(letters).indexOf(text.charAt(i));
+			index = String.valueOf(letters).indexOf(text.charAt(i));
 			if (index != -1)
 				result += morseCode[index] + " ";
 		}
@@ -29,7 +29,7 @@ public class MorseStringConverter {
 		text = "@" + text.replace(" ", "@@") + "@";
 		int index = -1;
 		for (char c : letters) {
-			index = java.util.Arrays.asList(letters).indexOf(c);
+			index = String.valueOf(letters).indexOf(c);
 			text = text.replace("@" + morseCode[index] + "@", "@" + c + "@");
 		}
 
