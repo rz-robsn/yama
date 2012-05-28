@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="robsoninc.morse"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="8" />
+
+    <!-- Only the morse-com application can receive the messages and registration result -->
+    <permission
+        android:name="robsoninc.morse.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="robsoninc.morse.permission.C2D_MESSAGE" />
+
+    <!-- Permission request to google servers to register and receive messages -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <!-- Permission request to use the internet -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".ApplicationMorse"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+
+        <!-- Declares Only C2DM servers can send messages to the app. If android:permission is not set, any other app can generate it -->
+        <receiver
+            android:name=".ReceiverC2dmRegistration"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+
+            <!-- Declares .C2dmReceiver can receive cd2m.intent.RECEIVE intents sent from a component contained in the Morse app -->
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <category android:name="robsoninc.morse" />
+            </intent-filter>
+
+            <!-- Receive the registration id -->
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="robsoninc.morse" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".ActivityMain"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ActivityUserList"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".ActivitySendMessage"
+            android:label="@string/app_name" >
+        </activity>
+    </application>
+
+</manifest>
