@@ -21,10 +21,4 @@
 			<locationURI>WORKSPACE_LOC/morse-com/tests</locationURI>
 		</link>
 	</linkedResources>
-	<variableList>
-		<variable>
-			<name>ANDROID_HOME</name>
-			<value>file:/home/robson/android-sdks/tools</value>
-		</variable>
-	</variableList>
 </projectDescription>
