@@ -8,7 +8,7 @@ import static org.junit.Assert.assertThat;
 public class MorseStringConverterTest {
 
 	private String programmingIsFun = "Programming is fun";
-	private String programmingIsFunMorse = ".--. .-. --- --. .-. .- -- -- .. -. --.  .. ...  ..-. ..- -.";
+	private String programmingIsFunMorse = ".--. .-. --- --. .-. .- -- -- .. -. --.   .. ...   ..-. ..- -. ";
 
 	@Test
 	public void getMorse_shouldReturnConvertedMorse() throws Exception {

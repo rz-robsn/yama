@@ -13,6 +13,8 @@
     <string name="space_value">Space</string>
     <string name="send_message_activity_title">Send message to User :</string>
     <string name="send">Send</string>
-    <string name="message_to_send">Message To send :</string>    
+    <string name="message_to_send">Message To send :</string>
+    <string name="morse_message_to_send">Morse Equivalent :</string>
+    <string name="tap_buttons">Tap your message :</string>    
 
 </resources>
