@@ -22,45 +22,26 @@ public class ActivitySendMessage extends Activity {
 		message = (TextView) this.findViewById(R.id.message);
 		morse_message = (TextView) this.findViewById(R.id.morse_message);
 
-		this.findViewById(R.id.button_short).setOnClickListener(
-				new View.OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-						appendStringToMessage(MorseStringConverter.SHORT);
-					}
-				});
-
-		this.findViewById(R.id.button_long).setOnClickListener(
-				new View.OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-						appendStringToMessage(MorseStringConverter.LONG);
-					}
-				});
-
-		this.findViewById(R.id.button_space).setOnClickListener(
-				new View.OnClickListener() {
-
-					@Override
-					public void onClick(View v) {
-						// TODO Auto-generated method stub
-						appendStringToMessage(MorseStringConverter.GAP);
-					}
-				});
-
+		this.setOnClickListenerToAppendStringToMessage(findViewById(R.id.button_short), MorseStringConverter.SHORT);
+		this.setOnClickListenerToAppendStringToMessage(findViewById(R.id.button_long), MorseStringConverter.LONG);
+		this.setOnClickListenerToAppendStringToMessage(findViewById(R.id.button_space), MorseStringConverter.GAP);
 	}
 
 	/**
-	 * Add character to morse
-	 * */
-	private void appendStringToMessage(String s) {
-		this.message.setText(MorseStringConverter
-				.ConvertMorseToText(this.morse_message.getText() + s));
-		this.morse_message.append(s);
+	 * Add character to morse message
+	 * */	
+	private void setOnClickListenerToAppendStringToMessage(View view, final String s)
+	{
+		view.setOnClickListener(new View.OnClickListener() {			
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				message.setText(MorseStringConverter
+						.ConvertMorseToText(morse_message.getText() + s));
+				morse_message.append(s);				
+			}
+		});
 	}
 
 	@Override
