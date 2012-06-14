@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.json.JSONArray;
 
-import robsoninc.morse.utilities.TaskDownloadUserList;
+import robsoninc.morse.utilities.AsyncTaskDownloadUserList;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -27,7 +27,7 @@ public class ActivityUserList extends ListActivity {
 		SharedPreferences prefs = getSharedPreferences(Constants.PREF_FILE,
 				MODE_PRIVATE);
 
-		new TaskDownloadUserList() {
+		new AsyncTaskDownloadUserList() {
 
 			@Override
 			protected void onPostExecute(JSONArray users) {
