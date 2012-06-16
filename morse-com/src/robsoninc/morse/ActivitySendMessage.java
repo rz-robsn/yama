@@ -128,4 +128,16 @@ public class ActivitySendMessage extends Activity {
 		});
 	}
 
+	public String getRecipientId() {
+		return recipientId;
+	}
+
+	public TextView getMessage() {
+		return message;
+	}
+
+	public TextView getMorse_message() {
+		return morse_message;
+	}
+
 }

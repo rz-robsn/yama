@@ -36,6 +36,29 @@ public class TestSendMessage extends
 		String title = this.getActivity().getTitle().toString();
 		Assert.assertTrue("Title does not include recipient id", title.contains(recipient_user_id));
 	}
+
+	@Smoke
+	public void testSendSOS() throws Exception
+	{
+		solo.clickOnButton(this.getActivity().getString(robsoninc.morse.R.string.short_value));
+		solo.clickOnButton(this.getActivity().getString(robsoninc.morse.R.string.short_value));
+		solo.clickOnButton(this.getActivity().getString(robsoninc.morse.R.string.short_value));
+		
+		solo.clickOnButton(this.getActivity().getString(robsoninc.morse.R.string.space_value));
+		
+		solo.clickOnButton(this.getActivity().getString(robsoninc.morse.R.string.long_value));
+		solo.clickOnButton(this.getActivity().getString(robsoninc.morse.R.string.long_value));
+		solo.clickOnButton(this.getActivity().getString(robsoninc.morse.R.string.long_value));
+		
+		solo.clickOnButton(this.getActivity().getString(robsoninc.morse.R.string.space_value));
+		
+		solo.clickOnButton(this.getActivity().getString(robsoninc.morse.R.string.short_value));
+		solo.clickOnButton(this.getActivity().getString(robsoninc.morse.R.string.short_value));
+		solo.clickOnButton(this.getActivity().getString(robsoninc.morse.R.string.short_value));
+		
+		solo.clickOnButton(this.getActivity().getString(robsoninc.morse.R.string.send));		
+		solo.clickOnButton("^Yes$");
+	}	
 	
 	@Override	
 	protected void tearDown() throws Exception {
