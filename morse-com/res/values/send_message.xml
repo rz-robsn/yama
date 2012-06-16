@@ -14,5 +14,7 @@
     <string name="sndmsg_send_dialog_body">You are about to send the following message :
 "%s"
 Confirm ?</string>
+	<string name="sndmsg_send_success_message">Message Successfully sent to %s.</string>
+	<string name="sndmsg_send_fail_message">There has been an error trying to send your message, please try again.</string>
 
 </resources>

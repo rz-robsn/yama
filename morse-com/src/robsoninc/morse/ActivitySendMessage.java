@@ -1,13 +1,18 @@
 package robsoninc.morse;
 
+import org.apache.http.HttpResponse;
+
+import robsoninc.morse.utilities.AsyncTaskSendMessage;
 import robsoninc.morse.utilities.MorseStringConverter;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ActivitySendMessage extends Activity {
 
@@ -73,10 +78,49 @@ public class ActivitySendMessage extends Activity {
 								@Override
 								public void onClick(DialogInterface dialog,
 										int which) {
-									// Send data
+
+									// Send message push instruction to
+									// webserver
+									AsyncTaskSendMessage sendTask = new AsyncTaskSendMessage() {
+
+										@Override
+										protected void onPostExecute(
+												HttpResponse result) {
+											super.onPostExecute(result);
+
+											if (result.getStatusLine()
+													.getStatusCode() == 200) {
+												Toast.makeText(
+														ActivitySendMessage.this,
+														R.string.sndmsg_send_success_message,
+														Toast.LENGTH_SHORT);
+												emptyMessageBoxes();
+											} else {
+												Toast.makeText(
+														ActivitySendMessage.this,
+														R.string.sndmsg_send_fail_message,
+														Toast.LENGTH_LONG);
+											}
+										}
+
+										@Override
+										protected void onProgressUpdate(
+												Void... values) {
+											// TODO Auto-generated method stub
+											super.onProgressUpdate(values);
+										}
+									};
+									SharedPreferences settings = getSharedPreferences(
+											Constants.PREF_FILE, MODE_PRIVATE);
+									sendTask.setRecipientId(recipientId);
+									sendTask.setSenderId(settings.getString(
+											Constants.USER_ID_KEY, ""));
+
+									sendTask.execute((Void[]) null);
 								}
 							})
-					.setNegativeButton(getString(R.string.dialog_cancel_button),
+					.setNegativeButton(
+							getString(R.string.dialog_cancel_button),
 							new DialogInterface.OnClickListener() {
 
 								@Override
@@ -139,4 +183,8 @@ public class ActivitySendMessage extends Activity {
 		return morse_message;
 	}
 
+	private void emptyMessageBoxes() {
+		((TextView) this.findViewById(R.id.message)).setText("");
+		((TextView) this.findViewById(R.id.morse_message)).setText("");
+	}
 }
