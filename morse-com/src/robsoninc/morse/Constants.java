@@ -7,6 +7,7 @@ public class Constants {
 	public final static String SERVER_URL = "http://morsecom.info.tm";
 	public final static String REGISTRATION_URL = SERVER_URL + "/c2dmregister";
 	public final static String USRLIST_URL = SERVER_URL + "/userlist";
+	public final static String SEND_MESSAGE_URL = SERVER_URL + "/sendMorseMessage";
 
 	/* Preference files parameters */
 	public final static String PREF_FILE = "UserPref";

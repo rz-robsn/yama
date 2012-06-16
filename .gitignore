@@ -6,3 +6,4 @@ morse-com-test/bin/
 *.class
 *~
 proguard.cfg
+*.metadata*
