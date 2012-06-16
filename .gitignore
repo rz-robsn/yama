@@ -1,9 +1,9 @@
-morse-com/bin/
-morse-com/gen/
-morse-com-test/bin/
+*/gen/
+*/bin/
 */.settings/
 */tmp/
 *.class
 *~
-proguard.cfg
-*.metadata*
+*proguard.cfg
+*.metadata/
+*proguard-project.txt
