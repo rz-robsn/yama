@@ -8,7 +8,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/tap_buttons"
+        android:text="@string/sndmsg_tap_buttons"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <LinearLayout
@@ -21,21 +21,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="left"
-            android:text="@string/short_value" />
+            android:text="@string/sndmsg_short_button_value" />
 
         <Button
             android:id="@+id/button_long"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/long_value" />
+            android:text="@string/sndmsg_long_button_value" />
 
         <Button
             android:id="@+id/button_space"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="right"
-            android:text="@string/space_value" />
+            android:text="@string/sndmsg_space_button_value" />
     </LinearLayout>
 
     <LinearLayout
@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/message_to_send"
+            android:text="@string/sndmsg_message_to_send"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
@@ -64,7 +64,7 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/morse_message_to_send"
+            android:text="@string/sndmsg_morse_message_to_send"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <TextView
@@ -72,7 +72,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -85,7 +84,7 @@
             android:id="@+id/button_send_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/send" />
+            android:text="@string/sndmsg_send_button_value" />
     </LinearLayout>
 
 </LinearLayout>

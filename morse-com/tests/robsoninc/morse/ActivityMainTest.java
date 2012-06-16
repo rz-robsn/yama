@@ -14,7 +14,7 @@ public class ActivityMainTest {
 
     @Test
     public void shouldHaveHappySmiles() throws Exception {
-        String hello = new ActivityMain().getResources().getString(R.string.hello);
+        String hello = new ActivityMain().getString(R.string.hello);
         assertThat(hello, equalTo("Hello World, MorseActivity!"));
     }
 }

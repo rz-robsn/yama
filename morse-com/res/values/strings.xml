@@ -3,18 +3,12 @@
 
     <string name="hello">Hello World, MorseActivity!</string>
     <string name="app_name">Morse</string>
-    
-    <string name="welcome">Welcome To Morse Communicator</string>
-    <string name="choose_recipient">Choose Your Recipient</string>
-    <string name="communicate">Communicate !</string>
-    <string name="test">Test Registration</string>
-    <string name="short_value">Short</string>
-    <string name="long_value">Long</string>
-    <string name="space_value">Space</string>
-    <string name="send_message_activity_title">Send message to User :</string>
-    <string name="send">Send</string>
-    <string name="message_to_send">Message To send :</string>
-    <string name="morse_message_to_send">Morse Equivalent :</string>
-    <string name="tap_buttons">Tap your message :</string>    
+    <string name="dialog_ok_button">OK</string>
+    <string name="dialog_cancel_button">Cancel</string>
+
+    <!-- Main Activity -->
+    <string name="main_welcome">Welcome To Morse Communicator</string>
+    <string name="main_choose_recipient_button_value">Choose Your Recipient</string>
+    <string name="main_test_button_value">Test Registration</string>
 
 </resources>

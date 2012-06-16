@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <!-- Send Message Activity -->
+    <string name="sndmsg_short_button_value">Short</string>
+    <string name="sndmsg_long_button_value">Long</string>
+    <string name="sndmsg_space_button_value">Space</string>
+    <string name="sndmsg_send_message_activity_title">Send message to User :</string>
+    <string name="sndmsg_send_button_value">Send</string>
+    <string name="sndmsg_message_to_send">Message To send :</string>
+    <string name="sndmsg_morse_message_to_send">Morse Equivalent :</string>
+    <string name="sndmsg_tap_buttons">Tap your message :</string>
+    <string name="sndmsg_send_dialog_title">Confirm sending Message</string>
+    <string name="sndmsg_send_dialog_body">You are about to send the following message :
+"%s"
+Confirm ?</string>
+
+</resources>

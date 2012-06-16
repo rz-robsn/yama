@@ -53,7 +53,7 @@ public class ActivitySendMessage extends Activity {
 		recipientId = getIntent().getExtras().getString(
 				"robsoninc.morse.recipient_user_id");
 		this.setTitle(String.format("%s %s",
-				getString(R.string.send_message_activity_title),
+				getString(R.string.sndmsg_send_message_activity_title),
 				this.recipientId));
 	}
 
@@ -66,8 +66,8 @@ public class ActivitySendMessage extends Activity {
 					ActivitySendMessage.this);
 			builder.setCancelable(false)
 					.setMessage("")
-					.setTitle("Confirm Send Message")
-					.setPositiveButton("Yes",
+					.setTitle(getString(R.string.sndmsg_send_dialog_title))
+					.setPositiveButton(getString(R.string.dialog_ok_button),
 							new DialogInterface.OnClickListener() {
 
 								@Override
@@ -76,7 +76,7 @@ public class ActivitySendMessage extends Activity {
 									// Send data
 								}
 							})
-					.setNegativeButton("Cancel",
+					.setNegativeButton(getString(R.string.dialog_cancel_button),
 							new DialogInterface.OnClickListener() {
 
 								@Override
@@ -100,9 +100,8 @@ public class ActivitySendMessage extends Activity {
 		switch (id) {
 		case DIALOG_SEND_CONFIRM:
 			AlertDialog alert = (AlertDialog) dialog;
-			alert.setMessage(String
-					.format("You are about to send the following message :\n\"%s\" \nConfirm ? ",
-							this.message.getText()));
+			alert.setMessage(dialog.getContext().getString(
+					R.string.sndmsg_send_dialog_body, this.message.getText()));
 			alert.show();
 			break;
 
