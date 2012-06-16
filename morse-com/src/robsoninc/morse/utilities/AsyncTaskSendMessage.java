@@ -18,7 +18,8 @@ public class AsyncTaskSendMessage extends AsyncTask<Void, Void, HttpResponse> {
 
 	private String senderId;
 	private String recipientId;
-	
+	private String message;
+
 	private Exception exceptionOccured;
 
 	@Override
@@ -34,15 +35,16 @@ public class AsyncTaskSendMessage extends AsyncTask<Void, Void, HttpResponse> {
 			nameValuePairs.add(new BasicNameValuePair("sender_id", senderId));
 			nameValuePairs.add(new BasicNameValuePair("recipient_id",
 					recipientId));
+			nameValuePairs.add(new BasicNameValuePair("message", message));
 			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
 			// Execute HTTP Post Request
 			return httpclient.execute(httppost);
-						
+
 		} catch (Exception e) {
 			this.exceptionOccured = e;
 			return null;
-		}		
+		}
 	}
 
 	public void setSenderId(String senderId) {
@@ -55,6 +57,10 @@ public class AsyncTaskSendMessage extends AsyncTask<Void, Void, HttpResponse> {
 
 	public Exception getExceptionOccured() {
 		return exceptionOccured;
+	}
+
+	public String getMessage() {
+		return message;
 	}
 
 }
