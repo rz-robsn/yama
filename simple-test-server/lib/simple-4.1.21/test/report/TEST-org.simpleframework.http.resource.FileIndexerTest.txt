@@ -1,0 +1,4 @@
+Testsuite: org.simpleframework.http.resource.FileIndexerTest
+Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 0.032 sec
+
+Testcase: testFileIndexer took 0.032 sec

@@ -1,0 +1,8 @@
+Testsuite: org.simpleframework.http.core.SecurePolicyTest
+Tests run: 1, Failures: 0, Errors: 0, Time elapsed: 0.14 sec
+------------- Standard Output ---------------
+JSESSIONID=9745c436-dc34-434d-8bd0-4f5c23d39fb9; version=1; path=/;
+$Version=1; JSESSIONID=9745c436-dc34-434d-8bd0-4f5c23d39fb9; $Path=/
+------------- ---------------- ---------------
+
+Testcase: testPolicy took 0.14 sec

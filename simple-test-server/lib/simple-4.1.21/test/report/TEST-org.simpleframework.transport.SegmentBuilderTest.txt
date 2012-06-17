@@ -1,0 +1,7 @@
+Testsuite: org.simpleframework.transport.SegmentBuilderTest
+Tests run: 4, Failures: 0, Errors: 0, Time elapsed: 0.015 sec
+
+Testcase: testOrder took 0 sec
+Testcase: testSegmentClose took 0 sec
+Testcase: testCompact took 0 sec
+Testcase: testNulls took 0 sec

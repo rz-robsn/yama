@@ -1,0 +1,6 @@
+Testsuite: org.simpleframework.http.core.TokenConsumerTest
+Tests run: 3, Failures: 0, Errors: 0, Time elapsed: 0.031 sec
+
+Testcase: testTokenConsumer took 0.016 sec
+Testcase: testTokenConsumerException took 0 sec
+Testcase: testTokenConsumerDribble took 0 sec
