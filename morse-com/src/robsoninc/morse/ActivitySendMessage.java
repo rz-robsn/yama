@@ -93,6 +93,7 @@ public class ActivitySendMessage extends Activity {
 										@Override
 										protected void onPostExecute(
 												Integer responseCode) {
+											super.onPostExecute(responseCode);
 
 											ActivitySendMessage.this.dismissDialog(DIALOG_SEND_IN_PROGRESS);
 											
