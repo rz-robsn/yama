@@ -85,11 +85,10 @@ public class ActivitySendMessage extends Activity {
 
 										@Override
 										protected void onPostExecute(
-												HttpResponse result) {
-											super.onPostExecute(result);
+												Integer responseCode) {
+											super.onPostExecute(responseCode);
 
-											if (result.getStatusLine()
-													.getStatusCode() == 200) {
+											if (responseCode.intValue() == 200) {
 												Toast.makeText(
 														ActivitySendMessage.this,
 														R.string.sndmsg_send_success_message,

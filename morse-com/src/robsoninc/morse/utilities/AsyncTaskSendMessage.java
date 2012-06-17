@@ -1,5 +1,6 @@
 package robsoninc.morse.utilities;
 
+//import static org.easymock.EasyMock.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +14,8 @@ import org.apache.http.message.BasicNameValuePair;
 
 import robsoninc.morse.Constants;
 import android.os.AsyncTask;
-import static org.easymock.EasyMock.*;
-public class AsyncTaskSendMessage extends AsyncTask<Void, Void, HttpResponse> {
+
+public class AsyncTaskSendMessage extends AsyncTask<Void, Void, Integer> {
 
 	private String senderId;
 	private String recipientId;
@@ -23,7 +24,7 @@ public class AsyncTaskSendMessage extends AsyncTask<Void, Void, HttpResponse> {
 	private Exception exceptionOccured;
 
 	@Override
-	protected HttpResponse doInBackground(Void... arg0) {
+	protected Integer doInBackground(Void... arg0) {
 
 //		// Create a new HttpClient and Post Header
 //		HttpClient httpclient = new DefaultHttpClient();
@@ -46,10 +47,12 @@ public class AsyncTaskSendMessage extends AsyncTask<Void, Void, HttpResponse> {
 //			return null;
 //		}
 		
-		HttpResponse mockResponse = createMock(HttpResponse.class);
-		expect(mockResponse.getStatusLine().getStatusCode()).andReturn(200);
-		replay(mockResponse);
-		return mockResponse;
+//		HttpResponse mockResponse = createMock(HttpResponse.class);
+//		expect(mockResponse.getStatusLine().getStatusCode()).andStubReturn(200);
+//		replay(mockResponse);
+//		return mockResponse;
+
+		return Integer.valueOf(200);
 	}
 
 	public void setSenderId(String senderId) {
