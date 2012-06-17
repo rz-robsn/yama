@@ -8,7 +8,10 @@ import robsoninc.morse.ActivitySendMessage;
 import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.Smoke;
+import android.widget.TextView;
 import robsoninc.morse.R;
+import static org.hamcrest.Matchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class TestSendMessage extends
 		ActivityInstrumentationTestCase2<ActivitySendMessage> {
@@ -74,6 +77,9 @@ public class TestSendMessage extends
 						this.recipient_user_id)));
 		solo.clickOnButton(this.getActivity().getString(
 				R.string.dialog_ok_button));
+		
+		assertThat(((TextView)this.getActivity().findViewById(R.id.message)).getText().length(), is(equalTo(0)));
+		assertThat(((TextView)this.getActivity().findViewById(R.id.morse_message)).getText().length(), is(equalTo(0)));		
 	}
 
 	private void clickOnButtonTimes(int resId, int times) {

@@ -107,6 +107,8 @@ public class ActivitySendMessage extends Activity {
 												Void... values) {
 											// TODO Auto-generated method stub
 											super.onProgressUpdate(values);
+											
+											// Show progress bar
 										}
 									};
 									SharedPreferences settings = getSharedPreferences(
