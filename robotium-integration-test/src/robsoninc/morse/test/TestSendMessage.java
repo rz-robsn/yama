@@ -41,14 +41,17 @@ public class TestSendMessage extends
 
 	@Smoke
 	public void testSendSuccessfullySOS() throws Exception {
-		
+
 		// Typing "sos"
 		this.clickOnButtonTimes(R.string.sndmsg_short_button_value, 3);
-		solo.clickOnButton(this.getActivity().getString(R.string.sndmsg_space_button_value));
+		solo.clickOnButton(this.getActivity().getString(
+				R.string.sndmsg_space_button_value));
 		this.clickOnButtonTimes(R.string.sndmsg_long_button_value, 3);
-		solo.clickOnButton(this.getActivity().getString(R.string.sndmsg_space_button_value));
+		solo.clickOnButton(this.getActivity().getString(
+				R.string.sndmsg_space_button_value));
 		this.clickOnButtonTimes(R.string.sndmsg_short_button_value, 3);
 
+		// Sending the message
 		Assert.assertTrue("The Message to send should contain \"solo\".",
 				solo.searchText("sos"));
 		solo.clickOnButton(this.getActivity().getString(
@@ -59,21 +62,15 @@ public class TestSendMessage extends
 				solo.searchText(this.getActivity().getString(
 						R.string.sndmsg_send_dialog_body, "sos")));
 		solo.clickOnButton(this.getActivity().getString(
-				R.string.dialog_ok_button));
+				R.string.dialog_ok_button));		
 
-		Assert.assertTrue(
-				"The activity did not show the \"sending\" progress dialog.",
-				solo.searchText(this.getActivity().getString(
-						R.string.sndmsg_sending_message)));
 		solo.waitForDialogToClose(10);
 
 		Assert.assertTrue(
-				"The activity did not show the sending success confirmation dialog.",
-				solo.searchText(this.getActivity().getString(
+				"The activity did not show/showed the incorrect sending success confirmation dialog.",
+				solo.waitForText(this.getActivity().getString(
 						R.string.sndmsg_send_success_message,
 						this.recipient_user_id)));
-		solo.clickOnButton(this.getActivity().getString(
-				R.string.dialog_ok_button));
 	}
 
 	private void clickOnButtonTimes(int resId, int times) {

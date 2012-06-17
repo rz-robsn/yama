@@ -7,6 +7,7 @@ import robsoninc.morse.utilities.MorseStringConverter;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ public class ActivitySendMessage extends Activity {
 	private TextView morse_message;
 
 	private static final int DIALOG_SEND_CONFIRM = 1;
+	private static final int DIALOG_SEND_IN_PROGRESS = 2;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -84,29 +86,28 @@ public class ActivitySendMessage extends Activity {
 									AsyncTaskSendMessage sendTask = new AsyncTaskSendMessage() {
 
 										@Override
+										protected void onPreExecute() {
+											ActivitySendMessage.this.showDialog(DIALOG_SEND_IN_PROGRESS);
+										}
+										
+										@Override
 										protected void onPostExecute(
 												Integer responseCode) {
-											super.onPostExecute(responseCode);
 
+											ActivitySendMessage.this.dismissDialog(DIALOG_SEND_IN_PROGRESS);
+											
 											if (responseCode.intValue() == 200) {
 												Toast.makeText(
 														ActivitySendMessage.this,
-														R.string.sndmsg_send_success_message,
-														Toast.LENGTH_SHORT);
+														getString(R.string.sndmsg_send_success_message, recipientId),
+														Toast.LENGTH_LONG).show();
 												emptyMessageBoxes();
 											} else {
 												Toast.makeText(
 														ActivitySendMessage.this,
 														R.string.sndmsg_send_fail_message,
-														Toast.LENGTH_LONG);
+														Toast.LENGTH_LONG).show();
 											}
-										}
-
-										@Override
-										protected void onProgressUpdate(
-												Void... values) {
-											// TODO Auto-generated method stub
-											super.onProgressUpdate(values);
 										}
 									};
 									SharedPreferences settings = getSharedPreferences(
@@ -130,6 +131,13 @@ public class ActivitySendMessage extends Activity {
 							});
 			return builder.create();
 
+		case DIALOG_SEND_IN_PROGRESS:
+			ProgressDialog d = new ProgressDialog(ActivitySendMessage.this);
+			d.setMessage(this.getString(R.string.sndmsg_sending_message));
+			d.setIndeterminate(true);
+
+			return d;
+
 		default:
 			return super.onCreateDialog(id);
 		}
@@ -148,6 +156,7 @@ public class ActivitySendMessage extends Activity {
 			alert.show();
 			break;
 
+		case DIALOG_SEND_IN_PROGRESS:
 		default:
 			break;
 		}
