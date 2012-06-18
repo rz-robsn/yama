@@ -8,10 +8,7 @@ import robsoninc.morse.ActivitySendMessage;
 import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.Smoke;
-import android.widget.TextView;
 import robsoninc.morse.R;
-import static org.hamcrest.Matchers.*;
-import static org.hamcrest.MatcherAssert.assertThat;
 
 public class TestSendMessage extends
 		ActivityInstrumentationTestCase2<ActivitySendMessage> {
@@ -65,20 +62,18 @@ public class TestSendMessage extends
 				solo.searchText(this.getActivity().getString(
 						R.string.sndmsg_send_dialog_body, "sos")));
 		solo.clickOnButton(this.getActivity().getString(
-				R.string.dialog_ok_button));		
+				R.string.dialog_ok_button));
 
 		solo.waitForDialogToClose(10);
 
 		Assert.assertTrue(
-				"The activity did not show/showed the incorrect sending success confirmation dialog.",
+				"The activity did not show or showed the incorrect sending success confirmation dialog.",
 				solo.waitForText(this.getActivity().getString(
 						R.string.sndmsg_send_success_message,
 						this.recipient_user_id)));
-		solo.clickOnButton(this.getActivity().getString(
-				R.string.dialog_ok_button));
-		
-		assertThat(((TextView)this.getActivity().findViewById(R.id.message)).getText().length(), is(equalTo(0)));
-		assertThat(((TextView)this.getActivity().findViewById(R.id.morse_message)).getText().length(), is(equalTo(0)));		
+		Assert.assertFalse(
+				"At least the message box did not empty itself",
+				solo.searchText("sos"));
 	}
 
 	private void clickOnButtonTimes(int resId, int times) {
