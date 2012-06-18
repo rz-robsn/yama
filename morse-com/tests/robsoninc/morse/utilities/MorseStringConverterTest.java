@@ -1,10 +1,14 @@
 package robsoninc.morse.utilities;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+
+import com.xtremelabs.robolectric.RobolectricTestRunner;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;
 
+@RunWith(RobolectricTestRunner.class)
 public class MorseStringConverterTest {
 
 	private String programmingIsFun = "Programming is fun";
