@@ -1,6 +1,5 @@
-package matchers;
+package testingutilites.matchers;
 
-import org.apache.http.Header;
 import org.apache.http.HttpRequest;
 import org.hamcrest.Description;
 import org.hamcrest.Factory;
