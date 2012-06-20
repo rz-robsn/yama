@@ -1,26 +1,21 @@
 package robsoninc.morse;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertThat; 
+import static org.junit.Assert.assertThat;
+import static org.hamcrest.CoreMatchers.*; 
 import static org.easymock.EasyMock.*;
+import static testingutilites.matchers.IsServerRegistrationHttpRequest.serverRegistrationHttpRequest;
 
 import org.apache.http.HttpRequest;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-
 import com.xtremelabs.robolectric.Robolectric;
 import com.xtremelabs.robolectric.RobolectricTestRunner;
-import com.xtremelabs.robolectric.shadows.ShadowIntent;
-
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.junit.Assert.assertThat;
 
 @RunWith(RobolectricTestRunner.class)
 public class ReceiverC2dmRegistrationTest {
@@ -37,25 +32,29 @@ public class ReceiverC2dmRegistrationTest {
     	i = createMock(Intent.class);
     	expect(i.getAction()).andReturn("com.google.android.c2dm.intent.REGISTRATION");
     	expect(i.getStringExtra("registration_id")).andReturn(this.registrationId);
+    	expect(i.getStringExtra("error")).andReturn(null);
+    	expect(i.getStringExtra("unregistered")).andReturn(null);
     	replay(i);
     	
     	receiver = new ReceiverC2dmRegistration();
+    	Robolectric.setDefaultHttpResponse(200, "OK");
     }
 	
 	@Test
 	public void testSaveRegistrationIdinPreferencesOnSuccessfullRegistration() throws Exception {
+				
+		Context c = new Activity();		
+		receiver.onReceive(c, i);			
+		verify(i);
 		
-		Context c = new ContextWrapper(null);
-		
-		receiver.onReceive(null, i);
-			
 		SharedPreferences settings = c.getSharedPreferences("UserPref" , Context.MODE_PRIVATE);
 		assertThat(settings.getString("c2dm_id", ""), equalTo(this.registrationId));
 		
 		// Make sure to run the ServerRegistration thread
-		Robolectric.getBackgroundScheduler().advanceToLastPostedRunnable();
-		Robolectric.getBackgroundScheduler().runOneTask();
+		Robolectric.idleMainLooper(10000);
 		
-		HttpRequest server_request = Robolectric.getLatestSentHttpRequest();
+		HttpRequest server_request = Robolectric.getSentHttpRequest(0);
+		assertThat(server_request, is(notNull()));
+		assertThat(server_request, is(serverRegistrationHttpRequest(registrationId)));
     }
 }
