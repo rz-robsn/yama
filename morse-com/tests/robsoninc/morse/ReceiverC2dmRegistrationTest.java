@@ -53,8 +53,6 @@ public class ReceiverC2dmRegistrationTest
 		        .getSharedPreferences("UserPref", Context.MODE_PRIVATE);
 		assertThat(settings.getString("c2dm_id", ""),
 		        equalTo(this.registrationId));
-
-		verify(i);
 	}
 
 	@Test
@@ -64,10 +62,8 @@ public class ReceiverC2dmRegistrationTest
 
 		int numOfServerThreads = ThreadServerRegistration.activeCount();
 		receiver.onReceive(new Activity(), i);
-		assertThat("The receiver did not spawn an server registration thread.",
+		assertThat("The receiver did not spawn a server registration thread.",
 		        ThreadServerRegistration.activeCount(),
 		        is(equalTo(numOfServerThreads + 1)));
-
-		verify(i);
 	}
 }

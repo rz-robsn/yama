@@ -37,8 +37,7 @@ public class ApplicationMorse extends Application {
 
 		if (!(settings.getString(Constants.C2DM_ID_KEY, "").length() == 0)) {
 
-			// Send the registration ID to the 3rd party site that is sending
-			// the messages in a separate thread
+			// Send the registration ID to the 3rd party site that will be sending the messages 
 			ThreadServerRegistration regThread = new ThreadServerRegistration(
 					settings.getString(Constants.C2DM_ID_KEY, ""),
 					settings.getString(Constants.USER_ID_KEY, ""));
