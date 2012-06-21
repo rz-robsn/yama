@@ -3,21 +3,20 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/morse-com"/>
-	<classpathentry kind="src" path="tests"/>
-	<classpathentry kind="var" path="ANDROID_HOME"/>
-	<classpathentry kind="var" path="ANDROID_HOME/platforms/android-8/android.jar"/>
-	<classpathentry kind="var" path="ANDROID_HOME/add-ons/addon-google_apis-google-8/libs/maps.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/robolectric-1.2-20120524.165515-86-jar-with-dependencies.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="http://pivotal.github.com/robolectric/javadoc/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry exported="true" kind="lib" path="lib/easymock-3.1/easymock-3.1.jar" sourcepath="lib/easymock-3.1/easymock-3.1-sources.jar">
+	<classpathentry kind="lib" path="lib/easymock-3.1/easymock-3.1.jar" sourcepath="lib/easymock-3.1/easymock-3.1-sources.jar">
 		<attributes>
 			<attribute name="javadoc_location" value="jar:platform:/resource/robolectric-unit-test/lib/easymock-3.1/easymock-3.1-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/objenesis-1.2/objenesis-1.2.jar"/>
 	<classpathentry kind="lib" path="lib/cglib-nodep-2.2.2.jar"/>
+	<classpathentry kind="lib" path="lib/robolectric-1.2-20120524.165515-86-jar-with-dependencies.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://pivotal.github.com/robolectric/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="src" path="tests"/>
+	<classpathentry kind="var" path="ANDROID_HOME/add-ons/addon-google_apis-google-8/libs/maps.jar"/>
+	<classpathentry kind="var" path="ANDROID_HOME/platforms/android-8/android.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
