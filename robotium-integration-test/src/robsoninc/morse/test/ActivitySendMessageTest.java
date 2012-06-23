@@ -5,19 +5,20 @@ import junit.framework.Assert;
 import com.jayway.android.robotium.solo.Solo;
 
 import robsoninc.morse.ActivitySendMessage;
+import robsoninc.morse.ActivityTouchyMode;
 import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.Smoke;
 import robsoninc.morse.R;
 
-public class TestSendMessage extends
+public class ActivitySendMessageTest extends
 		ActivityInstrumentationTestCase2<ActivitySendMessage> {
 
 	private Solo solo;
 
 	private String recipient_user_id = "1111-222-333-4444";
 
-	public TestSendMessage() {
+	public ActivitySendMessageTest() {
 		super("robsoninc.morse.test", ActivitySendMessage.class);
 	}
 
@@ -52,7 +53,7 @@ public class TestSendMessage extends
 		this.clickOnButtonTimes(R.string.sndmsg_short_button_value, 3);
 
 		// Sending the message
-		Assert.assertTrue("The Message to send should contain \"solo\".",
+		Assert.assertTrue("The Message to send should contain \"sos\".",
 				solo.searchText("sos"));
 		solo.clickOnButton(this.getActivity().getString(
 				R.string.sndmsg_send_button_value));
@@ -72,10 +73,18 @@ public class TestSendMessage extends
 						R.string.sndmsg_send_success_message,
 						this.recipient_user_id)));
 		Assert.assertFalse(
-				"At least the message box did not empty itself",
+				"The message box did not empty itself",
 				solo.searchText("sos"));
 	}
 
+	@Smoke
+	public void shouldSwitchToTouchyModeWhenTappingButton() throws Exception {
+		
+		solo.clickOnText("Touchy Mode");
+		solo.assertCurrentActivity("The \"Touchy mode\" button did not switched to touchy mode Activity.", 
+				ActivityTouchyMode.class);
+	}
+	
 	private void clickOnButtonTimes(int resId, int times) {
 		for (int i = 0; i < times; i++) {
 			solo.clickOnButton(this.getActivity().getString(resId));
