@@ -5,6 +5,7 @@ import com.jayway.android.robotium.solo.Solo;
 import junit.framework.Assert;
 import robsoninc.morse.ActivitySendMessage;
 import robsoninc.morse.ActivityTouchyMode;
+import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.Smoke;
 
@@ -14,11 +15,25 @@ public class ActivityTouchyModeTest extends
 	private Solo solo;
 
 	public ActivityTouchyModeTest() {
-		super("robsoninc.morse.test", ActivityTouchyMode.class);
+		this("robsoninc.morse.test", ActivityTouchyMode.class);
+	}
+
+	public ActivityTouchyModeTest(Class<ActivityTouchyMode> activityClass) {
+		this("robsoninc.morse.test", activityClass);
+	}
+
+	public ActivityTouchyModeTest(String pkg,
+			Class<ActivityTouchyMode> activityClass) {
+		super(pkg, activityClass);
 	}
 
 	@Override
 	protected void setUp() throws Exception {
+		super.setUp();
+		Intent i = new Intent(
+				this.getInstrumentation().getContext(), 
+				ActivityTouchyMode.class);
+		this.setActivityIntent(i);
 		solo = new Solo(this.getInstrumentation(), this.getActivity());
 	}
 	
@@ -27,9 +42,8 @@ public class ActivityTouchyModeTest extends
 		solo.finishOpenedActivities();
 	}
 
-
 	@Smoke
-	public void shouldWriteSOSByTappingAnywhereOnScreen() throws Exception {
+	public void testWriteSOSByTappingAnywhereOnScreen() throws Exception {
 		this.typeSOS();
 
 		Assert.assertTrue(
@@ -41,7 +55,7 @@ public class ActivityTouchyModeTest extends
 	}
 
 	@Smoke
-	public void shouldDisplayTypedCodeInSendMessageActivityWhenPressingBack()
+	public void testDisplayTypedCodeInSendMessageActivityWhenPressingBack()
 			throws Exception {
 		this.typeSOS();
 		solo.goBack();
@@ -51,7 +65,7 @@ public class ActivityTouchyModeTest extends
 	}
 
 	@Smoke
-	public void shouldWriteGapSymbolOnDrawingALineWithFinger()
+	public void testWriteGapSymbolOnDrawingALineWithFinger()
 			throws Exception {
 		
 		// Typing "s" character
