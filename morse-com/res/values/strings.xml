@@ -11,4 +11,8 @@
     <string name="main_choose_recipient_button_value">Choose Your Recipient</string>
     <string name="main_test_button_value">Test Registration</string>
 
+    <!-- On Receive Message Notification -->
+    <string name="new_msg_notif_title">You have a new message</string>
+    <string name="new_msg_notif_body" formatted="false" >From %s : \n %s</string>
+
 </resources>

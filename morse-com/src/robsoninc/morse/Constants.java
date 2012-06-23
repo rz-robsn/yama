@@ -15,4 +15,7 @@ public class Constants {
 	public final static String PREF_FILE = "UserPref";
 	public final static String C2DM_ID_KEY = "c2dm_id";
 	public final static String USER_ID_KEY = "UUID";
+	
+	/* Notification Id */
+	public final static int NOTIFICATION_NEW_MESSAGE_ID = 1 ;
 }

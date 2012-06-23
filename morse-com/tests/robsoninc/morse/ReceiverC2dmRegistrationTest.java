@@ -31,12 +31,12 @@ public class ReceiverC2dmRegistrationTest
 
 		// Setting up intent Mock.
 		i = createMock(Intent.class);
-		expect(i.getAction()).andReturn(
+		expect(i.getAction()).andStubReturn(
 		        "com.google.android.c2dm.intent.REGISTRATION");
-		expect(i.getStringExtra("registration_id")).andReturn(
+		expect(i.getStringExtra("registration_id")).andStubReturn(
 		        this.registrationId);
-		expect(i.getStringExtra("error")).andReturn(null);
-		expect(i.getStringExtra("unregistered")).andReturn(null);
+		expect(i.getStringExtra("error")).andStubReturn(null);
+		expect(i.getStringExtra("unregistered")).andStubReturn(null);
 		replay(i);
 
 		receiver = new ReceiverC2dmRegistration();
