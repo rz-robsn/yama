@@ -4,26 +4,25 @@ import com.jayway.android.robotium.solo.Solo;
 
 import junit.framework.Assert;
 import robsoninc.morse.ActivitySendMessage;
-import robsoninc.morse.ActivityTouchyMode;
 import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.Smoke;
 
 public class ActivityTouchyModeTest extends
-		ActivityInstrumentationTestCase2<ActivityTouchyMode> {
+		ActivityInstrumentationTestCase2<ActivitySendMessage> {
 
 	private Solo solo;
 
 	public ActivityTouchyModeTest() {
-		this("robsoninc.morse.test", ActivityTouchyMode.class);
+		this("robsoninc.morse.test", ActivitySendMessage.class);
 	}
 
-	public ActivityTouchyModeTest(Class<ActivityTouchyMode> activityClass) {
+	public ActivityTouchyModeTest(Class<ActivitySendMessage> activityClass) {
 		this("robsoninc.morse.test", activityClass);
 	}
 
 	public ActivityTouchyModeTest(String pkg,
-			Class<ActivityTouchyMode> activityClass) {
+			Class<ActivitySendMessage> activityClass) {
 		super(pkg, activityClass);
 	}
 
@@ -32,7 +31,7 @@ public class ActivityTouchyModeTest extends
 		super.setUp();
 		Intent i = new Intent(
 				this.getInstrumentation().getContext(), 
-				ActivityTouchyMode.class);
+				ActivitySendMessage.class);
 		this.setActivityIntent(i);
 		solo = new Solo(this.getInstrumentation(), this.getActivity());
 	}
@@ -44,6 +43,9 @@ public class ActivityTouchyModeTest extends
 
 	@Smoke
 	public void testWriteSOSByTappingAnywhereOnScreen() throws Exception {
+		
+		solo.clickOnText("Touchy Mode");
+		
 		this.typeSOS();
 
 		Assert.assertTrue(
@@ -55,13 +57,15 @@ public class ActivityTouchyModeTest extends
 	}
 
 	@Smoke
-	public void testDisplayTypedCodeInSendMessageActivityWhenPressingBack()
+	public void testSwitchToNormalMode()
 			throws Exception {
+		
 		this.typeSOS();
-		solo.goBack();
-		solo.assertCurrentActivity(
-				"The SendMessageActivity did not get displayed.",
-				ActivitySendMessage.class);
+		solo.clickOnText("Normal Mode");
+		
+		Assert.assertTrue(
+				"The Activity did not switch to normal mode",
+				solo.searchButton("(Short)|Long)|(Gap)", 3));
 	}
 
 	@Smoke
@@ -74,7 +78,7 @@ public class ActivityTouchyModeTest extends
 		this.typeGap();
 		this.typeGap();
 		
-		// Typing "m" character
+		// Typing "t" character
 		solo.clickLongOnScreen(25, 25, 1);
 
 		Assert.assertTrue(
@@ -111,5 +115,10 @@ public class ActivityTouchyModeTest extends
 	{
 		// drawing a line.
 		solo.drag(5, 5, 25, 25, 1);
+	}
+	
+	private void testSendMessage()
+	{
+		
 	}
 }

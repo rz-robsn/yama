@@ -5,7 +5,6 @@ import junit.framework.Assert;
 import com.jayway.android.robotium.solo.Solo;
 
 import robsoninc.morse.ActivitySendMessage;
-import robsoninc.morse.ActivityTouchyMode;
 import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.Smoke;
@@ -78,11 +77,12 @@ public class ActivitySendMessageTest extends
 	}
 
 	@Smoke
-	public void shouldSwitchToTouchyModeWhenTappingButton() throws Exception {
+	public void testSwitchToTouchyModeWhenTappingButton() throws Exception {
 		
-		solo.clickOnText("Touchy Mode");
-		solo.assertCurrentActivity("The \"Touchy mode\" button did not switched to touchy mode Activity.", 
-				ActivityTouchyMode.class);
+		solo.clickOnButton("Touchy Mode");
+		Assert.assertFalse(
+				"The activity did not switch to touchy mode.",
+				solo.searchButton("(Short)|Long)|(Gap)"));
 	}
 	
 	private void clickOnButtonTimes(int resId, int times) {

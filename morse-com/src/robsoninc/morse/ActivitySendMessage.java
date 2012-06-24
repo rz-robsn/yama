@@ -1,7 +1,5 @@
 package robsoninc.morse;
 
-import org.apache.http.HttpResponse;
-
 import robsoninc.morse.utilities.AsyncTaskSendMessage;
 import robsoninc.morse.utilities.MorseStringConverter;
 import android.app.Activity;
@@ -14,6 +12,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
+import android.widget.ViewFlipper;
 
 public class ActivitySendMessage extends Activity {
 
@@ -48,6 +48,23 @@ public class ActivitySendMessage extends Activity {
 					public void onClick(View arg0) {
 						ActivitySendMessage.this
 								.showDialog(DIALOG_SEND_CONFIRM);
+					}
+				});
+
+		this.findViewById(R.id.toggleButton1).setOnClickListener(
+				new View.OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+
+						ToggleButton toggle = (ToggleButton) v;
+						ViewFlipper flippy = (ViewFlipper) findViewById(R.id.viewFlipper1);
+
+						if (toggle.isChecked()) {
+							flippy.showNext();
+						} else {
+							flippy.showPrevious();
+						}
 					}
 				});
 	}
@@ -87,27 +104,33 @@ public class ActivitySendMessage extends Activity {
 
 										@Override
 										protected void onPreExecute() {
-											ActivitySendMessage.this.showDialog(DIALOG_SEND_IN_PROGRESS);
+											ActivitySendMessage.this
+													.showDialog(DIALOG_SEND_IN_PROGRESS);
 										}
-										
+
 										@Override
 										protected void onPostExecute(
 												Integer responseCode) {
 											super.onPostExecute(responseCode);
 
-											ActivitySendMessage.this.dismissDialog(DIALOG_SEND_IN_PROGRESS);
-											
+											ActivitySendMessage.this
+													.dismissDialog(DIALOG_SEND_IN_PROGRESS);
+
 											if (responseCode.intValue() == 200) {
 												Toast.makeText(
 														ActivitySendMessage.this,
-														getString(R.string.sndmsg_send_success_message, recipientId),
-														Toast.LENGTH_LONG).show();
+														getString(
+																R.string.sndmsg_send_success_message,
+																recipientId),
+														Toast.LENGTH_LONG)
+														.show();
 												emptyMessageBoxes();
 											} else {
 												Toast.makeText(
 														ActivitySendMessage.this,
 														R.string.sndmsg_send_fail_message,
-														Toast.LENGTH_LONG).show();
+														Toast.LENGTH_LONG)
+														.show();
 											}
 										}
 									};
