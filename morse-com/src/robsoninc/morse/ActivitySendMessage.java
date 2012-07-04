@@ -9,6 +9,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,6 +52,16 @@ public class ActivitySendMessage extends Activity {
 					}
 				});
 
+		ViewFlipper flippy = (ViewFlipper) findViewById(R.id.viewFlipper1);
+		flippy.setOnTouchListener(new View.OnTouchListener() {
+			
+			@Override
+			public boolean onTouch(View v, MotionEvent event) {
+			
+				return false;
+			}
+		});
+		
 		this.findViewById(R.id.toggleButton1).setOnClickListener(
 				new View.OnClickListener() {
 

@@ -44,11 +44,9 @@ public class ActivitySendMessageTest extends
 
 		// Typing "sos"
 		this.clickOnButtonTimes(R.string.sndmsg_short_button_value, 3);
-		solo.clickOnButton(this.getActivity().getString(
-				R.string.sndmsg_space_button_value));
+		solo.clickOnButton("Gap");
 		this.clickOnButtonTimes(R.string.sndmsg_long_button_value, 3);
-		solo.clickOnButton(this.getActivity().getString(
-				R.string.sndmsg_space_button_value));
+		solo.clickOnButton("Gap");
 		this.clickOnButtonTimes(R.string.sndmsg_short_button_value, 3);
 
 		this.sendMessage("sos");
@@ -158,7 +156,10 @@ public class ActivitySendMessageTest extends
 	private void switchToTouchyMode() throws Exception {
 		solo.clickOnButton("Touchy Mode");
 		Assert.assertFalse("The activity did not switch to touchy mode.",
-				solo.searchButton("(Short)|Long)|(Gap)"));
+				solo.searchButton("(Short)|(Long)|(Gap)"));
+		Assert.assertTrue("The activity did not switch to touchy mode.",
+				solo.searchText("controls :"));
+		
 	}
 
 	private void clickOnButtonTimes(int resId, int times) throws Exception {

@@ -53,7 +53,7 @@
             android:paddingBottom="75dp"
             android:paddingLeft="75dp"
             android:paddingTop="100dp"
-            android:text="Medium Text"
+            android:text="@string/sndmsg_touchy_desc"
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </ViewFlipper>
 

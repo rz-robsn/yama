@@ -14,7 +14,5 @@
     <!-- On Receive Message Notification -->
     <string name="new_msg_notif_title">You have a new message</string>
     <string name="new_msg_notif_body" formatted="false" >From %s : \n %s</string>
-    <string name="sndmsg_toggle_off">Normal Mode</string>
-    <string name="sndmsg_toggle_on">Touchy Mode</string>
 
 </resources>

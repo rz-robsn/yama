@@ -4,18 +4,19 @@
     <!-- Send Message Activity -->
     <string name="sndmsg_short_button_value">Short</string>
     <string name="sndmsg_long_button_value">Long</string>
-    <string name="sndmsg_space_button_value">Space</string>
+    <string name="sndmsg_space_button_value">Gap</string>
     <string name="sndmsg_send_message_activity_title">Send message to User :</string>
     <string name="sndmsg_send_button_value">Send</string>
     <string name="sndmsg_message_to_send">Message To send :</string>
     <string name="sndmsg_morse_message_to_send">Morse Equivalent :</string>
     <string name="sndmsg_tap_buttons">Tap your message :</string>
     <string name="sndmsg_send_dialog_title">Confirm sending Message</string>
-    <string name="sndmsg_send_dialog_body">You are about to send the following message :
-"%s"
-Confirm ?</string>
-	<string name="sndmsg_send_success_message">Message Successfully sent to %s.</string>
-	<string name="sndmsg_send_fail_message">There has been an error trying to send your message, please try again.</string>
-	<string name="sndmsg_sending_message">Sending Message&#8230;&#8230;&#8230;</string>
+    <string name="sndmsg_send_dialog_body">You are about to send the following message :\n"%s"\nConfirm ?</string>
+    <string name="sndmsg_send_success_message">Message Successfully sent to %s.</string>
+    <string name="sndmsg_send_fail_message">There has been an error trying to send your message, please try again.</string>
+    <string name="sndmsg_sending_message">Sending Message</string>
+    <string name="sndmsg_toggle_off">Normal Mode</string>
+    <string name="sndmsg_toggle_on">Touchy Mode</string>
+    <string name="sndmsg_touchy_desc">controls :\nshort = shorp tap\nlong = long tap\ngap = line</string>
 
 </resources>
