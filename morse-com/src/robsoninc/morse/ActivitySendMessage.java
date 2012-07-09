@@ -2,6 +2,7 @@ package robsoninc.morse;
 
 import robsoninc.morse.utilities.AsyncTaskSendMessage;
 import robsoninc.morse.utilities.MorseStringConverter;
+import robsoninc.morse.utilities.TouchyModeOnTouchListener;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -53,13 +54,25 @@ public class ActivitySendMessage extends Activity {
 				});
 
 		ViewFlipper flippy = (ViewFlipper) findViewById(R.id.viewFlipper1);
-		flippy.setOnTouchListener(new View.OnTouchListener() {
-			
-			@Override
-			public boolean onTouch(View v, MotionEvent event) {
-			
-				return false;
-			}
+		flippy.setOnTouchListener(new TouchyModeOnTouchListener() {
+
+            @Override
+            public void onShortTouch()
+            {
+                appendStringToMessage(MorseStringConverter.SHORT);
+            }
+
+            @Override
+            public void onLongTouch()
+            {
+                appendStringToMessage(MorseStringConverter.LONG);
+            }
+
+            @Override
+            public void onLineTouch()
+            {
+                appendStringToMessage(MorseStringConverter.GAP);
+            }
 		});
 		
 		this.findViewById(R.id.toggleButton1).setOnClickListener(
@@ -206,10 +219,7 @@ public class ActivitySendMessage extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				message.setText(MorseStringConverter
-						.ConvertMorseToText(morse_message.getText() + s));
-				morse_message.append(s);
+				appendStringToMessage(s);
 			}
 		});
 	}
@@ -230,4 +240,11 @@ public class ActivitySendMessage extends Activity {
 		((TextView) this.findViewById(R.id.message)).setText("");
 		((TextView) this.findViewById(R.id.morse_message)).setText("");
 	}
+
+    private void appendStringToMessage(final String s)
+    {
+        message.setText(MorseStringConverter
+        		.ConvertMorseToText(morse_message.getText() + s));
+        morse_message.append(s);
+    }
 }
