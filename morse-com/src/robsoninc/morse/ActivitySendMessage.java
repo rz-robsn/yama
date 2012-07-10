@@ -53,8 +53,7 @@ public class ActivitySendMessage extends Activity {
 					}
 				});
 
-		ViewFlipper flippy = (ViewFlipper) findViewById(R.id.viewFlipper1);
-		flippy.setOnTouchListener(new TouchyModeOnTouchListener() {
+		findViewById(R.id.textView4).setOnTouchListener(new TouchyModeOnTouchListener() {
 
             @Override
             public void onShortTouch()

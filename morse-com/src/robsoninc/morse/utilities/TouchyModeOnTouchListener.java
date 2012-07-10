@@ -1,5 +1,6 @@
 package robsoninc.morse.utilities;
 
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -10,6 +11,7 @@ public abstract class TouchyModeOnTouchListener implements OnTouchListener
     @Override
     public boolean onTouch(View v, MotionEvent event)
     {   
+        Log.d("touchy", "event action = " + event.getAction());
         switch (event.getAction())
         {
             case MotionEvent.ACTION_DOWN:
@@ -36,7 +38,7 @@ public abstract class TouchyModeOnTouchListener implements OnTouchListener
                 break;
         }
 
-        return false;
+        return true;
     }
 
     public abstract void onShortTouch();
