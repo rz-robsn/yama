@@ -156,10 +156,9 @@ public class ActivitySendMessageTest extends
 	private void switchToTouchyMode() throws Exception {
 		solo.clickOnButton("Touchy Mode");
 		Assert.assertFalse("The activity did not switch to touchy mode.",
-				solo.searchButton("(Short)|(Long)|(Gap)"));
+				solo.searchButton("(Short)|(Long)|(Gap)", true));
 		Assert.assertTrue("The activity did not switch to touchy mode.",
-				solo.searchText("controls :"));
-		
+				solo.searchText("controls :", true));		
 	}
 
 	private void clickOnButtonTimes(int resId, int times) throws Exception {
