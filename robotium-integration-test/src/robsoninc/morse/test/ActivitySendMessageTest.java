@@ -105,7 +105,7 @@ public class ActivitySendMessageTest extends
 	private void typeSOSOnTouchyMode() throws Exception {
 
 		// Typing "s" character
-		solo.clickOnScreen(25, 25);
+		solo.drag(25, 26, 25, 26, 1);
 		solo.clickOnScreen(50, 50);
 		solo.clickOnScreen(50, 50);
 
