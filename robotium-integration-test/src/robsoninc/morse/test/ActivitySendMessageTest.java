@@ -41,9 +41,6 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
         i.putExtra("robsoninc.morse.recipient_user_id", this.recipient_user_id);
         this.setActivityIntent(i);
         solo = new Solo(this.getInstrumentation(), this.getActivity());
-        
-
-       // Log.v("flippy", String.format("Flippy top=%d bottom=%d left=%d right=%d text=%s", v.getTop(), v.getBottom(), v.getLeft(), v.getRight(), v.getText()));
     }
 
     @Smoke
@@ -95,7 +92,7 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
         this.typeSOSOnTouchyMode();
         solo.clickOnText("Normal Mode");
 
-        Assert.assertTrue("The Activity did not switch to normal mode", solo.searchButton("(Short)|Long)|(Gap)", 3));
+        Assert.assertTrue("The Activity did not switch to normal mode", solo.searchButton("(Short)|(Long)|(Gap)", 3));
     }
 
     @Smoke
@@ -105,16 +102,16 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
         this.switchToTouchyMode();
 
         // Typing "s" character
-        solo.clickOnScreen(25, 25);
+        solo.clickOnText(this.controlViewText);
 
         this.typeGap();
         this.typeGap();
 
         // Typing "t" character
-        solo.clickLongOnScreen(25, 25, 1);
+        solo.clickLongOnText(this.controlViewText);
 
         Assert.assertTrue("The Activity did not display \"e t\".", solo.searchText("e t"));
-        Assert.assertTrue("The Activity did not display \"e t\" in morse.", solo.searchText("\\. \\-"));
+        Assert.assertTrue("The Activity did not display \"e t\" in morse.", solo.searchText("\\.\\+\\+\\-"));
     }
 
     private void typeSOSOnTouchyMode() throws Exception
@@ -149,7 +146,7 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
 
             float xStart = 100;
             float xEnd = 150;
-            float yStart = 150;
+            float yStart = 250;
 
             inst.sendPointerSync(MotionEvent.obtain(downTime, SystemClock.uptimeMillis(), MotionEvent.ACTION_DOWN, xStart, yStart, 0));
             
