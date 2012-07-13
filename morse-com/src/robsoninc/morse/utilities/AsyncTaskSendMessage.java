@@ -1,18 +1,5 @@
 package robsoninc.morse.utilities;
 
-//import static org.easymock.EasyMock.*;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.message.BasicNameValuePair;
-
-import robsoninc.morse.Constants;
 import android.os.AsyncTask;
 
 public class AsyncTaskSendMessage extends AsyncTask<Void, Void, Integer> {

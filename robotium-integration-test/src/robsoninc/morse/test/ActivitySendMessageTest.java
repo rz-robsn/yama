@@ -8,8 +8,6 @@ import robsoninc.morse.ActivitySendMessage;
 import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.Smoke;
-import android.util.Log;
-import android.widget.TextView;
 import robsoninc.morse.R;
 
 public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<ActivitySendMessage>
