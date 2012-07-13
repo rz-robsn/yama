@@ -4,7 +4,7 @@ public class MorseStringConverter {
 
 	public static final String SHORT = "." ;
 	public static final String LONG = "-" ;
-	public static final String GAP = " " ;
+	public static final String GAP = "+" ;
 	
 	private static char[] letters = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g',
 			'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
@@ -14,7 +14,7 @@ public class MorseStringConverter {
 			".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--",
 			"-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-",
 			".--", "-..-", "-.--", "--..", "-----", ".----", "..---", "...--",
-			"....-", ".....", "-....", "--...", "---..", "----.", " " };
+			"....-", ".....", "-....", "--...", "---..", "----.", GAP };
 
 	public static String ConvertTextToMorse(String text) {
 		text = text.toLowerCase();
@@ -23,14 +23,14 @@ public class MorseStringConverter {
 		for (int i = 0; i <= text.length() - 1; i++) {
 			index = String.valueOf(letters).indexOf(text.charAt(i));
 			if (index != -1)
-				result += morseCode[index] + " ";
+				result += morseCode[index] + GAP;
 		}
 
 		return result;
 	}
 
 	public static String ConvertMorseToText(String text) {
-		text = "@" + text.replace(" ", "@@") + "@";
+		text = "@" + text.replace(GAP, "@@") + "@";
 		int index = -1;
 		for (char c : letters) {
 			index = String.valueOf(letters).indexOf(c);
