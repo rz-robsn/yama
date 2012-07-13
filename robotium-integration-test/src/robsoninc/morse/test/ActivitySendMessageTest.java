@@ -1,13 +1,22 @@
 package robsoninc.morse.test;
 
+import java.util.ArrayList;
+
 import junit.framework.Assert;
 
 import com.jayway.android.robotium.solo.Solo;
 
 import robsoninc.morse.ActivitySendMessage;
+import android.app.Instrumentation;
 import android.content.Intent;
+import android.os.SystemClock;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.Smoke;
+import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.ViewFlipper;
 import robsoninc.morse.R;
 
 public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<ActivitySendMessage>
@@ -17,8 +26,7 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
 
     private String recipient_user_id = "1111-222-333-4444";
     private String controlViewText = "controls";
-    
-    
+
     public ActivitySendMessageTest()
     {
         super("robsoninc.morse.test", ActivitySendMessage.class);
@@ -33,6 +41,9 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
         i.putExtra("robsoninc.morse.recipient_user_id", this.recipient_user_id);
         this.setActivityIntent(i);
         solo = new Solo(this.getInstrumentation(), this.getActivity());
+        
+
+       // Log.v("flippy", String.format("Flippy top=%d bottom=%d left=%d right=%d text=%s", v.getTop(), v.getBottom(), v.getLeft(), v.getRight(), v.getText()));
     }
 
     @Smoke
@@ -70,7 +81,8 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
         this.typeSOSOnTouchyMode();
 
         Assert.assertTrue("The Activity did not display \"sos\".", solo.searchText("sos"));
-        Assert.assertTrue("The Activity did not display \"sos\" in morse.", solo.searchText("\\.\\.\\.\\-\\-\\-\\.\\.\\."));
+        Assert.assertTrue("The Activity did not display \"sos\" in morse.",
+                solo.searchText("\\.\\.\\.\\+\\-\\-\\-\\+\\.\\.\\."));
 
         this.sendMessage("sos");
     }
@@ -107,8 +119,6 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
 
     private void typeSOSOnTouchyMode() throws Exception
     {
-        String controlViewText = "controls";
-
         // Typing "s" character
         solo.clickOnText(this.controlViewText);
         solo.clickOnText(this.controlViewText);
@@ -120,7 +130,7 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
         solo.clickLongOnText(this.controlViewText);
         solo.clickLongOnText(this.controlViewText);
         solo.clickLongOnText(this.controlViewText);
-        
+
         this.typeGap();
 
         // Typing "s" character
@@ -130,14 +140,41 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
     }
 
     private void typeGap() throws Exception
-    {
-        // drawing a line.
-        solo.drag(10, 100, 100, 100, 100);
+    {        
+        try
+        {
+            /* Simulates the Gesture for Drawing a line. */
+            long downTime = SystemClock.uptimeMillis();
+            Instrumentation inst = this.getInstrumentation();
+
+            float xStart = 100;
+            float xEnd = 150;
+            float yStart = 150;
+
+            inst.sendPointerSync(MotionEvent.obtain(downTime, SystemClock.uptimeMillis(), MotionEvent.ACTION_DOWN, xStart, yStart, 0));
+            
+            int step_size = 10;
+            for (int i = 1; i < 9; i++)
+            {
+                // event time MUST be retrieved only by this way!
+                long eventTime = SystemClock.uptimeMillis();
+                MotionEvent event = MotionEvent.obtain(downTime, eventTime, MotionEvent.ACTION_MOVE, xStart + i*step_size, yStart, 0);
+                inst.sendPointerSync(event);
+            }
+            
+            inst.sendPointerSync(MotionEvent.obtain(downTime, downTime, MotionEvent.ACTION_UP, xEnd, yStart, 0));
+
+        }
+        catch (Exception ignored)
+        {
+            // Handle exceptions if necessary
+        }
     }
 
     private void sendMessage(String message) throws Exception
     {
-        Assert.assertTrue(String.format("The Message to send should contain \"%s\".", message), solo.searchText(message));
+        Assert.assertTrue(String.format("The Message to send should contain \"%s\".", message),
+                solo.searchText(message));
         solo.clickOnButton("Send");
 
         Assert.assertTrue("The confirmation alert box text does not contain the confirmation text expected.",
@@ -146,8 +183,10 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
 
         solo.waitForDialogToClose(10);
 
-        Assert.assertTrue("The activity did not show or showed the incorrect sending success confirmation dialog.",
-                solo.waitForText(this.getActivity().getString(R.string.sndmsg_send_success_message, this.recipient_user_id)));
+        Assert.assertTrue(
+                "The activity did not show or showed the incorrect sending success confirmation dialog.",
+                solo.waitForText(this.getActivity().getString(R.string.sndmsg_send_success_message,
+                        this.recipient_user_id)));
         Assert.assertFalse("The message box did not empty itself", solo.searchText(message));
 
     }
@@ -155,7 +194,8 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
     private void switchToTouchyMode() throws Exception
     {
         solo.clickOnButton("Touchy Mode");
-        Assert.assertFalse("The activity did not switch to touchy mode.", solo.searchButton("(Short)|(Long)|(Gap)", true));
+        Assert.assertFalse("The activity did not switch to touchy mode.",
+                solo.searchButton("(Short)|(Long)|(Gap)", true));
         Assert.assertTrue("The activity did not switch to touchy mode.", solo.searchText("controls :", true));
     }
 
