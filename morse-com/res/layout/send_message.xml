@@ -13,22 +13,20 @@
 
     <ViewFlipper
         android:id="@+id/viewFlipper1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="250dp" >
+        android:layout_width="fill_parent"
+        android:layout_height="200dp" >
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:paddingBottom="75dp"
-            android:paddingLeft="75dp"
-            android:paddingTop="100dp" >
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:saveEnabled="false" >
 
             <Button
                 android:id="@+id/button_short"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="left"
+                android:gravity="center"
                 android:text="@string/sndmsg_short_button_value" />
 
             <Button
@@ -42,17 +40,15 @@
                 android:id="@+id/button_space"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+                android:gravity="center"
                 android:text="@string/sndmsg_space_button_value" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:paddingBottom="75dp"
-            android:paddingLeft="75dp"
-            android:paddingTop="100dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:text="@string/sndmsg_touchy_desc"
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </ViewFlipper>
@@ -61,8 +57,8 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:clipChildren="false"
-        android:gravity="center_vertical"
-        android:minHeight="350dp"
+        android:fitsSystemWindows="true"
+        android:gravity="top|left"
         android:orientation="vertical" >
 
         <TextView
@@ -77,6 +73,7 @@
             android:id="@+id/message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:height="50dp"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <TextView
@@ -90,6 +87,7 @@
             android:id="@+id/morse_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:height="50dp"
             android:textAppearance="?android:attr/textAppearanceMedium" />
     </LinearLayout>
 
