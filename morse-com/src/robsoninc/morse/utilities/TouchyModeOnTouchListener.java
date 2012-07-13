@@ -16,6 +16,8 @@ public abstract class TouchyModeOnTouchListener implements OnTouchListener
 
     private float downX;
     private float downY;
+    
+    private boolean lineTouchDispatched = false;
 
     @Override
     public boolean onTouch(View v, MotionEvent event)
@@ -27,21 +29,31 @@ public abstract class TouchyModeOnTouchListener implements OnTouchListener
                 this.downY = event.getY();
                 break;
 
+            case MotionEvent.ACTION_MOVE:                
+                if (!lineTouchDispatched && this.motionEventExceedsThreeshold(v, event))
+                {   
+                    this.onLineTouch();
+                    lineTouchDispatched = true;
+                } 
+                break;
+                
             case MotionEvent.ACTION_UP:
-                if (event.getEventTime() - event.getDownTime() < ViewConfiguration.getLongPressTimeout())
+                if(lineTouchDispatched)
+                {
+                    this.lineTouchDispatched = false;
+                }
+                else if (event.getEventTime() - event.getDownTime() < ViewConfiguration.getLongPressTimeout())
                 {
                     this.onShortTouch();
                 }
-                else if (getDistance(this.downX, this.downY, event.getX(), event.getY()) < convertDpToPxl(
-                        LINE_DRAW_THRESHOLD_DISTANCE, v.getContext()))
-                {
-                    this.onLongTouch();
-                }
                 else
                 {
-                    this.onLineTouch();
-                }
+                    this.onLongTouch();
+                }                
                 break;
+                
+            case MotionEvent.ACTION_CANCEL:
+                this.lineTouchDispatched = false ;
         }
 
         return true;
@@ -56,6 +68,12 @@ public abstract class TouchyModeOnTouchListener implements OnTouchListener
     private static double getDistance(float x1, float y1, float x2, float y2)
     {
         return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+    }
+    
+    private boolean motionEventExceedsThreeshold(View v, MotionEvent event)
+    {
+        return getDistance(this.downX, this.downY, event.getX(), event.getY()) 
+                > convertDpToPxl(LINE_DRAW_THRESHOLD_DISTANCE, v.getContext());
     }
 
     public static float convertDpToPxl(float lineDrawThresholdDistance, Context c)
