@@ -12,7 +12,7 @@ public abstract class TouchyModeOnTouchListener implements OnTouchListener
 {
     // Defines the minimum distance the pointer has to traverse so that
     // the current gesture is seen as a line (and not as a tap).
-    private static final float LINE_DRAW_THRESHOLD_DISTANCE = 1;
+    private static final float LINE_DRAW_THRESHOLD_DISTANCE = 10;
 
     private float downX;
     private float downY;
