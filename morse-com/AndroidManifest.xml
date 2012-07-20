@@ -20,6 +20,11 @@
 
     <!-- Permission request to use the internet -->
     <uses-permission android:name="android.permission.INTERNET" />
+    
+    <!-- GCM requires a Google account. -->
+	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+	<!-- Keeps the processor from sleeping when a message is received. -->
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:name=".ApplicationMorse"

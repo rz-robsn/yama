@@ -1,7 +1,5 @@
 package robsoninc.morse.test;
 
-import java.util.ArrayList;
-
 import junit.framework.Assert;
 
 import com.jayway.android.robotium.solo.Solo;
@@ -12,11 +10,7 @@ import android.content.Intent;
 import android.os.SystemClock;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.Smoke;
-import android.util.Log;
 import android.view.MotionEvent;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.ViewFlipper;
 import robsoninc.morse.R;
 
 public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<ActivitySendMessage>
