@@ -18,8 +18,6 @@ import android.widget.ViewFlipper;
 
 public class ActivitySendMessage extends Activity {
 
-	private String recipientId;
-
 	private TextView message;
 	private TextView morse_message;
 
@@ -35,6 +33,8 @@ public class ActivitySendMessage extends Activity {
 		message = (TextView) this.findViewById(R.id.message);
 		morse_message = (TextView) this.findViewById(R.id.morse_message);
 
+		this.setTitle(getString(R.string.sndmsg_send_message_activity_title));
+		
 		this.setOnClickListenerToAppendStringToMessage(
 				findViewById(R.id.button_short), MorseStringConverter.SHORT);
 		this.setOnClickListenerToAppendStringToMessage(
@@ -47,8 +47,6 @@ public class ActivitySendMessage extends Activity {
 
 					@Override
 					public void onClick(View arg0) {
-						ActivitySendMessage.this
-								.showDialog(DIALOG_SEND_CONFIRM);
 					}
 				});
 
@@ -93,97 +91,13 @@ public class ActivitySendMessage extends Activity {
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
-		super.onResume();
-
-		recipientId = getIntent().getExtras().getString(
-				"robsoninc.morse.recipient_user_id");
-		this.setTitle(String.format("%s %s",
-				getString(R.string.sndmsg_send_message_activity_title),
-				this.recipientId));
+		super.onResume();		
 	}
 
 	@Override
 	protected Dialog onCreateDialog(int id) {
 
 		switch (id) {
-		case DIALOG_SEND_CONFIRM:
-			AlertDialog.Builder builder = new AlertDialog.Builder(
-					ActivitySendMessage.this);
-			builder.setCancelable(false)
-					.setMessage("")
-					.setTitle(getString(R.string.sndmsg_send_dialog_title))
-					.setPositiveButton(getString(R.string.dialog_ok_button),
-							new DialogInterface.OnClickListener() {
-
-								@Override
-								public void onClick(DialogInterface dialog,
-										int which) {
-
-									// Send message push instruction to
-									// webserver
-									AsyncTaskSendMessage sendTask = new AsyncTaskSendMessage() {
-
-										@Override
-										protected void onPreExecute() {
-											ActivitySendMessage.this
-													.showDialog(DIALOG_SEND_IN_PROGRESS);
-										}
-
-										@Override
-										protected void onPostExecute(
-												Integer responseCode) {
-											super.onPostExecute(responseCode);
-
-											ActivitySendMessage.this
-													.dismissDialog(DIALOG_SEND_IN_PROGRESS);
-
-											if (responseCode.intValue() == 200) {
-												Toast.makeText(
-														ActivitySendMessage.this,
-														getString(
-																R.string.sndmsg_send_success_message,
-																recipientId),
-														Toast.LENGTH_LONG)
-														.show();
-												emptyMessageBoxes();
-											} else {
-												Toast.makeText(
-														ActivitySendMessage.this,
-														R.string.sndmsg_send_fail_message,
-														Toast.LENGTH_LONG)
-														.show();
-											}
-										}
-									};
-									SharedPreferences settings = getSharedPreferences(
-											Constants.PREF_FILE, MODE_PRIVATE);
-									sendTask.setRecipientId(recipientId);
-									sendTask.setSenderId(settings.getString(
-											Constants.USER_ID_KEY, ""));
-
-									sendTask.execute((Void[]) null);
-								}
-							})
-					.setNegativeButton(
-							getString(R.string.dialog_cancel_button),
-							new DialogInterface.OnClickListener() {
-
-								@Override
-								public void onClick(DialogInterface dialog,
-										int which) {
-									dialog.cancel();
-								}
-							});
-			return builder.create();
-
-		case DIALOG_SEND_IN_PROGRESS:
-			ProgressDialog d = new ProgressDialog(ActivitySendMessage.this);
-			d.setMessage(this.getString(R.string.sndmsg_sending_message));
-			d.setIndeterminate(true);
-
-			return d;
-
 		default:
 			return super.onCreateDialog(id);
 		}
@@ -193,15 +107,8 @@ public class ActivitySendMessage extends Activity {
 	protected void onPrepareDialog(int id, Dialog dialog) {
 
 		super.onPrepareDialog(id, dialog);
-
 		switch (id) {
 		case DIALOG_SEND_CONFIRM:
-			AlertDialog alert = (AlertDialog) dialog;
-			alert.setMessage(dialog.getContext().getString(
-					R.string.sndmsg_send_dialog_body, this.message.getText()));
-			alert.show();
-			break;
-
 		case DIALOG_SEND_IN_PROGRESS:
 		default:
 			break;
@@ -220,10 +127,6 @@ public class ActivitySendMessage extends Activity {
 				appendStringToMessage(s);
 			}
 		});
-	}
-
-	public String getRecipientId() {
-		return recipientId;
 	}
 
 	public TextView getMessage() {

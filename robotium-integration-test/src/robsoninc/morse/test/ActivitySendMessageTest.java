@@ -18,7 +18,6 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
 
     private Solo solo;
 
-    private String recipient_user_id = "1111-222-333-4444";
     private String controlViewText = "controls";
 
     public ActivitySendMessageTest()
@@ -30,18 +29,7 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
     protected void setUp() throws Exception
     {
         super.setUp();
-
-        Intent i = new Intent(this.getInstrumentation().getContext(), ActivitySendMessage.class);
-        i.putExtra("robsoninc.morse.recipient_user_id", this.recipient_user_id);
-        this.setActivityIntent(i);
         solo = new Solo(this.getInstrumentation(), this.getActivity());
-    }
-
-    @Smoke
-    public void testTitleNameIncludesRecipientId() throws Exception
-    {
-        String title = this.getActivity().getTitle().toString();
-        Assert.assertTrue("Title does not include recipient id", title.contains(recipient_user_id));
     }
 
     @Smoke
@@ -168,18 +156,7 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
                 solo.searchText(message));
         solo.clickOnButton("Send");
 
-        Assert.assertTrue("The confirmation alert box text does not contain the confirmation text expected.",
-                solo.searchText(this.getActivity().getString(R.string.sndmsg_send_dialog_body, message)));
-        solo.clickOnButton("OK");
-
-        solo.waitForDialogToClose(10);
-
-        Assert.assertTrue(
-                "The activity did not show or showed the incorrect sending success confirmation dialog.",
-                solo.waitForText(this.getActivity().getString(R.string.sndmsg_send_success_message,
-                        this.recipient_user_id)));
-        Assert.assertFalse("The message box did not empty itself", solo.searchText(message));
-
+        //Assert.assertFalse("The message box did not empty itself", solo.searchText(message));
     }
 
     private void switchToTouchyMode() throws Exception
