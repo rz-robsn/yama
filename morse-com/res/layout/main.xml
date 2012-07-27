@@ -23,13 +23,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/main_choose_recipient_button_value" />
-
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/main_test_button_value" />
     </LinearLayout>
 
 </LinearLayout>

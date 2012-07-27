@@ -30,4 +30,11 @@ public class ActivityMainTest extends ActivityInstrumentationTestCase2<ActivityM
         solo.assertCurrentActivity("The Create Morse Code Button did not redirect to SendMessage Activity",
                 ActivitySendMessage.class);
     }
+    
+    @Smoke
+    public void testTestRegistrationButtonDoesNotAppear()
+    {
+        assertFalse("The Test Registration button should not appear anymore", 
+                solo.searchButton("Test Registration"));        
+    }
 }

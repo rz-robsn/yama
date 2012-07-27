@@ -6,7 +6,6 @@ import com.jayway.android.robotium.solo.Solo;
 
 import robsoninc.morse.ActivitySendMessage;
 import android.app.Instrumentation;
-import android.content.Intent;
 import android.os.SystemClock;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.Smoke;

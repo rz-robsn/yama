@@ -1,18 +1,12 @@
 package robsoninc.morse;
 
-import robsoninc.morse.utilities.AsyncTaskSendMessage;
 import robsoninc.morse.utilities.MorseStringConverter;
 import robsoninc.morse.utilities.TouchyModeOnTouchListener;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 import android.widget.ViewFlipper;
 
