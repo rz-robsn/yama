@@ -157,11 +157,8 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
 
         Assert.assertTrue("The Share Dialog did not show up.",
                 solo.searchText("Complete action using"));
-        solo.clickOnText("Messaging", 0, true);
-
-        solo.goBack();
-        solo.goBack();
-        solo.clickOnButton("OK");
+        Assert.assertTrue("The Device should have at least a messaging option.",
+                solo.searchText("Messaging", 1, true, true));
         
         Assert.assertFalse("The message box did not empty itself", solo.searchText(message));
     }

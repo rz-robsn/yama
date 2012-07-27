@@ -37,4 +37,11 @@ public class ActivityMainTest extends ActivityInstrumentationTestCase2<ActivityM
         assertFalse("The Test Registration button should not appear anymore", 
                 solo.searchButton("Test Registration"));        
     }
+    
+    @Override
+    protected void tearDown() throws Exception
+    {
+        solo.finishOpenedActivities();
+    }
+
 }
