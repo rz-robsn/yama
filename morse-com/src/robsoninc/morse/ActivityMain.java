@@ -22,7 +22,6 @@ public class ActivityMain extends Activity
             {
                 Intent i = new Intent(v.getContext(), ActivitySendMessage.class);
                 startActivity(i);
-
             }
         });
     }

@@ -24,7 +24,7 @@ public class ActivityMainTest extends ActivityInstrumentationTestCase2<ActivityM
     }
     
     @Smoke
-    public void testTitleNameIncludesRecipientId() throws Exception
+    public void testClickOnCreateMorseRedirectsToSendMessageActivity() throws Exception
     {
         solo.clickOnButton("Create Morse Code");
         solo.assertCurrentActivity("The Create Morse Code Button did not redirect to SendMessage Activity",
@@ -32,7 +32,7 @@ public class ActivityMainTest extends ActivityInstrumentationTestCase2<ActivityM
     }
     
     @Smoke
-    public void testTestRegistrationButtonDoesNotAppear()
+    public void testTestRegistrationButtonDoesNotAppear() throws Exception
     {
         assertFalse("The Test Registration button should not appear anymore", 
                 solo.searchButton("Test Registration"));        
