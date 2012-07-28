@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Browser" id="1" width="713" height="593" text="WireframeSketcher&#xA;http://wireframesketcher.com" measuredWidth="713" measuredHeight="593" verticalScrollbar="true"/>
+  <widgets xsi:type="model:Master" id="2" x="11" y="69" measuredWidth="262" measuredHeight="45">
+    <screen xsi:type="model:Screen" href="assets/logo.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:LinkBar" id="3" x="428" y="81" text="Tour,Install,Blog,Forum,About" measuredWidth="245" measuredHeight="23" selection="">
+    <font/>
+    <items x="0" y="0" width="27" height="23" text="Tour"/>
+    <items x="45" y="0" width="38" height="23" text="Install"/>
+    <items x="101" y="0" width="28" height="23" text="Blog"/>
+    <items x="147" y="0" width="41" height="23" text="Forum"/>
+    <items x="206" y="0" width="38" height="23" text="About"/>
+  </widgets>
+  <widgets xsi:type="model:Panel" id="4" x="1" y="128" width="696" height="289" measuredWidth="696" measuredHeight="289" background="#666666" border="none"/>
+  <widgets xsi:type="model:Placeholder" id="5" x="382" y="144" width="294" height="241" text="Screenshot" measuredWidth="294" measuredHeight="241"/>
+  <widgets xsi:type="model:Placeholder" id="6" x="20" y="472" width="201" height="105" measuredWidth="201" measuredHeight="105"/>
+  <widgets xsi:type="model:Label" id="7" x="21" y="429" width="200" text="Mockup anything" measuredWidth="200" measuredHeight="32" icon="email (large)">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Placeholder" id="8" x="248" y="472" width="202" height="105" measuredWidth="202" measuredHeight="105"/>
+  <widgets xsi:type="model:Label" id="9" x="249" y="429" width="201" text="Get results fast" measuredWidth="201" measuredHeight="32" icon="refresh (large)">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Placeholder" id="10" x="477" y="472" width="201" height="105" measuredWidth="201" measuredHeight="105"/>
+  <widgets xsi:type="model:Label" id="11" x="478" y="429" width="200" text="Collaborate effortlessly" measuredWidth="200" measuredHeight="32" icon="computer (large)">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="12" x="240" y="608" width="215" text="Next screen" measuredWidth="215" measuredHeight="25" background="#6aa84f" link="Extend.screen" style="pointright">
+    <font bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Text" id="13" x="20" y="155" width="349" height="158" text="h4. Rapid Wireframing Tool for your Team&#xA;&#xA;* Create wireframes in minutes&#xA;* Get quality feedback fast&#xA;* Build better software&#xA;* Involve your entire team!" measuredWidth="349" measuredHeight="158" foreground="#ffffff">
+    <font size="14px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="14" x="38" y="351" width="115" height="36" text="Try it now" measuredWidth="115" measuredHeight="36">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="15" x="220" y="351" width="115" height="36" text="Take a tour" measuredWidth="115" measuredHeight="36">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="16" x="175" y="357" text="or" measuredWidth="22" measuredHeight="27" foreground="#ffffff">
+    <font size="16px"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

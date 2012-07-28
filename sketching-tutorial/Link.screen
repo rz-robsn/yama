@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:ButtonBar" id="1" x="56" y="56" width="489" text="Start,Mockup,Extend,Link,Share" measuredWidth="489" measuredHeight="41" selection="0">
+    <font size="18px" bold="true"/>
+    <items link="Start.screen" x="0" y="0" width="87" height="41" text="Start"/>
+    <items link="Mockup.screen" x="87" y="0" width="119" height="41" text="Mockup"/>
+    <items link="Extend.screen" x="206" y="0" width="109" height="41" text="Extend"/>
+    <items x="315" y="0" width="74" height="41" text="Link"/>
+    <items link="Share.screen" x="389" y="0" width="100" height="41" text="Share"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="2" x="120" y="8" width="329" text="Use links to add interactivity" measuredWidth="329" measuredHeight="31" textAlignment="Center" foreground="#0000ff">
+    <font size="18px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="3" x="184" y="352" width="234" text="Next screen" measuredWidth="234" measuredHeight="25" background="#6aa84f" link="Share.screen" style="pointright">
+    <font bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="4" x="56" y="136" width="457" text="Use storyboards to organize user stories" measuredWidth="457" measuredHeight="31" textAlignment="Center" foreground="#0000ff">
+    <font size="18px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Placeholder" id="5" x="24" y="192" width="129" height="129" measuredWidth="129" measuredHeight="129"/>
+  <widgets xsi:type="model:Placeholder" id="6" x="168" y="192" width="129" height="129" measuredWidth="129" measuredHeight="129"/>
+  <widgets xsi:type="model:Placeholder" id="7" x="312" y="192" width="129" height="129" measuredWidth="129" measuredHeight="129"/>
+  <widgets xsi:type="model:Placeholder" id="8" x="456" y="192" width="129" height="129" measuredWidth="129" measuredHeight="129"/>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

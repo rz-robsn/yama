@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Rectangle" id="4" y="10" width="297" height="401" measuredWidth="297" measuredHeight="401">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="6" x="80" y="296" width="131" text="Send Message" measuredWidth="131" measuredHeight="25">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="7" x="80" y="336" text="Watch Video Tutorial" measuredWidth="131" measuredHeight="25">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Image" id="8" x="115" y="90"/>
+  <widgets xsi:type="model:Image" id="9" x="48" y="72" width="201" height="201" measuredWidth="201" measuredHeight="201" src="assets/image007.jpg"/>
+  <widgets xsi:type="model:Image" id="10" x="-8" y="-8" width="9" height="19" measuredWidth="9" measuredHeight="19" src="assets/image007.jpg"/>
+  <widgets xsi:type="model:Label" id="11" x="48" width="201" text="Telegraph" measuredWidth="201" measuredHeight="67">
+    <font size="43px"/>
+  </widgets>
+  <widgets xsi:type="model:Arrow" id="12" x="216" y="295" width="137" height="27" measuredWidth="137" measuredHeight="27" annotation="true"/>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

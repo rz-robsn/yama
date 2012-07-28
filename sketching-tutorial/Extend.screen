@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Label" id="4" x="96" y="8" width="441" text="Get extra stencils from Mockups Gallery" measuredWidth="441" measuredHeight="31" textAlignment="Center" foreground="#0000ff">
+    <font size="18px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Menu" id="6" x="241" y="49" text="File, Edit, View, Object, Format, Run, Window, Help" measuredWidth="341" measuredHeight="27" selection="7">
+    <items x="5" y="0" width="29" height="27" text="File"/>
+    <items x="34" y="0" width="34" height="27" text="Edit"/>
+    <items x="68" y="0" width="38" height="27" text="View"/>
+    <items x="106" y="0" width="49" height="27" text="Object"/>
+    <items x="155" y="0" width="53" height="27" text="Format"/>
+    <items x="208" y="0" width="33" height="27" text="Run"/>
+    <items x="241" y="0" width="58" height="27" text="Window"/>
+    <items x="299" y="0" width="37" height="27" text="Help"/>
+  </widgets>
+  <widgets xsi:type="model:Popup" id="5" x="342" y="72" text="Welcome&#xA;--&#xA;{help} Help Contents&#xA;{find} Search&#xA;--&#xA;Report a Bug...&#xA;License Key...&#xA;--&#xA;Add Assets from Mockups Gallery...&#xA;Check for Updates&#xA;Install New Software...&#xA;---&#xA;About" measuredWidth="240" measuredHeight="255" selection="8">
+    <items x="0" y="2" width="240" height="23" text="Welcome"/>
+    <items x="0" y="25" width="240" height="11" text="--"/>
+    <items x="0" y="36" width="240" height="23" text="{help} Help Contents"/>
+    <items x="0" y="59" width="240" height="23" text="{find} Search"/>
+    <items x="0" y="82" width="240" height="11" text="--"/>
+    <items x="0" y="93" width="240" height="23" text="Report a Bug..."/>
+    <items x="0" y="116" width="240" height="23" text="License Key..."/>
+    <items x="0" y="139" width="240" height="11" text="--"/>
+    <items x="0" y="150" width="240" height="23" text="Add Assets from Mockups Gallery..."/>
+    <items x="0" y="173" width="240" height="23" text="Check for Updates"/>
+    <items x="0" y="196" width="240" height="23" text="Install New Software..."/>
+    <items x="0" y="219" width="240" height="11" text="---"/>
+    <items x="0" y="230" width="240" height="23" text="About"/>
+  </widgets>
+  <widgets xsi:type="model:Tree" id="12" x="51" y="120" text="sketching-tutorial&#xA;-assets&#xA;--icons&#xA;---7-location-map.svg&#xA;---9-av-shuffle.svg&#xA;--logo.png&#xA;--logo.screen&#xA;--Star.svg&#xA;" measuredWidth="204" measuredHeight="178" border="false" selection="1">
+    <items x="0" y="5" width="204" height="21" text="sketching-tutorial"/>
+    <items x="0" y="26" width="204" height="21" text="-assets"/>
+    <items x="0" y="47" width="204" height="21" text="--icons"/>
+    <items x="0" y="68" width="204" height="21" text="---7-location-map.svg"/>
+    <items x="0" y="89" width="204" height="21" text="---9-av-shuffle.svg"/>
+    <items x="0" y="110" width="204" height="21" text="--logo.png"/>
+    <items x="0" y="131" width="204" height="21" text="--logo.screen"/>
+    <items x="0" y="152" width="204" height="21" text="--Star.svg"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="7" x="96" y="342" width="441" text="Add your own icons to the icon library" measuredWidth="441" measuredHeight="31" textAlignment="Center" foreground="#0000ff">
+    <font size="18px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Icon" id="2" x="244" y="384" measuredWidth="48" measuredHeight="48" icon="assets/7-location-map (xlarge)"/>
+  <widgets xsi:type="model:Icon" id="3" x="340" y="384" measuredWidth="48" measuredHeight="48" icon="assets/9-av-shuffle (xlarge)"/>
+  <widgets xsi:type="model:Label" id="11" x="84" y="444" width="465" text="Use SVG images for new shapes and icons" measuredWidth="465" measuredHeight="31" textAlignment="Center" foreground="#0000ff">
+    <font size="18px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:SVGImage" id="10" x="266" y="480" measuredWidth="100" measuredHeight="100" src="assets/Star.svg"/>
+  <widgets xsi:type="model:Button" id="1" x="192" y="592" width="234" text="Next screen" measuredWidth="234" measuredHeight="25" background="#6aa84f" link="Link.screen" style="pointright">
+    <font bold="true"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

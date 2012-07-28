@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Label" id="1" x="48" y="96" width="177" text="Export to PDF" measuredWidth="177" measuredHeight="82" textAlignment="Center" icon="pdf (xlarge)" iconPosition="top">
+    <font size="18px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="2" x="288" y="96" width="177" text="Export to PNG" measuredWidth="177" measuredHeight="82" textAlignment="Center" icon="image (xlarge)" iconPosition="top">
+    <font size="18px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="3" x="48" y="232" width="177" text="Present (F5)" measuredWidth="177" measuredHeight="82" textAlignment="Center" icon="computer (xlarge)" iconPosition="top">
+    <font size="18px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="4" x="288" y="232" width="177" text="Print" measuredWidth="177" measuredHeight="82" textAlignment="Center" icon="print (xlarge)" iconPosition="top">
+    <font size="18px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="5" x="94" y="16" width="329" text="Share your work" measuredWidth="329" measuredHeight="31" textAlignment="Center" foreground="#0000ff">
+    <font size="18px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="6" x="64" y="352" width="409" text="Happy wireframing!" measuredWidth="409" measuredHeight="46" textAlignment="Center" foreground="#38761d">
+    <font size="32px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="7" x="144" y="424" width="234" text="Back to the beginning" measuredWidth="234" measuredHeight="25" background="#6aa84f" link="Start.screen" style="pointleft">
+    <font bold="true"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Arrow" id="1" x="48" y="112" width="129" height="36" measuredWidth="129" measuredHeight="36" annotation="true"/>
+  <widgets xsi:type="model:Text" id="2" x="185" y="135" text="Your projects,&#xA;screens and&#xA;storyboards" measuredWidth="109" measuredHeight="57" annotation="true">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Arrow" id="3" x="24" y="287" width="129" height="10" measuredWidth="129" measuredHeight="10" annotation="true"/>
+  <widgets xsi:type="model:Text" id="4" x="160" y="278" text="Properties and&#xA;Links" measuredWidth="117" measuredHeight="38" annotation="true">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Arrow" id="5" x="40" y="421" width="121" height="60" measuredWidth="121" measuredHeight="60" annotation="true" direction="bottom"/>
+  <widgets xsi:type="model:Text" id="6" x="168" y="405" text="Outline" measuredWidth="57" measuredHeight="19" annotation="true">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="7" x="320" y="138" measuredWidth="262" measuredHeight="45">
+    <screen xsi:type="model:Screen" href="assets/logo.screen#/"/>
+  </widgets>
+  <widgets xsi:type="model:Arrow" id="8" x="344" y="8" width="32" height="69" measuredWidth="32" measuredHeight="69" annotation="true"/>
+  <widgets xsi:type="model:Text" id="9" x="373" y="78" text="Menu and&#xA;Toolbar" measuredWidth="79" measuredHeight="38" annotation="true">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Arrow" id="10" x="680" y="294" width="65" height="22" measuredWidth="65" measuredHeight="22" annotation="true" left="false" right="true"/>
+  <widgets xsi:type="model:Text" id="11" x="576" y="263" text="Palette,&#xA;widgets and&#xA;your assets" measuredWidth="96" measuredHeight="57" annotation="true">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="12" x="336" y="384" width="234" text="Next screen" measuredWidth="234" measuredHeight="25" background="#6aa84f" link="Mockup.screen" style="pointright">
+    <font bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Note" id="13" x="305" y="445" width="154" height="55" text="Click small yellow icon to continue" measuredWidth="154" measuredHeight="55" annotation="true">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Arrow" id="14" x="465" y="413" width="89" height="49" measuredWidth="89" measuredHeight="49" annotation="true" left="false" right="true" direction="bottom"/>
+  <widgets xsi:type="model:Text" id="15" x="360" y="287" width="159" height="80" text="Here's what you have on your screen" measuredWidth="159" measuredHeight="80" textAlignment="Center" foreground="#0000ff">
+    <font size="17px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="16" x="307" y="208" width="263" text="Welcome" measuredWidth="263" measuredHeight="59" textAlignment="Center" foreground="#0000ff">
+    <font size="43px" bold="true"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Panel" id="1" x="208" y="96" width="249" height="377" measuredWidth="249" measuredHeight="377"/>
+  <widgets xsi:type="model:ButtonBar" id="3" x="208" y="440" width="249" height="33" text="Send, Switch View" measuredWidth="249" measuredHeight="33" selection="0">
+    <font/>
+    <items x="0" y="0" width="87" height="33" text="Send"/>
+    <items x="87" y="0" width="162" height="33" text="Switch View"/>
+  </widgets>
+  <widgets xsi:type="model:Group" id="6" x="208" y="288" width="249" height="153" text="Input View" measuredWidth="249" measuredHeight="153">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="7" x="208" y="295" width="129" height="146" measuredWidth="129" measuredHeight="146">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Circle" id="8" x="248" y="339" width="57" height="57" measuredWidth="57" measuredHeight="57">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="11" x="336" y="295" width="121" height="146" text="=====" measuredWidth="121" measuredHeight="146">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="12" x="416" y="200" width="41" height="96" measuredWidth="41" measuredHeight="96">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextArea" id="15" x="208" y="96" width="249" height="105" text=".... --- ... --- .." measuredWidth="249" measuredHeight="105">
+    <font size="20px"/>
+  </widgets>
+  <widgets xsi:type="model:TextArea" id="16" x="208" y="200" width="249" height="96" text="sos .." measuredWidth="249" measuredHeight="96">
+    <font size="20px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="17" x="432" y="200" width="25" height="96" text="&lt;=" measuredWidth="25" measuredHeight="96">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="18" x="432" y="96" width="25" height="105" text="&lt;=" measuredWidth="25" measuredHeight="105">
+    <font/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>
