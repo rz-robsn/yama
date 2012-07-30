@@ -10,6 +10,8 @@ import android.os.SystemClock;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.Smoke;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.TextView;
 import robsoninc.morse.R;
 
 public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<ActivitySendMessage>
@@ -118,16 +120,23 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
     }
 
     private void typeGap() throws Exception
-    {        
+    {
+        int[] topLeftControlsCoordinate = new int[2];
+        
+        // The following is not the black box way to retrieve
+        // the controls textView, but the solo#getText method gives 
+        // false negative results.
+        solo.getView(R.id.textView4).getLocationOnScreen(topLeftControlsCoordinate);
+        
         try
-        {
+        {                        
             /* Simulates the Gesture for Drawing a line. */
             long downTime = SystemClock.uptimeMillis();
             Instrumentation inst = this.getInstrumentation();
 
-            float xStart = 100;
-            float xEnd = 150;
-            float yStart = 250;
+            float xStart = topLeftControlsCoordinate[0] + 20 ;
+            float xEnd = topLeftControlsCoordinate[0] + 70;
+            float yStart = topLeftControlsCoordinate[1] + 20;
 
             inst.sendPointerSync(MotionEvent.obtain(downTime, SystemClock.uptimeMillis(), MotionEvent.ACTION_DOWN, xStart, yStart, 0));
             
