@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+<LinearLayout android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:paddingTop="75dp" >
+    android:orientation="vertical" xmlns:android="http://schemas.android.com/apk/res/android">
 
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="@string/main_welcome" /><ImageView
+        android:layout_gravity="center|center_horizontal"
+        android:gravity="center"
+        android:text="@string/main_welcome" />
+
+    <ImageView
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:contentDescription="@string/main_img_desc"
-        android:paddingBottom="20dp"
-        android:paddingTop="25dp"
-        android:scaleType="fitCenter"
+        android:paddingBottom="50dp"
+        android:paddingTop="100dp"
         android:src="@drawable/telegraph_welcome" />
 
     <LinearLayout

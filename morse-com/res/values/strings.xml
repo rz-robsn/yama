@@ -7,8 +7,9 @@
     <string name="dialog_cancel_button">Cancel</string>
 
     <!-- Main Activity -->
-    <string name="main_welcome">Welcome To Morse Communicator</string>
+    <string name="main_welcome">Yet Another Morse App</string>
     <string name="main_choose_recipient_button_value">Create Morse Code</string>
+    <string name="main_img_desc">Main menu image</string>
 
     <!-- On Receive Message Notification -->
     <string name="new_msg_notif_title">You have a new message</string>
