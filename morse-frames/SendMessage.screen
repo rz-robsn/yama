@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
   <widgets xsi:type="model:Panel" id="1" x="208" y="96" width="249" height="377" measuredWidth="249" measuredHeight="377"/>
-  <widgets xsi:type="model:ButtonBar" id="3" x="208" y="440" width="249" height="33" text="Send, Switch View" measuredWidth="249" measuredHeight="33" selection="0">
+  <widgets xsi:type="model:ButtonBar" id="3" x="208" y="440" width="249" height="33" text="Send, Switch View, Play" measuredWidth="249" measuredHeight="33" selection="0">
     <font/>
-    <items x="0" y="0" width="87" height="33" text="Send"/>
-    <items x="87" y="0" width="162" height="33" text="Switch View"/>
+    <items x="0" y="0" width="66" height="33" text="Send"/>
+    <items x="66" y="0" width="118" height="33" text="Switch View"/>
+    <items x="184" y="0" width="65" height="33" text="Play"/>
   </widgets>
   <widgets xsi:type="model:Group" id="6" x="208" y="288" width="249" height="153" text="Input View" measuredWidth="249" measuredHeight="153">
     <font/>
