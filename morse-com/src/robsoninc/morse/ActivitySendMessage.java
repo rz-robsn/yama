@@ -81,11 +81,9 @@ public class ActivitySendMessage extends Activity
 
         this.findViewById(R.id.button_switch_mode).setOnClickListener(new View.OnClickListener()
         {
-
             @Override
             public void onClick(View v)
             {
-
                 ViewFlipper flippy = (ViewFlipper) findViewById(R.id.viewFlipper1);
                 flippy.showNext();
             }

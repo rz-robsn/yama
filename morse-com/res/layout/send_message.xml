@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<RelativeLayout
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
-
+    android:layout_height="fill_parent" >
+
     <TextView
         android:id="@+id/message"
         android:layout_width="match_parent"
@@ -13,7 +12,7 @@
         android:gravity="center"
         android:height="50dp"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
+
     <TextView
         android:id="@+id/morse_message"
         android:layout_width="match_parent"
@@ -25,9 +24,9 @@
 
     <ViewFlipper
         android:id="@+id/viewFlipper1"
-        android:layout_width="fill_parent"
-        android:layout_height="200dp"
-         android:layout_below="@+id/morse_message" >
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/morse_message" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -64,6 +63,11 @@
             android:gravity="center"
             android:text="@string/sndmsg_touchy_desc"
             android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/telegraph_mode_button" />
     </ViewFlipper>
 
     <LinearLayout
@@ -71,8 +75,8 @@
         style="@android:style/ButtonBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_alignParentBottom="true" >
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal" >
 
         <Button
             android:id="@+id/button_send_message"
@@ -86,8 +90,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/sndmsg_switch_mode" />        
-        
+            android:text="@string/sndmsg_switch_mode" />
     </LinearLayout>
 
 </RelativeLayout>
