@@ -162,19 +162,11 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
     {
         Assert.assertTrue(String.format("The Message to send should contain \"%s\".", message),
                 solo.searchText(message));
-        solo.clickOnButton("Send");
-
-        Assert.assertTrue("The Share Dialog did not show up.",
-                solo.searchText("Complete action using"));
-        Assert.assertTrue("The Device should have at least a messaging option.",
-                solo.searchText("Messaging", 1, true, true));
-        
-        Assert.assertFalse("The message box did not empty itself", solo.searchText(message));
     }
 
     private void switchToTouchyMode() throws Exception
     {
-        solo.clickOnButton("Touchy Mode");
+        solo.clickOnButton("Switch Mode");
         Assert.assertFalse("The activity did not switch to touchy mode.",
                 solo.searchButton("(Short)|(Long)|(Gap)", true));
         Assert.assertTrue("The activity did not switch to touchy mode.", solo.searchText("controls :", true));

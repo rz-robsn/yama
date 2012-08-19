@@ -15,8 +15,7 @@
     <string name="sndmsg_send_success_message">Message Successfully sent to %s.</string>
     <string name="sndmsg_send_fail_message">There has been an error trying to send your message, please try again.</string>
     <string name="sndmsg_sending_message">Sending Message</string>
-    <string name="sndmsg_toggle_off">Normal Mode</string>
-    <string name="sndmsg_toggle_on">Touchy Mode</string>
+    <string name="sndmsg_switch_mode">Switch Mode</string>
     <string name="sndmsg_touchy_desc">controls :\nshort = shorp tap\nlong = long tap\ngap = line</string>
 
 </resources>

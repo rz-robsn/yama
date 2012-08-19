@@ -81,13 +81,13 @@
             android:layout_weight="1"
             android:text="@string/sndmsg_send_button_value" />
 
-        <ToggleButton
-            android:id="@+id/toggleButton1"
+        <Button
+            android:id="@+id/button_switch_mode"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textOff="@string/sndmsg_toggle_on"
-            android:textOn="@string/sndmsg_toggle_off" />
+            android:text="@string/sndmsg_switch_mode" />        
+        
     </LinearLayout>
 
 </RelativeLayout>

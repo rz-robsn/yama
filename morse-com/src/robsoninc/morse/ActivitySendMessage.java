@@ -79,24 +79,15 @@ public class ActivitySendMessage extends Activity
             }
         });
 
-        this.findViewById(R.id.toggleButton1).setOnClickListener(new View.OnClickListener()
+        this.findViewById(R.id.button_switch_mode).setOnClickListener(new View.OnClickListener()
         {
 
             @Override
             public void onClick(View v)
             {
 
-                ToggleButton toggle = (ToggleButton) v;
                 ViewFlipper flippy = (ViewFlipper) findViewById(R.id.viewFlipper1);
-
-                if (toggle.isChecked())
-                {
-                    flippy.showNext();
-                }
-                else
-                {
-                    flippy.showPrevious();
-                }
+                flippy.showNext();
             }
         });
     }
