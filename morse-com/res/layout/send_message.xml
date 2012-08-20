@@ -10,7 +10,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:gravity="center"
-        android:height="50dp"
+        android:minHeight="50dp"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/message"
         android:gravity="center"
-        android:height="50dp"
+        android:minHeight="50dp"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <ViewFlipper
@@ -27,6 +27,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/morse_message" >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/telegraph_mode_button"
+            android:gravity="center"
+            android:minHeight="150dp"
+            android:minWidth="150dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -63,11 +72,6 @@
             android:gravity="center"
             android:text="@string/sndmsg_touchy_desc"
             android:textAppearance="?android:attr/textAppearanceMedium" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/telegraph_mode_button" />
     </ViewFlipper>
 
     <LinearLayout
