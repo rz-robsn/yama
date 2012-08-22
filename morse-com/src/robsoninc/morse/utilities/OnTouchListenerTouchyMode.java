@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewConfiguration;
 
-public class TouchyModeOnTouchListener implements OnTouchListener
+public class OnTouchListenerTouchyMode implements OnTouchListener
 {
     // Defines the minimum distance the pointer has to traverse so that
     // the current gesture is seen as a line (and not as a tap).
@@ -20,7 +20,7 @@ public class TouchyModeOnTouchListener implements OnTouchListener
     /**
      * @param listener
      */
-    public TouchyModeOnTouchListener(ModeListener listener)
+    public OnTouchListenerTouchyMode(ModeListener listener)
     {
         super();
         this.listener = listener;
