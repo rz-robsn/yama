@@ -34,17 +34,32 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
     }
 
     @Smoke
-    public void testSendSuccessfullySOSWithButtonMode() throws Exception
+    public void testSendSOSWithTelegraphMode() throws Exception
+    {
+        solo.waitForView(solo.getView(R.id.button_telegraph));
+                
+        this.typeShortOnTelegraphMode();
+        this.typeShortOnTelegraphMode();
+        this.typeShortOnTelegraphMode();
+        this.waitFor(500);
+        this.typeLongOnTelegraphMode();
+        this.typeLongOnTelegraphMode();
+        this.typeLongOnTelegraphMode();
+        this.waitFor(500);
+        this.typeShortOnTelegraphMode();
+        this.typeShortOnTelegraphMode();
+        this.typeShortOnTelegraphMode();
+        
+        this.sendMessage("et e");
+    }
+
+    
+    @Smoke
+    public void testSendSOSWithButtonMode() throws Exception
     {
         this.switchToButtonMode();
         this.typeSOSOnButtonMode();
         this.sendMessage("sos");
-    }
-
-    @Smoke
-    public void testSwitchToTouchyModeWhenTappingButton() throws Exception
-    {
-        this.switchToTouchyMode();
     }
 
     @Smoke
@@ -62,7 +77,20 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
     }
 
     @Smoke
-    public void testWriteGapSymbolOnDrawingALineWithFingerWithTelegraphMode() throws Exception
+    public void testWriteGapSymbolOnDrawingALineWithFingerWithTelegraphMode() throws Exception 
+    {
+        //typing "et e"
+        this.typeShortOnTelegraphMode();
+        this.waitFor(500);
+        this.typeLongOnTelegraphMode();
+        this.waitFor(1600);
+        this.typeShortOnTelegraphMode();
+        
+        this.sendMessage("et e");
+    }
+    
+    @Smoke
+    public void testWriteGapSymbolOnDrawingALineWithFingerWithTouchyMode() throws Exception
     {
 
         this.switchToTouchyMode();
@@ -70,8 +98,8 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
         // Typing "s" character
         solo.clickOnText(this.controlViewText);
 
-        this.typeGap();
-        this.typeGap();
+        this.typeGapOnTouchyMode();
+        this.typeGapOnTouchyMode();
 
         // Typing "t" character
         solo.clickLongOnText(this.controlViewText);
@@ -80,6 +108,40 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
         Assert.assertTrue("The Activity did not display \"e t\" in morse.", solo.searchText("\\.\\+\\+\\-"));
     }
 
+    private void typeShortOnTelegraphMode() throws Exception
+    {
+        int[] topLeftControlsCoordinate = new int[2];
+        solo.getView(R.id.button_telegraph).getLocationOnScreen(topLeftControlsCoordinate);
+        float x = topLeftControlsCoordinate[0] + 20 ;
+        float y = topLeftControlsCoordinate[1] + 20;
+        
+        /* Simulates the Gesture for Drawing a line. */
+        long downTime = SystemClock.uptimeMillis();        
+        Instrumentation inst = this.getInstrumentation();
+        
+        inst.sendPointerSync(MotionEvent.obtain(downTime, downTime, MotionEvent.ACTION_DOWN, x, y, 0));        
+        inst.sendPointerSync(MotionEvent.obtain(downTime, downTime + 90, MotionEvent.ACTION_UP, x, y, 0));
+    }
+
+    private void typeLongOnTelegraphMode() throws Exception
+    {
+        int[] topLeftControlsCoordinate = new int[2];
+        solo.getView(R.id.button_telegraph).getLocationOnScreen(topLeftControlsCoordinate);
+        float x = topLeftControlsCoordinate[0] + 20 ;
+        float y = topLeftControlsCoordinate[1] + 20;
+        
+        /* Simulates the Gesture for Drawing a line. */
+        long downTime = SystemClock.uptimeMillis();        
+        Instrumentation inst = this.getInstrumentation();
+        
+        inst.sendPointerSync(MotionEvent.obtain(downTime, downTime, MotionEvent.ACTION_DOWN, x, y, 0));
+        inst.sendPointerSync(MotionEvent.obtain(downTime, downTime + 90, MotionEvent.ACTION_MOVE, x, y, 0));
+        inst.sendPointerSync(MotionEvent.obtain(downTime, downTime + 100, MotionEvent.ACTION_MOVE, x, y, 0));
+        inst.sendPointerSync(MotionEvent.obtain(downTime, downTime + 110, MotionEvent.ACTION_MOVE, x, y, 0));
+        inst.sendPointerSync(MotionEvent.obtain(downTime, downTime + 120, MotionEvent.ACTION_MOVE, x, y, 0));        
+        inst.sendPointerSync(MotionEvent.obtain(downTime, downTime + 150, MotionEvent.ACTION_UP, x, y, 0));
+    }
+    
     private void typeSOSOnButtonMode() throws Exception
     {
         // Typing "sos"
@@ -97,14 +159,14 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
         solo.clickOnText(this.controlViewText);
         solo.clickOnText(this.controlViewText);
 
-        this.typeGap();
+        this.typeGapOnTouchyMode();
 
         // Typing "o" character
         solo.clickLongOnText(this.controlViewText);
         solo.clickLongOnText(this.controlViewText);
         solo.clickLongOnText(this.controlViewText);
 
-        this.typeGap();
+        this.typeGapOnTouchyMode();
 
         // Typing "s" character
         solo.clickOnText(this.controlViewText);
@@ -126,7 +188,7 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
         Assert.assertTrue("The activity did not switch to touchy mode.", solo.searchText("controls :", true));
     }    
     
-    private void typeGap() throws Exception
+    private void typeGapOnTouchyMode() throws Exception
     {
         int[] topLeftControlsCoordinate = new int[2];
         
@@ -135,34 +197,27 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
         // false negative results.
         solo.getView(R.id.textView4).getLocationOnScreen(topLeftControlsCoordinate);
         
-        try
-        {                        
-            /* Simulates the Gesture for Drawing a line. */
-            long downTime = SystemClock.uptimeMillis();
-            Instrumentation inst = this.getInstrumentation();
+        /* Simulates the Gesture for Drawing a line. */
+        long downTime = SystemClock.uptimeMillis();
+        Instrumentation inst = this.getInstrumentation();
 
-            float xStart = topLeftControlsCoordinate[0] + 20 ;
-            float xEnd = topLeftControlsCoordinate[0] + 70;
-            float yStart = topLeftControlsCoordinate[1] + 20;
+        float xStart = topLeftControlsCoordinate[0] + 20 ;
+        float xEnd = topLeftControlsCoordinate[0] + 70;
+        float yStart = topLeftControlsCoordinate[1] + 20;
 
-            inst.sendPointerSync(MotionEvent.obtain(downTime, SystemClock.uptimeMillis(), MotionEvent.ACTION_DOWN, xStart, yStart, 0));
-            
-            int step_size = 10;
-            for (int i = 1; i < 9; i++)
-            {
-                // event time MUST be retrieved only by this way!
-                long eventTime = SystemClock.uptimeMillis();
-                MotionEvent event = MotionEvent.obtain(downTime, eventTime, MotionEvent.ACTION_MOVE, xStart + i*step_size, yStart, 0);
-                inst.sendPointerSync(event);
-            }
-            
-            inst.sendPointerSync(MotionEvent.obtain(downTime, downTime, MotionEvent.ACTION_UP, xEnd, yStart, 0));
-
-        }
-        catch (Exception ignored)
+        inst.sendPointerSync(MotionEvent.obtain(downTime, SystemClock.uptimeMillis(), MotionEvent.ACTION_DOWN, xStart, yStart, 0));
+        
+        int step_size = 10;
+        for (int i = 1; i < 9; i++)
         {
-            // Handle exceptions if necessary
+            // event time MUST be retrieved only by this way!
+            long eventTime = SystemClock.uptimeMillis();
+            MotionEvent event = MotionEvent.obtain(downTime, eventTime, MotionEvent.ACTION_MOVE, xStart + i*step_size, yStart, 0);
+            inst.sendPointerSync(event);
         }
+        
+        inst.sendPointerSync(MotionEvent.obtain(downTime, downTime, MotionEvent.ACTION_UP, xEnd, yStart, 0));
+
     }
 
     private void sendMessage(String message) throws Exception
@@ -176,6 +231,14 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
         for (int i = 0; i < times; i++)
         {
             solo.clickOnButton(buttonName);
+        }
+    }
+    
+    private void waitFor(long millis) throws Exception
+    {
+        synchronized (solo)
+        {
+            solo.wait(millis);
         }
     }
 
