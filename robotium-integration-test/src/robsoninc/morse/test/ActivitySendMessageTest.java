@@ -34,16 +34,10 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
     }
 
     @Smoke
-    public void testSendSuccessfullySOS() throws Exception
+    public void testSendSuccessfullySOSWithButtonMode() throws Exception
     {
-
-        // Typing "sos"
-        this.clickOnButtonTimes(R.string.sndmsg_short_button_value, 3);
-        solo.clickOnButton("Gap");
-        this.clickOnButtonTimes(R.string.sndmsg_long_button_value, 3);
-        solo.clickOnButton("Gap");
-        this.clickOnButtonTimes(R.string.sndmsg_short_button_value, 3);
-
+        this.switchToButtonMode();
+        this.typeSOSOnButtonMode();
         this.sendMessage("sos");
     }
 
@@ -68,18 +62,7 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
     }
 
     @Smoke
-    public void testSwitchToNormalMode() throws Exception
-    {
-
-        this.switchToTouchyMode();
-        this.typeSOSOnTouchyMode();
-        solo.clickOnText("Normal Mode");
-
-        Assert.assertTrue("The Activity did not switch to normal mode", solo.searchButton("(Short)|(Long)|(Gap)", 3));
-    }
-
-    @Smoke
-    public void testWriteGapSymbolOnDrawingALineWithFinger() throws Exception
+    public void testWriteGapSymbolOnDrawingALineWithFingerWithTelegraphMode() throws Exception
     {
 
         this.switchToTouchyMode();
@@ -97,6 +80,16 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
         Assert.assertTrue("The Activity did not display \"e t\" in morse.", solo.searchText("\\.\\+\\+\\-"));
     }
 
+    private void typeSOSOnButtonMode() throws Exception
+    {
+        // Typing "sos"
+        this.clickOnButtonTimes("Short", 3);
+        solo.clickOnButton("Gap");
+        this.clickOnButtonTimes("Long", 3);
+        solo.clickOnButton("Gap");
+        this.clickOnButtonTimes("Short", 3);
+    }
+    
     private void typeSOSOnTouchyMode() throws Exception
     {
         // Typing "s" character
@@ -118,7 +111,21 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
         solo.clickOnText(this.controlViewText);
         solo.clickOnText(this.controlViewText);
     }
+    
+    private void switchToButtonMode() throws Exception
+    {
+        solo.clickOnText("Switch Mode");
+        Assert.assertTrue("The activity did not switch to Button mode.",
+                solo.searchButton("(Short)|(Long)|(Gap)", true));
+    }
 
+    private void switchToTouchyMode() throws Exception
+    {
+        solo.clickOnButton("Switch Mode");
+        solo.clickOnButton("Switch Mode");
+        Assert.assertTrue("The activity did not switch to touchy mode.", solo.searchText("controls :", true));
+    }    
+    
     private void typeGap() throws Exception
     {
         int[] topLeftControlsCoordinate = new int[2];
@@ -164,19 +171,11 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
                 solo.searchText(message));
     }
 
-    private void switchToTouchyMode() throws Exception
-    {
-        solo.clickOnButton("Switch Mode");
-        Assert.assertFalse("The activity did not switch to touchy mode.",
-                solo.searchButton("(Short)|(Long)|(Gap)", true));
-        Assert.assertTrue("The activity did not switch to touchy mode.", solo.searchText("controls :", true));
-    }
-
-    private void clickOnButtonTimes(int resId, int times) throws Exception
+    private void clickOnButtonTimes(String buttonName, int times) throws Exception
     {
         for (int i = 0; i < times; i++)
         {
-            solo.clickOnButton(this.getActivity().getString(resId));
+            solo.clickOnButton(buttonName);
         }
     }
 

@@ -27,8 +27,7 @@
         android:id="@+id/viewFlipper1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.5"
-	>
+        android:layout_weight="0.5" >
 
         <Button
             android:layout_width="wrap_content"
@@ -90,8 +89,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0.5"
-            android:text="@string/sndmsg_send_button_value"
-             />
+            android:text="@string/sndmsg_send_button_value" />
 
         <Button
             android:id="@+id/button_switch_mode"
