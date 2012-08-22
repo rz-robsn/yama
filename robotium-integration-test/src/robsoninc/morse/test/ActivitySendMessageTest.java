@@ -121,6 +121,7 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
         
         inst.sendPointerSync(MotionEvent.obtain(downTime, downTime, MotionEvent.ACTION_DOWN, x, y, 0));        
         inst.sendPointerSync(MotionEvent.obtain(downTime, downTime + 90, MotionEvent.ACTION_UP, x, y, 0));
+        this.waitFor(50);
     }
 
     private void typeLongOnTelegraphMode() throws Exception
@@ -140,6 +141,7 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
         inst.sendPointerSync(MotionEvent.obtain(downTime, downTime + 110, MotionEvent.ACTION_MOVE, x, y, 0));
         inst.sendPointerSync(MotionEvent.obtain(downTime, downTime + 120, MotionEvent.ACTION_MOVE, x, y, 0));        
         inst.sendPointerSync(MotionEvent.obtain(downTime, downTime + 150, MotionEvent.ACTION_UP, x, y, 0));
+        this.waitFor(50);
     }
     
     private void typeSOSOnButtonMode() throws Exception
@@ -197,7 +199,7 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
         // false negative results.
         solo.getView(R.id.textView4).getLocationOnScreen(topLeftControlsCoordinate);
         
-        /* Simulates the Gesture for Drawing a line. */
+        // event time MUST be retrieved only by this way!
         long downTime = SystemClock.uptimeMillis();
         Instrumentation inst = this.getInstrumentation();
 
@@ -205,19 +207,15 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
         float xEnd = topLeftControlsCoordinate[0] + 70;
         float yStart = topLeftControlsCoordinate[1] + 20;
 
-        inst.sendPointerSync(MotionEvent.obtain(downTime, SystemClock.uptimeMillis(), MotionEvent.ACTION_DOWN, xStart, yStart, 0));
-        
+        /* Simulates the Gesture for Drawing a line. */
+        inst.sendPointerSync(MotionEvent.obtain(downTime, downTime, MotionEvent.ACTION_DOWN, xStart, yStart, 0));
         int step_size = 10;
         for (int i = 1; i < 9; i++)
         {
-            // event time MUST be retrieved only by this way!
-            long eventTime = SystemClock.uptimeMillis();
-            MotionEvent event = MotionEvent.obtain(downTime, eventTime, MotionEvent.ACTION_MOVE, xStart + i*step_size, yStart, 0);
+            MotionEvent event = MotionEvent.obtain(downTime, downTime + i*100, MotionEvent.ACTION_MOVE, xStart + i*step_size, yStart, 0);
             inst.sendPointerSync(event);
         }
-        
-        inst.sendPointerSync(MotionEvent.obtain(downTime, downTime, MotionEvent.ACTION_UP, xEnd, yStart, 0));
-
+        inst.sendPointerSync(MotionEvent.obtain(downTime, downTime + 1100, MotionEvent.ACTION_UP, xEnd, yStart, 0));
     }
 
     private void sendMessage(String message) throws Exception
