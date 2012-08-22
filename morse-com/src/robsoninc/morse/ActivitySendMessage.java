@@ -1,5 +1,6 @@
 package robsoninc.morse;
 
+import robsoninc.morse.utilities.ModeListener;
 import robsoninc.morse.utilities.MorseStringConverter;
 import robsoninc.morse.utilities.TouchyModeOnTouchListener;
 import android.app.Activity;
@@ -19,6 +20,24 @@ public class ActivitySendMessage extends Activity
 
     private static final int DIALOG_SEND_CONFIRM = 1;
     private static final int DIALOG_SEND_IN_PROGRESS = 2;
+    
+    private ModeListener modeListener = new ModeListener()
+    {
+        public void onDit()
+        {
+            appendStringToMessage(MorseStringConverter.SHORT);
+        }
+
+        public void onDah()
+        {
+            appendStringToMessage(MorseStringConverter.LONG);
+        }
+
+        public void onSpace()
+        {
+            appendStringToMessage(MorseStringConverter.GAP);
+        }
+    }; 
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -57,27 +76,7 @@ public class ActivitySendMessage extends Activity
             }
         });
 
-        findViewById(R.id.textView4).setOnTouchListener(new TouchyModeOnTouchListener()
-        {
-
-            @Override
-            public void onShortTouch()
-            {
-                appendStringToMessage(MorseStringConverter.SHORT);
-            }
-
-            @Override
-            public void onLongTouch()
-            {
-                appendStringToMessage(MorseStringConverter.LONG);
-            }
-
-            @Override
-            public void onLineTouch()
-            {
-                appendStringToMessage(MorseStringConverter.GAP);
-            }
-        });
+        findViewById(R.id.textView4).setOnTouchListener(new TouchyModeOnTouchListener(this.modeListener));
 
         this.findViewById(R.id.button_switch_mode).setOnClickListener(new View.OnClickListener()
         {
@@ -128,7 +127,6 @@ public class ActivitySendMessage extends Activity
     {
         view.setOnClickListener(new View.OnClickListener()
         {
-
             @Override
             public void onClick(View v)
             {

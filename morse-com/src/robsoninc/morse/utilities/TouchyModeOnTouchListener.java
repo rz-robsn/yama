@@ -6,16 +6,25 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewConfiguration;
 
-public abstract class TouchyModeOnTouchListener implements OnTouchListener
+public class TouchyModeOnTouchListener implements OnTouchListener
 {
     // Defines the minimum distance the pointer has to traverse so that
     // the current gesture is seen as a line (and not as a tap).
     private static final float LINE_DRAW_THRESHOLD_DISTANCE = 10;
-
     private float downX;
-    private float downY;
-    
+    private float downY;    
     private boolean lineTouchDispatched = false;
+    
+    private ModeListener listener;
+
+    /**
+     * @param listener
+     */
+    public TouchyModeOnTouchListener(ModeListener listener)
+    {
+        super();
+        this.listener = listener;
+    }
 
     @Override
     public boolean onTouch(View v, MotionEvent event)
@@ -28,9 +37,9 @@ public abstract class TouchyModeOnTouchListener implements OnTouchListener
                 break;
 
             case MotionEvent.ACTION_MOVE:                
-                if (!lineTouchDispatched && this.motionEventExceedsThreeshold(v, event))
+                if (!lineTouchDispatched && this.motionEventExceedsThreeshold(v, event)) // The gesture is a line draw
                 {   
-                    this.onLineTouch();
+                    this.listener.onSpace();
                     lineTouchDispatched = true;
                 } 
                 break;
@@ -40,13 +49,13 @@ public abstract class TouchyModeOnTouchListener implements OnTouchListener
                 {
                     this.lineTouchDispatched = false;
                 }
-                else if (event.getEventTime() - event.getDownTime() < ViewConfiguration.getLongPressTimeout())
-                {
-                    this.onShortTouch();
+                else if (event.getEventTime() - event.getDownTime() < ViewConfiguration.getLongPressTimeout()) // The gesture is a short press
+                {                    
+                    this.listener.onDit();
                 }
-                else
+                else // The gesture is a long press
                 {
-                    this.onLongTouch();
+                    this.listener.onDah(); 
                 }                
                 break;
                 
@@ -56,12 +65,6 @@ public abstract class TouchyModeOnTouchListener implements OnTouchListener
 
         return true;
     }
-
-    public abstract void onShortTouch();
-
-    public abstract void onLongTouch();
-
-    public abstract void onLineTouch();
 
     private static double getDistance(float x1, float y1, float x2, float y2)
     {
