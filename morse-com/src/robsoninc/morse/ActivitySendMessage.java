@@ -2,6 +2,7 @@ package robsoninc.morse;
 
 import robsoninc.morse.utilities.ModeListener;
 import robsoninc.morse.utilities.MorseStringConverter;
+import robsoninc.morse.utilities.OnTouchListenerTelegraphMode;
 import robsoninc.morse.utilities.OnTouchListenerTouchyMode;
 import android.app.Activity;
 import android.app.Dialog;
@@ -77,7 +78,8 @@ public class ActivitySendMessage extends Activity
         });
 
         findViewById(R.id.textView4).setOnTouchListener(new OnTouchListenerTouchyMode(this.modeListener));
-
+        findViewById(R.id.button_telegraph).setOnTouchListener(new OnTouchListenerTelegraphMode(this.modeListener));
+        
         this.findViewById(R.id.button_switch_mode).setOnClickListener(new View.OnClickListener()
         {
             @Override
