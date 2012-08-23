@@ -77,7 +77,7 @@ public class OnTouchListenerTelegraphModeTest
     }    
     
     @Test
-    public void getMorse_shouldCallDitAndTwoSpace() throws Exception 
+    public void getMorse_shouldCallDitAndTwoSpaces() throws Exception 
     {
     	modeListener.onDit();
         modeListener.onSpace();
