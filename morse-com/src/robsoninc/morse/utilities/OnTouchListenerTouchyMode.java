@@ -15,12 +15,12 @@ public class OnTouchListenerTouchyMode implements OnTouchListener
     private float downY;    
     private boolean lineTouchDispatched = false;
     
-    private ModeListener listener;
+    private MorseSignal listener;
 
     /**
      * @param listener
      */
-    public OnTouchListenerTouchyMode(ModeListener listener)
+    public OnTouchListenerTouchyMode(MorseSignal listener)
     {
         super();
         this.listener = listener;

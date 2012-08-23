@@ -20,7 +20,7 @@ import com.xtremelabs.robolectric.RobolectricTestRunner;
 @RunWith(RobolectricTestRunner.class)
 public class OnTouchListenerTouchyModeTest
 {
-    private ModeListener modeListener;
+    private MorseSignal modeListener;
     private OnTouchListenerTouchyMode touchListener;
     
     private long downTime;
@@ -31,7 +31,7 @@ public class OnTouchListenerTouchyModeTest
     public void setUp() throws Exception
     {
         // Setting up intent Mock.
-        modeListener = createMock(ModeListener.class);        
+        modeListener = createMock(MorseSignal.class);        
         touchListener = new OnTouchListenerTouchyMode(modeListener);
         downTime = SystemClock.uptimeMillis();
         textView = new TextView(new Activity());

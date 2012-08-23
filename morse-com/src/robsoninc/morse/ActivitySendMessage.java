@@ -1,6 +1,6 @@
 package robsoninc.morse;
 
-import robsoninc.morse.utilities.ModeListener;
+import robsoninc.morse.utilities.MorseSignal;
 import robsoninc.morse.utilities.MorseStringConverter;
 import robsoninc.morse.utilities.OnTouchListenerTelegraphMode;
 import robsoninc.morse.utilities.OnTouchListenerTouchyMode;
@@ -22,7 +22,7 @@ public class ActivitySendMessage extends Activity
     private static final int DIALOG_SEND_CONFIRM = 1;
     private static final int DIALOG_SEND_IN_PROGRESS = 2;
     
-    private ModeListener modeListener = new ModeListener()
+    private MorseSignal modeListener = new MorseSignal()
     {
         public void onDit()
         {
@@ -78,7 +78,7 @@ public class ActivitySendMessage extends Activity
         });
 
         findViewById(R.id.textView4).setOnTouchListener(new OnTouchListenerTouchyMode(this.modeListener));
-        findViewById(R.id.button_telegraph).setOnTouchListener(new OnTouchListenerTelegraphMode(this.modeListener));
+        //findViewById(R.id.button_telegraph).setOnTouchListener(new OnTouchListenerTelegraphMode(this.modeListener));
         
         this.findViewById(R.id.button_switch_mode).setOnClickListener(new View.OnClickListener()
         {

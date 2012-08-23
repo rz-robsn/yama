@@ -4,6 +4,7 @@ import static org.easymock.EasyMock.createMock;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.reset;
 import static org.easymock.EasyMock.verify;
+import static testingutilites.MorseSignalMessage.morseMessageSignal;
 
 import org.junit.After;
 import org.junit.Before;
@@ -11,6 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import android.app.Activity;
+import android.os.Handler;
 import android.os.SystemClock;
 import android.view.MotionEvent;
 import android.widget.TextView;
@@ -21,7 +23,7 @@ import com.xtremelabs.robolectric.RobolectricTestRunner;
 @RunWith(RobolectricTestRunner.class)
 public class OnTouchListenerTelegraphModeTest
 {
-    private ModeListener modeListener;
+    private Handler modeListener;
     private OnTouchListenerTelegraphMode touchListener;
     
     private long downTime;
@@ -31,7 +33,7 @@ public class OnTouchListenerTelegraphModeTest
     public void setUp() throws Exception
     {
         // Setting up intent Mock.
-        modeListener = createMock(ModeListener.class);        
+        modeListener =  createMock(Handler.class);        
         touchListener = new OnTouchListenerTelegraphMode(modeListener);
         downTime = SystemClock.uptimeMillis();
         textView = new TextView(new Activity());
@@ -40,7 +42,7 @@ public class OnTouchListenerTelegraphModeTest
     @Test
     public void getMorse_shouldCallDit() throws Exception 
     {
-        modeListener.onDit();        
+        modeListener.handleMessage(morseMessageSignal(MorseSignal.DIT));        
         replay(modeListener);      
                 
         // Pressing the same spot for a short time
@@ -51,8 +53,9 @@ public class OnTouchListenerTelegraphModeTest
     @Test
     public void getMorse_shouldCallDah() throws Exception 
     {
-        modeListener.onDah();        
-        replay(modeListener);      
+        modeListener.handleMessage(morseMessageSignal(MorseSignal.DAH));
+        replay(modeListener);                
+              
                 
         // Pressing the same spot for a long time
         touchListener.onTouch(textView, MotionEvent.obtain(downTime, downTime, MotionEvent.ACTION_DOWN, 0, 0, 0));
@@ -66,8 +69,8 @@ public class OnTouchListenerTelegraphModeTest
     @Test
     public void getMorse_shouldCallDitAndOneSpace() throws Exception 
     {
-    	modeListener.onDit();
-        modeListener.onSpace();
+        modeListener.handleMessage(morseMessageSignal(MorseSignal.DIT));
+        modeListener.handleMessage(morseMessageSignal(MorseSignal.SPACE));
         replay(modeListener);      
      
         // Pressing the same spot for a short time
@@ -79,9 +82,9 @@ public class OnTouchListenerTelegraphModeTest
     @Test
     public void getMorse_shouldCallDitAndTwoSpaces() throws Exception 
     {
-    	modeListener.onDit();
-        modeListener.onSpace();
-        modeListener.onSpace();
+        modeListener.handleMessage(morseMessageSignal(MorseSignal.DIT));
+        modeListener.handleMessage(morseMessageSignal(MorseSignal.SPACE));
+        modeListener.handleMessage(morseMessageSignal(MorseSignal.SPACE));
         replay(modeListener);      
      
         // Pressing the same spot for a short time

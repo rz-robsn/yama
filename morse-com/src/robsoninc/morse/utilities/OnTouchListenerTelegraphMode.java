@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import android.os.Handler;
 import android.os.SystemClock;
 import android.view.MotionEvent;
 import android.view.View;
@@ -15,7 +16,7 @@ import android.view.View.OnTouchListener;
 
 public class OnTouchListenerTelegraphMode implements OnTouchListener
 {
-    private ModeListener listener;
+    private Handler listener;
         
     private final long DIT_TO_DAH_THRESHOLD = 100;
     private final long SPACE_THRESHOLD = 400;
@@ -29,9 +30,9 @@ public class OnTouchListenerTelegraphMode implements OnTouchListener
     
     private class TimerTaskCallListenerOnSpace extends TimerTask
     {
-    	private ModeListener listener;
+    	private Handler listener;
     	
-		public TimerTaskCallListenerOnSpace(ModeListener listener)
+		public TimerTaskCallListenerOnSpace(Handler listener)
         {
 	        super();
 	        this.listener = listener;
@@ -40,14 +41,14 @@ public class OnTouchListenerTelegraphMode implements OnTouchListener
 		@Override
         public void run()
         {
-			this.listener.onSpace();	
+//			this.listener.onSpace();	
         }    	
     }
     
     /**
      * @param listener
      */
-    public OnTouchListenerTelegraphMode(ModeListener listener)
+    public OnTouchListenerTelegraphMode(Handler listener)
     {
         super();
         this.listener = listener;
@@ -75,11 +76,11 @@ public class OnTouchListenerTelegraphMode implements OnTouchListener
             case MotionEvent.ACTION_UP:
             	if (event.getEventTime() - event.getDownTime() < DIT_TO_DAH_THRESHOLD)
             	{
-            		this.listener.onDit();
+//            		this.listener.onDit();
             	}
             	else 
             	{
-            		this.listener.onDah();
+//            		this.listener.onDah();
             	}
             	
             	// Scheduling the next onSpace() events to call if there is no 
