@@ -1,6 +1,7 @@
 package robsoninc.morse.utilities;
 
 import android.content.Context;
+import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
@@ -15,15 +16,15 @@ public class OnTouchListenerTouchyMode implements OnTouchListener
     private float downY;    
     private boolean lineTouchDispatched = false;
     
-    private MorseSignal listener;
+    private Handler listener;
 
     /**
-     * @param listener
+     * @param modeListener
      */
-    public OnTouchListenerTouchyMode(MorseSignal listener)
+    public OnTouchListenerTouchyMode(Handler modeListener)
     {
         super();
-        this.listener = listener;
+        this.listener = modeListener;
     }
 
     @Override
@@ -39,7 +40,7 @@ public class OnTouchListenerTouchyMode implements OnTouchListener
             case MotionEvent.ACTION_MOVE:                
                 if (!lineTouchDispatched && this.motionEventExceedsThreeshold(v, event)) // The gesture is a line draw
                 {   
-                    this.listener.onSpace();
+//                    this.listener.onSpace();
                     lineTouchDispatched = true;
                 } 
                 break;
@@ -51,11 +52,11 @@ public class OnTouchListenerTouchyMode implements OnTouchListener
                 }
                 else if (event.getEventTime() - event.getDownTime() < ViewConfiguration.getLongPressTimeout()) // The gesture is a short press
                 {                    
-                    this.listener.onDit();
+//                    this.listener.onDit();
                 }
                 else // The gesture is a long press
                 {
-                    this.listener.onDah(); 
+//                    this.listener.onDah(); 
                 }                
                 break;
                 

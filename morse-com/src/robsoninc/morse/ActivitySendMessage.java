@@ -77,8 +77,8 @@ public class ActivitySendMessage extends Activity
             }
         });
 
-        findViewById(R.id.textView4).setOnTouchListener(new OnTouchListenerTouchyMode(this.modeListener));
-        //findViewById(R.id.button_telegraph).setOnTouchListener(new OnTouchListenerTelegraphMode(this.modeListener));
+//        findViewById(R.id.textView4).setOnTouchListener(new OnTouchListenerTouchyMode(this.modeListener));
+//        findViewById(R.id.button_telegraph).setOnTouchListener(new OnTouchListenerTelegraphMode(this.modeListener));
         
         this.findViewById(R.id.button_switch_mode).setOnClickListener(new View.OnClickListener()
         {

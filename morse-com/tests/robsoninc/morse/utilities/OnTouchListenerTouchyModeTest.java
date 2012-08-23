@@ -4,6 +4,7 @@ import static org.easymock.EasyMock.createMock;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.reset;
 import static org.easymock.EasyMock.verify;
+import static testingutilites.MorseSignalMessage.morseMessageSignal;
 
 import org.junit.After;
 import org.junit.Before;
@@ -11,6 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import android.app.Activity;
+import android.os.Handler;
 import android.os.SystemClock;
 import android.view.MotionEvent;
 import android.widget.TextView;
@@ -20,7 +22,7 @@ import com.xtremelabs.robolectric.RobolectricTestRunner;
 @RunWith(RobolectricTestRunner.class)
 public class OnTouchListenerTouchyModeTest
 {
-    private MorseSignal modeListener;
+    private Handler modeListener;
     private OnTouchListenerTouchyMode touchListener;
     
     private long downTime;
@@ -31,7 +33,7 @@ public class OnTouchListenerTouchyModeTest
     public void setUp() throws Exception
     {
         // Setting up intent Mock.
-        modeListener = createMock(MorseSignal.class);        
+        modeListener =  createMock(Handler.class);        
         touchListener = new OnTouchListenerTouchyMode(modeListener);
         downTime = SystemClock.uptimeMillis();
         textView = new TextView(new Activity());
@@ -40,7 +42,7 @@ public class OnTouchListenerTouchyModeTest
     @Test
     public void getMorse_shouldCallDit() throws Exception 
     {
-        modeListener.onDit();        
+        modeListener.handleMessage(morseMessageSignal(MorseSignal.DIT));        
         replay(modeListener);      
                 
         // Pressing the same spot for a short time
@@ -51,7 +53,7 @@ public class OnTouchListenerTouchyModeTest
     @Test
     public void getMorse_shouldCallDah() throws Exception 
     {
-        modeListener.onDah();        
+        modeListener.handleMessage(morseMessageSignal(MorseSignal.DAH));        
         replay(modeListener);      
                 
         // Pressing the same spot for a long time
@@ -66,7 +68,7 @@ public class OnTouchListenerTouchyModeTest
     @Test
     public void getMorse_shouldCallOnSpace() throws Exception 
     {
-        modeListener.onSpace();        
+        modeListener.handleMessage(morseMessageSignal(MorseSignal.SPACE));        
         replay(modeListener);      
      
         // Drawing a line
