@@ -91,8 +91,8 @@ public class OnTouchListenerTelegraphMode implements OnTouchListener
             	
             	onSpaceTimer = new Timer();
             	onSecondSpaceTimer = new Timer();
-            	this.onSpaceTimer.schedule(new TimerTaskCallListenerOnSpace(listener), new Date(event.getEventTime() + SPACE_THRESHOLD));
-            	this.onSecondSpaceTimer.schedule(new TimerTaskCallListenerOnSpace(listener), new Date(event.getEventTime() + DOUBLE_SPACE_THRESHOLD));
+            	this.onSpaceTimer.schedule(new TimerTaskCallListenerOnSpace(listener), new Date(onSpaceCallTime));
+            	this.onSecondSpaceTimer.schedule(new TimerTaskCallListenerOnSpace(listener), new Date(onSecondSpaceCallTime));
                 break;
         }
 

@@ -8,6 +8,8 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -22,21 +24,24 @@ public class ActivitySendMessage extends Activity
     private static final int DIALOG_SEND_CONFIRM = 1;
     private static final int DIALOG_SEND_IN_PROGRESS = 2;
     
-    private MorseSignal modeListener = new MorseSignal()
-    {
-        public void onDit()
+    private Handler modeListener = new Handler()
+    {    	
+        @Override
+        public void handleMessage(Message msg)
         {
-            appendStringToMessage(MorseStringConverter.SHORT);
-        }
-
-        public void onDah()
-        {
-            appendStringToMessage(MorseStringConverter.LONG);
-        }
-
-        public void onSpace()
-        {
-            appendStringToMessage(MorseStringConverter.GAP);
+	        super.handleMessage(msg);
+	        switch(msg.arg1)
+	        {
+                case MorseSignal.DIT:
+                	appendStringToMessage(MorseStringConverter.SHORT);        
+                    break;
+                case MorseSignal.DAH:
+                	appendStringToMessage(MorseStringConverter.LONG);        
+                    break;
+                case MorseSignal.SPACE:
+                	appendStringToMessage(MorseStringConverter.GAP);        
+                    break;
+	        }
         }
     }; 
 
@@ -77,8 +82,8 @@ public class ActivitySendMessage extends Activity
             }
         });
 
-//        findViewById(R.id.textView4).setOnTouchListener(new OnTouchListenerTouchyMode(this.modeListener));
-//        findViewById(R.id.button_telegraph).setOnTouchListener(new OnTouchListenerTelegraphMode(this.modeListener));
+        findViewById(R.id.textView4).setOnTouchListener(new OnTouchListenerTouchyMode(this.modeListener));
+        findViewById(R.id.button_telegraph).setOnTouchListener(new OnTouchListenerTelegraphMode(this.modeListener));
         
         this.findViewById(R.id.button_switch_mode).setOnClickListener(new View.OnClickListener()
         {
