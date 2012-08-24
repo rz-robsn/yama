@@ -42,7 +42,7 @@ public class OnTouchListenerTouchyModeTest
     }
     
     @Test
-    public void getMorse_shouldCallDit() throws Exception 
+    public void shouldCallDit() throws Exception 
     {
     	expect(modeListener.sendMessage(morseMessageSignal(MorseSignal.DIT))).andReturn(true);      
         replay(modeListener);      
@@ -53,7 +53,7 @@ public class OnTouchListenerTouchyModeTest
     }
     
     @Test
-    public void getMorse_shouldCallDah() throws Exception 
+    public void shouldCallDah() throws Exception 
     {
     	expect(modeListener.sendMessage(morseMessageSignal(MorseSignal.DAH))).andReturn(true);
         replay(modeListener);      
@@ -68,7 +68,7 @@ public class OnTouchListenerTouchyModeTest
     }
 
     @Test
-    public void getMorse_shouldCallOnSpace() throws Exception 
+    public void shouldCallOnSpace() throws Exception 
     {
         expect(modeListener.sendMessage(morseMessageSignal(MorseSignal.SPACE))).andReturn(true); 
         replay(modeListener);      

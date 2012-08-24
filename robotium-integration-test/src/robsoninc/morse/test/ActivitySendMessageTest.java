@@ -50,7 +50,7 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
         this.typeShortOnTelegraphMode();
         this.typeShortOnTelegraphMode();
         
-        this.sendMessage("et e");
+        this.sendMessage("sos");
     }
 
     

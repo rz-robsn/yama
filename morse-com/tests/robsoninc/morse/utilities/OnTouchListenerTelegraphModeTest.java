@@ -41,7 +41,7 @@ public class OnTouchListenerTelegraphModeTest
     }
     
     @Test
-    public void getMorse_shouldCallDit() throws Exception 
+    public void shouldCallDit() throws Exception 
     {
     	expect(modeListener.sendMessage(morseMessageSignal(MorseSignal.DIT))).andReturn(true);   
         replay(modeListener);      
@@ -52,7 +52,7 @@ public class OnTouchListenerTelegraphModeTest
     }
     
     @Test
-    public void getMorse_shouldCallDah() throws Exception 
+    public void shouldCallDah() throws Exception 
     {
     	expect(modeListener.sendMessage(morseMessageSignal(MorseSignal.DAH))).andReturn(true);
         replay(modeListener);                
@@ -68,7 +68,7 @@ public class OnTouchListenerTelegraphModeTest
     }
 
     @Test
-    public void getMorse_shouldCallDitAndOneSpace() throws Exception 
+    public void shouldCallDitAndOneSpace() throws Exception 
     {
     	expect(modeListener.sendMessage(morseMessageSignal(MorseSignal.DIT))).andReturn(true);
         expect(modeListener.sendMessage(morseMessageSignal(MorseSignal.SPACE))).andReturn(true);
@@ -81,7 +81,7 @@ public class OnTouchListenerTelegraphModeTest
     }    
     
     @Test
-    public void getMorse_shouldCallDitAndTwoSpaces() throws Exception 
+    public void shouldCallDitAndTwoSpaces() throws Exception 
     {
     	expect(modeListener.sendMessage(morseMessageSignal(MorseSignal.DIT))).andReturn(true);
     	expect(modeListener.sendMessage(morseMessageSignal(MorseSignal.SPACE))).andReturn(true);
