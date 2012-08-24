@@ -10,6 +10,7 @@ import java.util.TimerTask;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
@@ -31,14 +32,6 @@ public class OnTouchListenerTelegraphMode implements OnTouchListener
     
     private class TimerTaskCallListenerOnSpace extends TimerTask
     {
-    	private Handler listener;
-    	
-		public TimerTaskCallListenerOnSpace(Handler listener)
-        {
-	        super();
-	        this.listener = listener;
-        }
-
 		@Override
         public void run()
         {
@@ -87,12 +80,12 @@ public class OnTouchListenerTelegraphMode implements OnTouchListener
             	// Scheduling the next onSpace() events to call if there is no 
             	// Down event before each threshold.
             	this.onSpaceCallTime = event.getEventTime() + SPACE_THRESHOLD;
-            	this.onSecondSpaceCallTime = event.getEventTime() + DOUBLE_SPACE_THRESHOLD;
+            	this.onSecondSpaceCallTime = event.getEventTime() + DOUBLE_SPACE_THRESHOLD ;
             	
             	onSpaceTimer = new Timer();
             	onSecondSpaceTimer = new Timer();
-            	this.onSpaceTimer.schedule(new TimerTaskCallListenerOnSpace(listener), new Date(onSpaceCallTime));
-            	this.onSecondSpaceTimer.schedule(new TimerTaskCallListenerOnSpace(listener), new Date(onSecondSpaceCallTime));
+            	this.onSpaceTimer.schedule(new TimerTaskCallListenerOnSpace(), SPACE_THRESHOLD);
+            	this.onSecondSpaceTimer.schedule(new TimerTaskCallListenerOnSpace(), DOUBLE_SPACE_THRESHOLD);
                 break;
         }
 
