@@ -57,11 +57,11 @@ public class OnTouchListenerTelegraphMode implements OnTouchListener
         switch (event.getAction())
         {
             case MotionEvent.ACTION_DOWN:
-            	if(onSecondSpaceTimer != null && event.getEventTime() > this.onSecondSpaceCallTime)
+            	if(onSecondSpaceTimer != null && event.getEventTime() < this.onSecondSpaceCallTime)
             	{
             		this.onSecondSpaceTimer.cancel();
             	}
-            	if (onSpaceTimer != null && event.getEventTime() > this.onSpaceCallTime)
+            	if (onSpaceTimer != null && event.getEventTime() < this.onSpaceCallTime)
             	{
             		this.onSpaceTimer.cancel();
             	}
