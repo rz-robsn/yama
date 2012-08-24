@@ -4,8 +4,10 @@ import static org.easymock.EasyMock.createMock;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.reset;
 import static org.easymock.EasyMock.verify;
+import static org.easymock.EasyMock.expect;
 import static testingutilites.MorseSignalMessage.morseMessageSignal;
 
+import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -42,7 +44,7 @@ public class OnTouchListenerTouchyModeTest
     @Test
     public void getMorse_shouldCallDit() throws Exception 
     {
-        modeListener.handleMessage(morseMessageSignal(MorseSignal.DIT));        
+    	expect(modeListener.sendMessage(morseMessageSignal(MorseSignal.DIT))).andReturn(true);      
         replay(modeListener);      
                 
         // Pressing the same spot for a short time
@@ -53,7 +55,7 @@ public class OnTouchListenerTouchyModeTest
     @Test
     public void getMorse_shouldCallDah() throws Exception 
     {
-        modeListener.handleMessage(morseMessageSignal(MorseSignal.DAH));        
+    	expect(modeListener.sendMessage(morseMessageSignal(MorseSignal.DAH))).andReturn(true);
         replay(modeListener);      
                 
         // Pressing the same spot for a long time
@@ -68,7 +70,7 @@ public class OnTouchListenerTouchyModeTest
     @Test
     public void getMorse_shouldCallOnSpace() throws Exception 
     {
-        modeListener.handleMessage(morseMessageSignal(MorseSignal.SPACE));        
+        expect(modeListener.sendMessage(morseMessageSignal(MorseSignal.SPACE))).andReturn(true); 
         replay(modeListener);      
      
         // Drawing a line

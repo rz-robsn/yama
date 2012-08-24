@@ -48,6 +48,9 @@ public class MorseSignalMessage implements IArgumentMatcher
                 case MorseSignal.SPACE:
                     buffer.append("Message with Morse SPACE Signal");
                     break;
+                default:
+                	buffer.append("Message with signal = " + morseSignal);
+                	break;
             }
     }
     

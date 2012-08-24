@@ -1,6 +1,7 @@
 package robsoninc.morse.utilities;
 
 import static org.easymock.EasyMock.createMock;
+import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.reset;
 import static org.easymock.EasyMock.verify;
@@ -42,7 +43,7 @@ public class OnTouchListenerTelegraphModeTest
     @Test
     public void getMorse_shouldCallDit() throws Exception 
     {
-        modeListener.handleMessage(morseMessageSignal(MorseSignal.DIT));        
+    	expect(modeListener.sendMessage(morseMessageSignal(MorseSignal.DIT))).andReturn(true);   
         replay(modeListener);      
                 
         // Pressing the same spot for a short time
@@ -53,7 +54,7 @@ public class OnTouchListenerTelegraphModeTest
     @Test
     public void getMorse_shouldCallDah() throws Exception 
     {
-        modeListener.handleMessage(morseMessageSignal(MorseSignal.DAH));
+    	expect(modeListener.sendMessage(morseMessageSignal(MorseSignal.DAH))).andReturn(true);
         replay(modeListener);                
               
                 
@@ -69,8 +70,8 @@ public class OnTouchListenerTelegraphModeTest
     @Test
     public void getMorse_shouldCallDitAndOneSpace() throws Exception 
     {
-        modeListener.handleMessage(morseMessageSignal(MorseSignal.DIT));
-        modeListener.handleMessage(morseMessageSignal(MorseSignal.SPACE));
+    	expect(modeListener.sendMessage(morseMessageSignal(MorseSignal.DIT))).andReturn(true);
+        expect(modeListener.sendMessage(morseMessageSignal(MorseSignal.SPACE))).andReturn(true);
         replay(modeListener);      
      
         // Pressing the same spot for a short time
@@ -82,9 +83,9 @@ public class OnTouchListenerTelegraphModeTest
     @Test
     public void getMorse_shouldCallDitAndTwoSpaces() throws Exception 
     {
-        modeListener.handleMessage(morseMessageSignal(MorseSignal.DIT));
-        modeListener.handleMessage(morseMessageSignal(MorseSignal.SPACE));
-        modeListener.handleMessage(morseMessageSignal(MorseSignal.SPACE));
+    	expect(modeListener.sendMessage(morseMessageSignal(MorseSignal.DIT))).andReturn(true);
+    	expect(modeListener.sendMessage(morseMessageSignal(MorseSignal.SPACE))).andReturn(true);
+    	expect(modeListener.sendMessage(morseMessageSignal(MorseSignal.SPACE))).andReturn(true);
         replay(modeListener);      
      
         // Pressing the same spot for a short time

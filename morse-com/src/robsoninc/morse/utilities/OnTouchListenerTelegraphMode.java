@@ -8,6 +8,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import android.os.Handler;
+import android.os.Message;
 import android.os.SystemClock;
 import android.view.MotionEvent;
 import android.view.View;
@@ -41,7 +42,7 @@ public class OnTouchListenerTelegraphMode implements OnTouchListener
 		@Override
         public void run()
         {
-//			this.listener.onSpace();	
+			OnTouchListenerTelegraphMode.this.sendMorseSignal(MorseSignal.SPACE);
         }    	
     }
     
@@ -76,11 +77,11 @@ public class OnTouchListenerTelegraphMode implements OnTouchListener
             case MotionEvent.ACTION_UP:
             	if (event.getEventTime() - event.getDownTime() < DIT_TO_DAH_THRESHOLD)
             	{
-//            		this.listener.onDit();
+            		this.sendMorseSignal(MorseSignal.DIT);
             	}
             	else 
             	{
-//            		this.listener.onDah();
+            		this.sendMorseSignal(MorseSignal.DAH);
             	}
             	
             	// Scheduling the next onSpace() events to call if there is no 
@@ -96,6 +97,14 @@ public class OnTouchListenerTelegraphMode implements OnTouchListener
         }
 
         return true;
+    }
+    
+    private void sendMorseSignal(int signal)
+    {
+    	Message m = new Message();
+    	m.arg1 = signal;
+    	m.setTarget(listener);
+    	m.sendToTarget();
     }
 
 }
