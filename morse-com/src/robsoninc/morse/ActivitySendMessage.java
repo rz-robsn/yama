@@ -33,13 +33,13 @@ public class ActivitySendMessage extends Activity
 	        switch(msg.arg1)
 	        {
                 case MorseSignal.DIT:
-                	appendStringToMessage(MorseStringConverter.SHORT);        
+                	appendStringToMessage(String.valueOf(MorseStringConverter.SHORT));        
                     break;
                 case MorseSignal.DAH:
-                	appendStringToMessage(MorseStringConverter.LONG);        
+                	appendStringToMessage(String.valueOf(MorseStringConverter.LONG));        
                     break;
                 case MorseSignal.SPACE:
-                	appendStringToMessage(MorseStringConverter.GAP);        
+                	appendStringToMessage(String.valueOf(MorseStringConverter.GAP));        
                     break;
 	        }
         }
@@ -130,14 +130,14 @@ public class ActivitySendMessage extends Activity
     /**
      * Add character to morse message
      * */
-    private void setOnClickListenerToAppendStringToMessage(View view, final String s)
+    private void setOnClickListenerToAppendStringToMessage(View view, final char s)
     {
         view.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
-                appendStringToMessage(s);
+                appendStringToMessage(String.valueOf(s));
             }
         });
     }
