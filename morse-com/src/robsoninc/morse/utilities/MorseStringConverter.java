@@ -14,7 +14,7 @@ public class MorseStringConverter {
 			".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--",
 			"-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-",
 			".--", "-..-", "-.--", "--..", "-----", ".----", "..---", "...--",
-			"....-", ".....", "-....", "--...", "---..", "----.", String.valueOf(SHORT) };
+			"....-", ".....", "-....", "--...", "---..", "----.", String.valueOf(GAP) };
 
 	public static String ConvertTextToMorse(String text) {
 		text = text.toLowerCase();
