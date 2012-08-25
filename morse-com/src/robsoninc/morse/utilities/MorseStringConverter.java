@@ -3,8 +3,8 @@ package robsoninc.morse.utilities;
 public class MorseStringConverter {
 
 	public static final char DIT = '.' ;
-	public static final char DAH = '-' ;
-	public static final char SPACE = '+' ;
+	public static final char LONG = '-' ;
+	public static final char GAP = '+' ;
 	
 	private static char[] letters = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g',
 			'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
@@ -14,7 +14,7 @@ public class MorseStringConverter {
 			".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--",
 			"-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-",
 			".--", "-..-", "-.--", "--..", "-----", ".----", "..---", "...--",
-			"....-", ".....", "-....", "--...", "---..", "----.", String.valueOf(SPACE) };
+			"....-", ".....", "-....", "--...", "---..", "----.", String.valueOf(GAP) };
 
 	public static String ConvertTextToMorse(String text) {
 		text = text.toLowerCase();
@@ -23,14 +23,14 @@ public class MorseStringConverter {
 		for (int i = 0; i <= text.length() - 1; i++) {
 			index = String.valueOf(letters).indexOf(text.charAt(i));
 			if (index != -1)
-				result += morseCode[index] + SPACE;
+				result += morseCode[index] + GAP;
 		}
 
 		return result;
 	}
 
 	public static String ConvertMorseToText(String text) {
-		text = "@" + text.replace(String.valueOf(SPACE), "@@") + "@";
+		text = "@" + text.replace(String.valueOf(GAP), "@@") + "@";
 		int index = -1;
 		for (char c : letters) {
 			index = String.valueOf(letters).indexOf(c);

@@ -35,7 +35,7 @@ public class OnTouchListenerTelegraphMode implements OnTouchListener
 		@Override
         public void run()
         {
-			OnTouchListenerTelegraphMode.this.sendMorseSignal(MorseStringConverter.SPACE);
+			OnTouchListenerTelegraphMode.this.sendMorseSignal(MorseStringConverter.GAP);
         }    	
     }
     
@@ -74,7 +74,7 @@ public class OnTouchListenerTelegraphMode implements OnTouchListener
             	}
             	else 
             	{
-            		this.sendMorseSignal(MorseStringConverter.DAH);
+            		this.sendMorseSignal(MorseStringConverter.LONG);
             	}
             	
             	// Scheduling the next onSpace() events to call if there is no 
