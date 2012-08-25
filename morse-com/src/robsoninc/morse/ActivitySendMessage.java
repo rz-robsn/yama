@@ -69,6 +69,24 @@ public class ActivitySendMessage extends Activity
                 emptyMessageBoxes();
             }
         });
+        
+        this.findViewById(R.id.button_clear).setOnClickListener(new View.OnClickListener()
+		{			
+			@Override
+			public void onClick(View v)
+			{
+				if (message.length() == 0)
+				{
+					morse_message.setText("");
+				}
+				else
+				{
+					CharSequence lastCharMorseCode = MorseStringConverter.ConvertTextToMorse(String.valueOf(message.getText().charAt(message.length()-1)));
+					morse_message.setText(morse_message.getText().subSequence(0, morse_message.getText().length() - lastCharMorseCode.length()));
+					message.setText(message.getText().subSequence(0, message.length()-1));
+				}				
+			}
+		});
 
         findViewById(R.id.textView4).setOnTouchListener(new OnTouchListenerTouchyMode(this.modeListener));
         findViewById(R.id.button_telegraph).setOnTouchListener(new OnTouchListenerTelegraphMode(this.modeListener));
