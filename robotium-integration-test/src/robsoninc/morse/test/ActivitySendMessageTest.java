@@ -164,9 +164,9 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
     {
         // Typing "sos"
         this.clickOnButtonTimes("\\.", 3);
-        solo.clickOnButton(" ");
+        solo.clickOnButton("^\\s*$");
         this.clickOnButtonTimes("\\-", 3);
-        solo.clickOnButton(" ");
+        solo.clickOnButton("^\\s*$");
         this.clickOnButtonTimes("\\.", 3);
     }
     
@@ -196,7 +196,7 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
     {
         solo.clickOnText("Switch Mode");
         Assert.assertTrue("The activity did not switch to Button mode.",
-                solo.searchButton("(\\.)|(\\-)|( )", true));
+                solo.searchButton("(\\.)|(\\-)|(^\\s*$)", true));
     }
 
     private void switchToTouchyMode() throws Exception

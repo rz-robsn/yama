@@ -2,9 +2,9 @@
 <resources>
 
     <!-- Send Message Activity -->
-    <string name="sndmsg_short_button_value">Short</string>
-    <string name="sndmsg_long_button_value">Long</string>
-    <string name="sndmsg_space_button_value">Gap</string>
+    <string name="sndmsg_short_button_value">.</string>
+    <string name="sndmsg_long_button_value">-</string>
+    <string name="sndmsg_space_button_value"> </string>
     <string name="sndmsg_send_message_activity_title">Create Morse Code</string>
     <string name="sndmsg_send_button_value">Send</string>
     <string name="sndmsg_message_to_send">Message To send :</string>
