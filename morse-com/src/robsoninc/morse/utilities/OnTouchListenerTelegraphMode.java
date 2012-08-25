@@ -35,7 +35,7 @@ public class OnTouchListenerTelegraphMode implements OnTouchListener
 		@Override
         public void run()
         {
-			OnTouchListenerTelegraphMode.this.sendMorseSignal(MorseStringConverter.GAP);
+			OnTouchListenerTelegraphMode.this.sendMorseSignal(MorseStringConverter.SPACE);
         }    	
     }
     
@@ -70,11 +70,11 @@ public class OnTouchListenerTelegraphMode implements OnTouchListener
             case MotionEvent.ACTION_UP:
             	if (event.getEventTime() - event.getDownTime() < DIT_TO_DAH_THRESHOLD)
             	{
-            		this.sendMorseSignal(MorseStringConverter.SHORT);
+            		this.sendMorseSignal(MorseStringConverter.DIT);
             	}
             	else 
             	{
-            		this.sendMorseSignal(MorseStringConverter.LONG);
+            		this.sendMorseSignal(MorseStringConverter.DAH);
             	}
             	
             	// Scheduling the next onSpace() events to call if there is no 

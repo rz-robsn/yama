@@ -41,7 +41,7 @@ public class OnTouchListenerTouchyMode implements OnTouchListener
             case MotionEvent.ACTION_MOVE:                
                 if (!lineTouchDispatched && this.motionEventExceedsThreeshold(v, event)) // The gesture is a line draw
                 {
-                	this.sendMorseSignal(MorseStringConverter.GAP);
+                	this.sendMorseSignal(MorseStringConverter.SPACE);
                     lineTouchDispatched = true;
                 } 
                 break;
@@ -53,11 +53,11 @@ public class OnTouchListenerTouchyMode implements OnTouchListener
                 }
                 else if (event.getEventTime() - event.getDownTime() < ViewConfiguration.getLongPressTimeout()) // The gesture is a short press
                 {                    
-                	this.sendMorseSignal(MorseStringConverter.SHORT);
+                	this.sendMorseSignal(MorseStringConverter.DIT);
                 }
                 else // The gesture is a long press
                 {
-                    this.sendMorseSignal(MorseStringConverter.LONG);
+                    this.sendMorseSignal(MorseStringConverter.DAH);
                 }                
                 break;
                 

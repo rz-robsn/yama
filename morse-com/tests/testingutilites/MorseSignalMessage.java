@@ -39,13 +39,13 @@ public class MorseSignalMessage implements IArgumentMatcher
     {
         switch (this.morseSignal)
             {
-                case MorseStringConverter.SHORT:
+                case MorseStringConverter.DIT:
                     buffer.append("Message with Morse DIT Signal");
                     break;
-                case MorseStringConverter.LONG:
+                case MorseStringConverter.DAH:
                     buffer.append("Message with Morse DAH Signal");
                     break;
-                case MorseStringConverter.GAP:
+                case MorseStringConverter.SPACE:
                     buffer.append("Message with Morse SPACE Signal");
                     break;
                 default:

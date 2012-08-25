@@ -45,9 +45,9 @@ public class ActivitySendMessage extends Activity
 
         this.setTitle(getString(R.string.sndmsg_send_message_activity_title));
 
-        this.setOnClickListenerToAppendStringToMessage(findViewById(R.id.button_short), MorseStringConverter.SHORT);
-        this.setOnClickListenerToAppendStringToMessage(findViewById(R.id.button_long), MorseStringConverter.LONG);
-        this.setOnClickListenerToAppendStringToMessage(findViewById(R.id.button_space), MorseStringConverter.GAP);
+        this.setOnClickListenerToAppendStringToMessage(findViewById(R.id.button_short), MorseStringConverter.DIT);
+        this.setOnClickListenerToAppendStringToMessage(findViewById(R.id.button_long), MorseStringConverter.DAH);
+        this.setOnClickListenerToAppendStringToMessage(findViewById(R.id.button_space), MorseStringConverter.SPACE);
 
         this.findViewById(R.id.button_send_message).setOnClickListener(new View.OnClickListener()
         {
