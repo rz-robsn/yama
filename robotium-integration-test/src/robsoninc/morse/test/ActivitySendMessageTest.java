@@ -163,11 +163,11 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
     private void typeSOSOnButtonMode() throws Exception
     {
         // Typing "sos"
-        this.clickOnButtonTimes("Short", 3);
-        solo.clickOnButton("Gap");
-        this.clickOnButtonTimes("Long", 3);
-        solo.clickOnButton("Gap");
-        this.clickOnButtonTimes("Short", 3);
+        this.clickOnButtonTimes("\\.", 3);
+        solo.clickOnButton(" ");
+        this.clickOnButtonTimes("\\-", 3);
+        solo.clickOnButton(" ");
+        this.clickOnButtonTimes("\\.", 3);
     }
     
     private void typeSOSOnTouchyMode() throws Exception
@@ -196,7 +196,7 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
     {
         solo.clickOnText("Switch Mode");
         Assert.assertTrue("The activity did not switch to Button mode.",
-                solo.searchButton("(Short)|(Long)|(Gap)", true));
+                solo.searchButton("(\\.)|(\\-)|( )", true));
     }
 
     private void switchToTouchyMode() throws Exception
