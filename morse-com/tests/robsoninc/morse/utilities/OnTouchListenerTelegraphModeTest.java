@@ -43,7 +43,7 @@ public class OnTouchListenerTelegraphModeTest
     @Test
     public void shouldCallDit() throws Exception 
     {
-    	expect(modeListener.sendMessage(morseMessageSignal(MorseSignal.DIT))).andReturn(true);   
+    	expect(modeListener.sendMessage(morseMessageSignal(MorseStringConverter.SHORT))).andReturn(true);   
         replay(modeListener);      
                 
         // Pressing the same spot for a short time
@@ -54,7 +54,7 @@ public class OnTouchListenerTelegraphModeTest
     @Test
     public void shouldCallDah() throws Exception 
     {
-    	expect(modeListener.sendMessage(morseMessageSignal(MorseSignal.DAH))).andReturn(true);
+    	expect(modeListener.sendMessage(morseMessageSignal(MorseStringConverter.LONG))).andReturn(true);
         replay(modeListener);                
               
                 
@@ -70,8 +70,8 @@ public class OnTouchListenerTelegraphModeTest
     @Test
     public void shouldCallDitAndOneSpace() throws Exception 
     {
-    	expect(modeListener.sendMessage(morseMessageSignal(MorseSignal.DIT))).andReturn(true);
-        expect(modeListener.sendMessage(morseMessageSignal(MorseSignal.SPACE))).andReturn(true);
+    	expect(modeListener.sendMessage(morseMessageSignal(MorseStringConverter.SHORT))).andReturn(true);
+        expect(modeListener.sendMessage(morseMessageSignal(MorseStringConverter.GAP))).andReturn(true);
         replay(modeListener);      
      
         // Pressing the same spot for a short time
@@ -83,9 +83,9 @@ public class OnTouchListenerTelegraphModeTest
     @Test
     public void shouldCallDitAndTwoSpaces() throws Exception 
     {
-    	expect(modeListener.sendMessage(morseMessageSignal(MorseSignal.DIT))).andReturn(true);
-    	expect(modeListener.sendMessage(morseMessageSignal(MorseSignal.SPACE))).andReturn(true);
-    	expect(modeListener.sendMessage(morseMessageSignal(MorseSignal.SPACE))).andReturn(true);
+    	expect(modeListener.sendMessage(morseMessageSignal(MorseStringConverter.SHORT))).andReturn(true);
+    	expect(modeListener.sendMessage(morseMessageSignal(MorseStringConverter.GAP))).andReturn(true);
+    	expect(modeListener.sendMessage(morseMessageSignal(MorseStringConverter.GAP))).andReturn(true);
         replay(modeListener);      
      
         // Pressing the same spot for a short time
