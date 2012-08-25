@@ -1,6 +1,5 @@
 package robsoninc.morse;
 
-import robsoninc.morse.utilities.MorseSignal;
 import robsoninc.morse.utilities.MorseStringConverter;
 import robsoninc.morse.utilities.OnTouchListenerTelegraphMode;
 import robsoninc.morse.utilities.OnTouchListenerTouchyMode;
@@ -30,18 +29,7 @@ public class ActivitySendMessage extends Activity
         public void handleMessage(Message msg)
         {
 	        super.handleMessage(msg);
-	        switch(msg.arg1)
-	        {
-                case MorseSignal.DIT:
-                	appendStringToMessage(String.valueOf(MorseStringConverter.SHORT));        
-                    break;
-                case MorseSignal.DAH:
-                	appendStringToMessage(String.valueOf(MorseStringConverter.LONG));        
-                    break;
-                case MorseSignal.SPACE:
-                	appendStringToMessage(String.valueOf(MorseStringConverter.GAP));        
-                    break;
-	        }
+	        appendStringToMessage(String.valueOf((char)msg.arg1));
         }
     }; 
 

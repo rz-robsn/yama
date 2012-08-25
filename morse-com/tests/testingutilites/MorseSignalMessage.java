@@ -4,7 +4,7 @@ import static org.easymock.EasyMock.reportMatcher;
 
 import org.easymock.IArgumentMatcher;
 
-import robsoninc.morse.utilities.MorseSignal;
+import robsoninc.morse.utilities.MorseStringConverter;
 
 import android.os.Message;
 
@@ -39,13 +39,13 @@ public class MorseSignalMessage implements IArgumentMatcher
     {
         switch (this.morseSignal)
             {
-                case MorseSignal.DIT:
+                case MorseStringConverter.SHORT:
                     buffer.append("Message with Morse DIT Signal");
                     break;
-                case MorseSignal.DAH:
+                case MorseStringConverter.LONG:
                     buffer.append("Message with Morse DAH Signal");
                     break;
-                case MorseSignal.SPACE:
+                case MorseStringConverter.GAP:
                     buffer.append("Message with Morse SPACE Signal");
                     break;
                 default:
