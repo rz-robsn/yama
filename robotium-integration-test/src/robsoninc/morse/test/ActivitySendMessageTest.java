@@ -119,11 +119,11 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
         // Deleting two characters
         ImageButton clear_btn = (ImageButton) solo.getView(R.id.button_clear);
         solo.clickOnView(clear_btn);
-        solo.clickOnView(clear_btn);
         
-        this.sendMessage("^s$");
+       Assert.assertFalse("The Message to send should not contain \"sos\"",
+                solo.searchText("sos"));
     }    
-    
+
     private void typeShortOnTelegraphMode() throws Exception
     {
         int[] topLeftControlsCoordinate = new int[2];
