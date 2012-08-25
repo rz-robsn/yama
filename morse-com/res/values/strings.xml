@@ -14,5 +14,6 @@
     <!-- On Receive Message Notification -->
     <string name="new_msg_notif_title">You have a new message</string>
     <string name="new_msg_notif_body" formatted="false" >From %s : \n %s</string>
+    <string name="btn_undo_desc">undo</string>
 
 </resources>

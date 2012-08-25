@@ -11,6 +11,7 @@ import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.Smoke;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import robsoninc.morse.R;
 
@@ -92,7 +93,6 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
     @Smoke
     public void testWriteGapSymbolOnDrawingALineWithFingerWithTouchyMode() throws Exception
     {
-
         this.switchToTouchyMode();
 
         // Typing "s" character
@@ -108,6 +108,22 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
         Assert.assertTrue("The Activity did not display \"e t\" in morse.", solo.searchText("\\.\\+\\+\\-"));
     }
 
+    @Smoke
+    public void testDeleteCharacters() throws Exception
+    {
+        this.switchToTouchyMode();
+        this.typeSOSOnTouchyMode();
+
+        this.sendMessage("sos");
+        
+        // Deleting two characters
+        ImageButton clear_btn = (ImageButton) solo.getView(R.id.button_clear);
+        solo.clickOnView(clear_btn);
+        solo.clickOnView(clear_btn);
+        
+        this.sendMessage("^s$");
+    }    
+    
     private void typeShortOnTelegraphMode() throws Exception
     {
         int[] topLeftControlsCoordinate = new int[2];
