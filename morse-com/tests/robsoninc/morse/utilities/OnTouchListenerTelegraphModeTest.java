@@ -6,6 +6,7 @@ import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.reset;
 import static org.easymock.EasyMock.verify;
 import static testingutilites.MorseSignalMessage.morseMessageSignal;
+import static testingutilites.MotionEventMessage.aMotionEventMessage;
 
 import org.junit.After;
 import org.junit.Before;
@@ -43,7 +44,9 @@ public class OnTouchListenerTelegraphModeTest
     @Test
     public void shouldCallDit() throws Exception 
     {
-    	expect(modeListener.sendMessage(morseMessageSignal(MorseStringConverter.DIT))).andReturn(true);   
+    	expect(modeListener.sendMessage(aMotionEventMessage(MotionEvent.ACTION_DOWN))).andReturn(true);
+    	expect(modeListener.sendMessage(morseMessageSignal(MorseStringConverter.DIT))).andReturn(true);
+    	expect(modeListener.sendMessage(aMotionEventMessage(MotionEvent.ACTION_UP))).andReturn(true);
         replay(modeListener);      
                 
         // Pressing the same spot for a short time
@@ -54,7 +57,9 @@ public class OnTouchListenerTelegraphModeTest
     @Test
     public void shouldCallDah() throws Exception 
     {
+    	expect(modeListener.sendMessage(aMotionEventMessage(MotionEvent.ACTION_DOWN))).andReturn(true);
     	expect(modeListener.sendMessage(morseMessageSignal(MorseStringConverter.DAH))).andReturn(true);
+    	expect(modeListener.sendMessage(aMotionEventMessage(MotionEvent.ACTION_UP))).andReturn(true);
         replay(modeListener);                
               
                 
@@ -70,8 +75,10 @@ public class OnTouchListenerTelegraphModeTest
     @Test
     public void shouldCallDitAndOneSpace() throws Exception 
     {
+    	expect(modeListener.sendMessage(aMotionEventMessage(MotionEvent.ACTION_DOWN))).andReturn(true);
     	expect(modeListener.sendMessage(morseMessageSignal(MorseStringConverter.DIT))).andReturn(true);
         expect(modeListener.sendMessage(morseMessageSignal(MorseStringConverter.SPACE))).andReturn(true);
+    	expect(modeListener.sendMessage(aMotionEventMessage(MotionEvent.ACTION_UP))).andReturn(true);
         replay(modeListener);      
      
         // Pressing the same spot for a short time
@@ -83,9 +90,11 @@ public class OnTouchListenerTelegraphModeTest
     @Test
     public void shouldCallDitAndTwoSpaces() throws Exception 
     {
+    	expect(modeListener.sendMessage(aMotionEventMessage(MotionEvent.ACTION_DOWN))).andReturn(true);
     	expect(modeListener.sendMessage(morseMessageSignal(MorseStringConverter.DIT))).andReturn(true);
     	expect(modeListener.sendMessage(morseMessageSignal(MorseStringConverter.SPACE))).andReturn(true);
     	expect(modeListener.sendMessage(morseMessageSignal(MorseStringConverter.SPACE))).andReturn(true);
+    	expect(modeListener.sendMessage(aMotionEventMessage(MotionEvent.ACTION_UP))).andReturn(true);
         replay(modeListener);      
      
         // Pressing the same spot for a short time

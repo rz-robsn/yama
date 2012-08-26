@@ -6,6 +6,7 @@ import static org.easymock.EasyMock.reset;
 import static org.easymock.EasyMock.verify;
 import static org.easymock.EasyMock.expect;
 import static testingutilites.MorseSignalMessage.morseMessageSignal;
+import static testingutilites.MotionEventMessage.aMotionEventMessage;
 
 import org.easymock.EasyMock;
 import org.junit.After;
@@ -44,7 +45,9 @@ public class OnTouchListenerTouchyModeTest
     @Test
     public void shouldCallDit() throws Exception 
     {
-    	expect(modeListener.sendMessage(morseMessageSignal(MorseStringConverter.DIT))).andReturn(true);      
+    	expect(modeListener.sendMessage(aMotionEventMessage(MotionEvent.ACTION_DOWN))).andReturn(true);
+    	expect(modeListener.sendMessage(morseMessageSignal(MorseStringConverter.DIT))).andReturn(true);
+    	expect(modeListener.sendMessage(aMotionEventMessage(MotionEvent.ACTION_UP))).andReturn(true);
         replay(modeListener);      
                 
         // Pressing the same spot for a short time
@@ -55,7 +58,9 @@ public class OnTouchListenerTouchyModeTest
     @Test
     public void shouldCallDah() throws Exception 
     {
+    	expect(modeListener.sendMessage(aMotionEventMessage(MotionEvent.ACTION_DOWN))).andReturn(true);
     	expect(modeListener.sendMessage(morseMessageSignal(MorseStringConverter.DAH))).andReturn(true);
+    	expect(modeListener.sendMessage(aMotionEventMessage(MotionEvent.ACTION_UP))).andReturn(true);
         replay(modeListener);      
                 
         // Pressing the same spot for a long time
@@ -70,7 +75,9 @@ public class OnTouchListenerTouchyModeTest
     @Test
     public void shouldCallOnSpace() throws Exception 
     {
-        expect(modeListener.sendMessage(morseMessageSignal(MorseStringConverter.SPACE))).andReturn(true); 
+    	expect(modeListener.sendMessage(aMotionEventMessage(MotionEvent.ACTION_DOWN))).andReturn(true);
+        expect(modeListener.sendMessage(morseMessageSignal(MorseStringConverter.SPACE))).andReturn(true);
+    	expect(modeListener.sendMessage(aMotionEventMessage(MotionEvent.ACTION_UP))).andReturn(true);
         replay(modeListener);      
      
         // Drawing a line

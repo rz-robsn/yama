@@ -117,8 +117,7 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
         this.sendMessage("sos");
         
         // Deleting two characters
-        ImageButton clear_btn = (ImageButton) solo.getView(R.id.button_clear);
-        solo.clickOnView(clear_btn);
+        solo.clickOnView(solo.getView(R.id.button_clear));
         
        Assert.assertFalse("The Message to send should not contain \"sos\"",
                 solo.searchText("sos"));
