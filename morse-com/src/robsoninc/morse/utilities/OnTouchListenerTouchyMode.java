@@ -36,6 +36,8 @@ public class OnTouchListenerTouchyMode implements OnTouchListener
             case MotionEvent.ACTION_DOWN:
                 this.downX = event.getX();
                 this.downY = event.getY();
+                
+                sendMotionEventCode(MotionEvent.ACTION_DOWN);
                 break;
 
             case MotionEvent.ACTION_MOVE:                
@@ -58,7 +60,9 @@ public class OnTouchListenerTouchyMode implements OnTouchListener
                 else // The gesture is a long press
                 {
                     this.sendMorseSignal(MorseStringConverter.DAH);
-                }                
+                }
+                
+                sendMotionEventCode(MotionEvent.ACTION_UP);
                 break;
                 
             case MotionEvent.ACTION_CANCEL:
@@ -71,6 +75,14 @@ public class OnTouchListenerTouchyMode implements OnTouchListener
     private static double getDistance(float x1, float y1, float x2, float y2)
     {
         return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
+    }
+    
+    private void sendMotionEventCode(int motionCode)
+    {
+    	Message m = new Message();
+    	m.arg2 = motionCode;
+    	m.setTarget(listener);
+    	m.sendToTarget();    	
     }
     
     private void sendMorseSignal(int signal)

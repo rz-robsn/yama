@@ -65,6 +65,8 @@ public class OnTouchListenerTelegraphMode implements OnTouchListener
             	{
             		this.onSpaceTimer.cancel();
             	}
+            	
+            	sendMotionEventCode(MotionEvent.ACTION_DOWN);
                 break;
                 
             case MotionEvent.ACTION_UP:
@@ -86,10 +88,20 @@ public class OnTouchListenerTelegraphMode implements OnTouchListener
             	onSecondSpaceTimer = new Timer();
             	this.onSpaceTimer.schedule(new TimerTaskCallListenerOnSpace(), SPACE_THRESHOLD);
             	this.onSecondSpaceTimer.schedule(new TimerTaskCallListenerOnSpace(), DOUBLE_SPACE_THRESHOLD);
+            	
+            	sendMotionEventCode(MotionEvent.ACTION_UP);
                 break;
         }
 
         return true;
+    }
+    
+    private void sendMotionEventCode(int motionCode)
+    {
+    	Message m = new Message();
+    	m.arg2 = motionCode;
+    	m.setTarget(listener);
+    	m.sendToTarget();    	
     }
     
     private void sendMorseSignal(int signal)
