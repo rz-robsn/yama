@@ -9,14 +9,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 import android.widget.ViewFlipper;
 
 public class ActivitySendMessage extends Activity
 {
-
     private TextView message;
     private TextView morse_message;
 
@@ -29,7 +30,24 @@ public class ActivitySendMessage extends Activity
         public void handleMessage(Message msg)
         {
 	        super.handleMessage(msg);
-	        appendStringToMessage(String.valueOf((char)msg.arg1));
+	        
+	        if (msg.arg1 != 0)
+	        {	        
+	        	appendStringToMessage(String.valueOf((char)msg.arg1));
+	        }
+	        else 
+	        {
+	        	switch(msg.arg2)
+	        	{
+	                case MotionEvent.ACTION_DOWN:
+	                	// Start Playing beep sound
+	                    break;
+
+	                case MotionEvent.ACTION_UP:
+	                	// Stop Playing beep sound
+	                    break;
+	        	}
+	        }
         }
     }; 
 
@@ -94,37 +112,16 @@ public class ActivitySendMessage extends Activity
         });
     }
 
-    @Override
-    protected void onResume()
+    public TextView getMessage()
     {
-        super.onResume();
+        return message;
     }
 
-    @Override
-    protected Dialog onCreateDialog(int id)
+    public TextView getMorse_message()
     {
-
-        switch (id)
-            {
-                default:
-                    return super.onCreateDialog(id);
-            }
+        return morse_message;
     }
-
-    @Override
-    protected void onPrepareDialog(int id, Dialog dialog)
-    {
-
-        super.onPrepareDialog(id, dialog);
-        switch (id)
-            {
-                case DIALOG_SEND_CONFIRM:
-                case DIALOG_SEND_IN_PROGRESS:
-                default:
-                    break;
-            }
-    }
-
+    
     /**
      * Add character to morse message
      * */
@@ -138,16 +135,6 @@ public class ActivitySendMessage extends Activity
                 appendStringToMessage(String.valueOf(s));
             }
         });
-    }
-
-    public TextView getMessage()
-    {
-        return message;
-    }
-
-    public TextView getMorse_message()
-    {
-        return morse_message;
     }
 
     private void emptyMessageBoxes()
