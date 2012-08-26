@@ -6,6 +6,7 @@ import robsoninc.morse.utilities.OnTouchListenerTouchyMode;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -21,8 +22,7 @@ public class ActivitySendMessage extends Activity
     private TextView message;
     private TextView morse_message;
 
-    private static final int DIALOG_SEND_CONFIRM = 1;
-    private static final int DIALOG_SEND_IN_PROGRESS = 2;
+    private MediaPlayer beepPlayer;
     
     private Handler modeListener = new Handler()
     {    	
@@ -41,10 +41,13 @@ public class ActivitySendMessage extends Activity
 	        	{
 	                case MotionEvent.ACTION_DOWN:
 	                	// Start Playing beep sound
+	                	beepPlayer = MediaPlayer.create(ActivitySendMessage.this, R.raw.beep);
+	                	beepPlayer.setLooping(true);
+	                	beepPlayer.start();
 	                    break;
 
 	                case MotionEvent.ACTION_UP:
-	                	// Stop Playing beep sound
+	                	beepPlayer.stop();
 	                    break;
 	        	}
 	        }
