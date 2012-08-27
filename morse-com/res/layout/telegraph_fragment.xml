@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Button
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/button_telegraph"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="@drawable/telegraph_mode_button"
+    android:gravity="center"
+    android:minHeight="150dp"
+    android:minWidth="150dp" />
