@@ -1,14 +1,14 @@
 package robsoninc.morse;
 
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import robsoninc.morse.utilities.BeepPlayer;
 import robsoninc.morse.utilities.MorseStringConverter;
 import robsoninc.morse.utilities.OnMorseSignalSentListener;
 import android.app.Activity;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -25,12 +25,13 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
     private final long DIT_TO_DAH_THRESHOLD = 100;
     private final long SPACE_THRESHOLD = 400;
     private final long DOUBLE_SPACE_THRESHOLD = 1500;
+    
+    private BeepPlayer player;
 
     private long onSpaceCallTime = 0;
     private Timer onSpaceTimer = null;
 
     private long onSecondSpaceCallTime = 0;
-
     private Timer onSecondSpaceTimer = null;
 
     private class TimerTaskCallListenerOnSpace extends TimerTask
@@ -64,13 +65,15 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
         {
             throw new ClassCastException(activity.toString() + " must implement OnMorseSignalSentListener");
         }
+        
+        this.player = new BeepPlayer(activity);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         Button b = (Button) inflater.inflate(R.layout.telegraph_fragment, container);
-        b.setOnTouchListener(this);
+        b.setOnTouchListener(this);                
         return b;
     }
 
@@ -95,6 +98,8 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
                 {
                     this.onSpaceTimer.cancel();
                 }
+                
+                this.player.start();
                 break;
 
             case MotionEvent.ACTION_UP:
@@ -108,8 +113,7 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
                 }
 
                 // Scheduling the next onSpace() events to call if there is
-                // no
-                // Down event before each threshold.
+                // no Down event before each threshold.
                 this.onSpaceCallTime = event.getEventTime() + SPACE_THRESHOLD;
                 this.onSecondSpaceCallTime = event.getEventTime() + DOUBLE_SPACE_THRESHOLD;
 
@@ -117,7 +121,22 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
                 onSecondSpaceTimer = new Timer();
                 this.onSpaceTimer.schedule(new TimerTaskCallListenerOnSpace(), SPACE_THRESHOLD);
                 this.onSecondSpaceTimer.schedule(new TimerTaskCallListenerOnSpace(), DOUBLE_SPACE_THRESHOLD);
-
+                
+                this.player.stop();
+                try
+                {
+                    this.player.prepare();
+                }
+                catch (IllegalStateException e)
+                {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                catch (IOException e)
+                {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
                 break;
         }
         return true;
@@ -131,5 +150,10 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
     public void setActivity(Activity activity)
     {
         this.activity = activity;
+    }
+
+    public void setPlayer(BeepPlayer player)
+    {
+        this.player = player;
     }
 }

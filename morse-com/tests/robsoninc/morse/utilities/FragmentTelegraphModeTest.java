@@ -1,13 +1,9 @@
 package robsoninc.morse.utilities;
 
 import static org.easymock.EasyMock.createMock;
-import static org.easymock.EasyMock.expect;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.reset;
 import static org.easymock.EasyMock.verify;
-import static testingutilites.MorseSignalMessage.morseMessageSignal;
-import static testingutilites.MotionEventMessage.aMotionEventMessage;
-
 import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Before;
@@ -17,17 +13,13 @@ import org.junit.runner.RunWith;
 import robsoninc.morse.FragmentTelegraphMode;
 
 import android.app.Activity;
-import android.os.Handler;
 import android.os.SystemClock;
 import android.support.v4.app.FragmentActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-
 import com.xtremelabs.robolectric.Robolectric;
 import com.xtremelabs.robolectric.RobolectricTestRunner;
-import com.xtremelabs.robolectric.shadows.ShadowActivity;
 
 @RunWith(RobolectricTestRunner.class)
 public class FragmentTelegraphModeTest
@@ -49,6 +41,7 @@ public class FragmentTelegraphModeTest
         telegraphFragment = new FragmentTelegraphMode();
         telegraphFragment.setActivity(mockFragmentActivity);
         telegraphFragment.setListener(mockListener);
+        telegraphFragment.setPlayer(new BeepPlayer(new Activity()));
 
         downTime = SystemClock.uptimeMillis();
         button = new Button(new Activity());
