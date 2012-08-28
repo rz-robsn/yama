@@ -3,17 +3,13 @@
  */
 package robsoninc.morse.utilities;
 
-import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
 import android.os.Handler;
 import android.os.Message;
-import android.os.SystemClock;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewConfiguration;
 import android.view.View.OnTouchListener;
 
 public class OnTouchListenerTelegraphMode implements OnTouchListener

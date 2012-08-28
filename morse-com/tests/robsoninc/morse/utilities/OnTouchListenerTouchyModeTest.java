@@ -8,7 +8,6 @@ import static org.easymock.EasyMock.expect;
 import static testingutilites.MorseSignalMessage.morseMessageSignal;
 import static testingutilites.MotionEventMessage.aMotionEventMessage;
 
-import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

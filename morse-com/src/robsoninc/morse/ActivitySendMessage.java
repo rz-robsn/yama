@@ -2,10 +2,7 @@ package robsoninc.morse;
 
 import robsoninc.morse.utilities.MorseStringConverter;
 import robsoninc.morse.utilities.OnMorseSignalSentListener;
-import robsoninc.morse.utilities.OnTouchListenerTelegraphMode;
 import robsoninc.morse.utilities.OnTouchListenerTouchyMode;
-import android.app.Activity;
-import android.app.Dialog;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -14,9 +11,7 @@ import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewConfiguration;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 import android.widget.ViewFlipper;
 
 public class ActivitySendMessage extends FragmentActivity implements OnMorseSignalSentListener
