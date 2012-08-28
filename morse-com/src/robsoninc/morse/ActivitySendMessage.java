@@ -1,6 +1,7 @@
 package robsoninc.morse;
 
 import robsoninc.morse.utilities.MorseStringConverter;
+import robsoninc.morse.utilities.OnMorseSignalSentListener;
 import robsoninc.morse.utilities.OnTouchListenerTelegraphMode;
 import robsoninc.morse.utilities.OnTouchListenerTouchyMode;
 import android.app.Activity;
@@ -18,7 +19,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 import android.widget.ViewFlipper;
 
-public class ActivitySendMessage extends FragmentActivity
+public class ActivitySendMessage extends FragmentActivity implements OnMorseSignalSentListener
 {
     private TextView message;
     private TextView morse_message;
@@ -114,6 +115,12 @@ public class ActivitySendMessage extends FragmentActivity
                 flippy.showNext();
             }
         });
+    }
+    
+    @Override
+    public Handler getHandler()
+    {
+        return this.modeListener;
     }
 
     public TextView getMessage()
