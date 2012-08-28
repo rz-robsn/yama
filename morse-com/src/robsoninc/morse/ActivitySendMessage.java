@@ -116,6 +116,12 @@ public class ActivitySendMessage extends FragmentActivity implements OnMorseSign
     public Handler getHandler()
     {
         return this.modeListener;
+    }    
+    
+    @Override
+    public void onSignalSent(int morseSignal)
+    {
+        appendStringToMessage(String.valueOf((char)morseSignal));
     }
 
     public TextView getMessage()

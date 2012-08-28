@@ -19,7 +19,8 @@ import android.widget.Button;
 
 public class FragmentTelegraphMode extends Fragment implements OnTouchListener
 {
-    private Handler listener;
+    private OnMorseSignalSentListener listener;
+    private Activity activity;
 
     private final long DIT_TO_DAH_THRESHOLD = 100;
     private final long SPACE_THRESHOLD = 400;
@@ -37,7 +38,14 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
         @Override
         public void run()
         {
-            FragmentTelegraphMode.this.sendMorseSignal(MorseStringConverter.SPACE);
+            FragmentTelegraphMode.this.activity.runOnUiThread(new Runnable()
+            {
+                @Override
+                public void run()
+                {
+                    FragmentTelegraphMode.this.listener.onSignalSent(MorseStringConverter.SPACE);
+                }
+            });
         }
     }
 
@@ -49,11 +57,12 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
         // the callback interface. If not, it throws an exception
         try
         {
-            this.listener = ((OnMorseSignalSentListener)activity).getHandler();
+            this.activity = activity;
+            this.listener = (OnMorseSignalSentListener) activity;
         }
         catch (ClassCastException e)
         {
-            throw new ClassCastException(activity.toString() + " must implement OnHeadlineSelectedListener");
+            throw new ClassCastException(activity.toString() + " must implement OnMorseSignalSentListener");
         }
     }
 
@@ -76,65 +85,41 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
     public boolean onTouch(View arg0, MotionEvent event)
     {
         switch (event.getAction())
-            {
-                case MotionEvent.ACTION_DOWN:
-                    if (onSecondSpaceTimer != null && event.getEventTime() < this.onSecondSpaceCallTime)
-                    {
-                        this.onSecondSpaceTimer.cancel();
-                    }
-                    if (onSpaceTimer != null && event.getEventTime() < this.onSpaceCallTime)
-                    {
-                        this.onSpaceTimer.cancel();
-                    }
+        {
+            case MotionEvent.ACTION_DOWN:
+                if (onSecondSpaceTimer != null && event.getEventTime() < this.onSecondSpaceCallTime)
+                {
+                    this.onSecondSpaceTimer.cancel();
+                }
+                if (onSpaceTimer != null && event.getEventTime() < this.onSpaceCallTime)
+                {
+                    this.onSpaceTimer.cancel();
+                }
+                break;
 
-                    sendMotionEventCode(MotionEvent.ACTION_DOWN);
-                    break;
+            case MotionEvent.ACTION_UP:
+                if (event.getEventTime() - event.getDownTime() < DIT_TO_DAH_THRESHOLD)
+                {
+                    this.listener.onSignalSent(MorseStringConverter.DIT);
+                }
+                else
+                {
+                    this.listener.onSignalSent(MorseStringConverter.DAH);
+                }
 
-                case MotionEvent.ACTION_UP:
-                    if (event.getEventTime() - event.getDownTime() < DIT_TO_DAH_THRESHOLD)
-                    {
-                        this.sendMorseSignal(MorseStringConverter.DIT);
-                    }
-                    else
-                    {
-                        this.sendMorseSignal(MorseStringConverter.DAH);
-                    }
+                // Scheduling the next onSpace() events to call if there is
+                // no
+                // Down event before each threshold.
+                this.onSpaceCallTime = event.getEventTime() + SPACE_THRESHOLD;
+                this.onSecondSpaceCallTime = event.getEventTime() + DOUBLE_SPACE_THRESHOLD;
 
-                    // Scheduling the next onSpace() events to call if there is
-                    // no
-                    // Down event before each threshold.
-                    this.onSpaceCallTime = event.getEventTime() + SPACE_THRESHOLD;
-                    this.onSecondSpaceCallTime = event.getEventTime() + DOUBLE_SPACE_THRESHOLD;
+                onSpaceTimer = new Timer();
+                onSecondSpaceTimer = new Timer();
+                this.onSpaceTimer.schedule(new TimerTaskCallListenerOnSpace(), SPACE_THRESHOLD);
+                this.onSecondSpaceTimer.schedule(new TimerTaskCallListenerOnSpace(), DOUBLE_SPACE_THRESHOLD);
 
-                    onSpaceTimer = new Timer();
-                    onSecondSpaceTimer = new Timer();
-                    this.onSpaceTimer.schedule(new TimerTaskCallListenerOnSpace(), SPACE_THRESHOLD);
-                    this.onSecondSpaceTimer.schedule(new TimerTaskCallListenerOnSpace(), DOUBLE_SPACE_THRESHOLD);
-
-                    sendMotionEventCode(MotionEvent.ACTION_UP);
-                    break;
-            }
+                break;
+        }
         return true;
-    }
-
-    public void setListener(Handler listener)
-    {
-        this.listener = listener;
-    }
-
-    private void sendMotionEventCode(int motionCode)
-    {
-        Message m = new Message();
-        m.arg2 = motionCode;
-        m.setTarget(listener);
-        m.sendToTarget();
-    }
-
-    private void sendMorseSignal(int signal)
-    {
-        Message m = new Message();
-        m.arg1 = signal;
-        m.setTarget(listener);
-        m.sendToTarget();
     }
 }
