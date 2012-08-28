@@ -2,8 +2,6 @@
 <Button
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/button_telegraph"
-
     android:background="@drawable/telegraph_mode_button"
-    android:gravity="center"
     android:minHeight="150dp"
     android:minWidth="150dp" />
