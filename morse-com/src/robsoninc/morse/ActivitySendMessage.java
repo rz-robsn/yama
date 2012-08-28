@@ -10,6 +10,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.FragmentActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
@@ -17,7 +18,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 import android.widget.ViewFlipper;
 
-public class ActivitySendMessage extends Activity
+public class ActivitySendMessage extends FragmentActivity
 {
     private TextView message;
     private TextView morse_message;
@@ -41,7 +42,7 @@ public class ActivitySendMessage extends Activity
 	        	{
 	                case MotionEvent.ACTION_DOWN:
 	                	// Start Playing beep sound
-	                	beepPlayer = MediaPlayer.create(ActivitySendMessage.this, R.raw.beep);
+	                	beepPlayer = MediaPlayer.create(ActivitySendMessage.this, R.raw.bip);
 	                	beepPlayer.setLooping(true);
 	                	beepPlayer.start();
 	                    break;
@@ -102,7 +103,7 @@ public class ActivitySendMessage extends Activity
 		});
 
         findViewById(R.id.textView4).setOnTouchListener(new OnTouchListenerTouchyMode(this.modeListener));
-        findViewById(R.id.button_telegraph).setOnTouchListener(new OnTouchListenerTelegraphMode(this.modeListener));
+        //findViewById(R.id.button_telegraph).setOnTouchListener(new OnTouchListenerTelegraphMode(this.modeListener));
         
         this.findViewById(R.id.button_switch_mode).setOnClickListener(new View.OnClickListener()
         {

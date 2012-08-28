@@ -10,8 +10,7 @@
         android:layout_height="0dp"
         android:layout_weight="0.2"
         android:orientation="horizontal"
-        android:weightSum="1.0"
-         >
+        android:weightSum="1.0" >
 
         <TextView
             android:id="@+id/message"
@@ -24,10 +23,11 @@
         <ImageButton
             android:id="@+id/button_clear"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"   
-            android:layout_weight="0.03"         
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="0.03"
             android:contentDescription="@string/btn_undo_desc"
-            android:src="@drawable/undo" android:layout_gravity="center_vertical"/>
+            android:src="@drawable/undo" />
     </LinearLayout>
 
     <TextView
@@ -44,16 +44,12 @@
         android:layout_height="0dp"
         android:layout_weight="0.52" >
 
-        <Button
-            android:id="@+id/button_telegraph"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="@drawable/telegraph_mode_button"
-            android:gravity="center"
-            android:minHeight="150dp"
-            android:minWidth="150dp" />
-
+        <fragment
+            android:id="@+id/telegraph_fragment"
+            android:name="robsoninc.morse.FragmentTelegraphMode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
