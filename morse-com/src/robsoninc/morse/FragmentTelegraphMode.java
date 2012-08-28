@@ -122,4 +122,14 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
         }
         return true;
     }
+
+    public void setListener(OnMorseSignalSentListener listener)
+    {
+        this.listener = listener;
+    }
+
+    public void setActivity(Activity activity)
+    {
+        this.activity = activity;
+    }
 }
