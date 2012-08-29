@@ -13,6 +13,7 @@ import org.junit.runner.RunWith;
 import robsoninc.morse.FragmentTelegraphMode;
 
 import android.app.Activity;
+import android.media.MediaPlayer;
 import android.os.SystemClock;
 import android.support.v4.app.FragmentActivity;
 import android.view.MotionEvent;
@@ -41,7 +42,7 @@ public class FragmentTelegraphModeTest
         telegraphFragment = new FragmentTelegraphMode();
         telegraphFragment.setActivity(mockFragmentActivity);
         telegraphFragment.setListener(mockListener);
-        telegraphFragment.setPlayer(new BeepPlayer(new Activity()));
+        telegraphFragment.setPlayer(new MediaPlayer());
 
         downTime = SystemClock.uptimeMillis();
         button = new Button(new Activity());
@@ -103,8 +104,7 @@ public class FragmentTelegraphModeTest
         replay(mockListener);  
         replay(mockFragmentActivity);
      
-        // Pressing the same spot for a short time
-        
+        // Pressing the same spot for a short time        
         telegraphFragment.onTouch(button, MotionEvent.obtain(downTime, downTime, MotionEvent.ACTION_DOWN, 0, 0, 0));
         telegraphFragment.onTouch(button, MotionEvent.obtain(downTime, downTime + 90, MotionEvent.ACTION_UP, 0, 0, 0));        
         this.waitFor(1600);

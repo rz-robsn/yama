@@ -8,6 +8,7 @@ import robsoninc.morse.utilities.BeepPlayer;
 import robsoninc.morse.utilities.MorseStringConverter;
 import robsoninc.morse.utilities.OnMorseSignalSentListener;
 import android.app.Activity;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -26,7 +27,7 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
     private final long SPACE_THRESHOLD = 400;
     private final long DOUBLE_SPACE_THRESHOLD = 1500;
     
-    private BeepPlayer player;
+    private MediaPlayer player;
 
     private long onSpaceCallTime = 0;
     private Timer onSpaceTimer = null;
@@ -152,7 +153,7 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
         this.activity = activity;
     }
 
-    public void setPlayer(BeepPlayer player)
+    public void setPlayer(MediaPlayer player)
     {
         this.player = player;
     }
