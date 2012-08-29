@@ -1,4 +1,4 @@
-package robsoninc.morse.utilities;
+package robsoninc.morse;
 
 import static org.easymock.EasyMock.createMock;
 import static org.easymock.EasyMock.replay;
@@ -11,6 +11,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import robsoninc.morse.FragmentTelegraphMode;
+import robsoninc.morse.utilities.MorseStringConverter;
+import robsoninc.morse.utilities.OnMorseSignalSentListener;
 
 import android.app.Activity;
 import android.media.MediaPlayer;
