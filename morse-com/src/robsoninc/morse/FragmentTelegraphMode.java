@@ -22,7 +22,8 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
 {
     private OnMorseSignalSentListener listener;
     private Activity activity;
-
+    private Button telegraphBtn;
+    
     private final long DIT_TO_DAH_THRESHOLD = 100;
     private final long SPACE_THRESHOLD = 400;
     private final long DOUBLE_SPACE_THRESHOLD = 1500;
@@ -73,15 +74,18 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        Button b = (Button) inflater.inflate(R.layout.telegraph_fragment, container);
-        b.setOnTouchListener(this);                
-        return b;
+        View v = inflater.inflate(R.layout.telegraph_fragment, container);        
+        v.setOnTouchListener(this);                
+        return v;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState)
     {
         super.onActivityCreated(savedInstanceState);
+        
+        telegraphBtn = (Button) this.getActivity().findViewById(R.id.button_telegraph);
+        
         setRetainInstance(true);
     }
 
@@ -91,6 +95,9 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
         switch (event.getAction())
         {
             case MotionEvent.ACTION_DOWN:
+                
+                // Cancel spaces if the user has pressed action_down within the time interval from the 
+                // last action_up.
                 if (onSecondSpaceTimer != null && event.getEventTime() < this.onSecondSpaceCallTime)
                 {
                     this.onSecondSpaceTimer.cancel();
@@ -100,7 +107,13 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
                     this.onSpaceTimer.cancel();
                 }
                 
+                // Play Sound
                 this.player.start();
+                
+                // Switch button color
+                telegraphBtn = (Button) this.getActivity().findViewById(R.id.button_telegraph);
+                telegraphBtn.setBackgroundResource(R.drawable.red_orb);
+                
                 break;
 
             case MotionEvent.ACTION_UP:
@@ -123,6 +136,7 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
                 this.onSpaceTimer.schedule(new TimerTaskCallListenerOnSpace(), SPACE_THRESHOLD);
                 this.onSecondSpaceTimer.schedule(new TimerTaskCallListenerOnSpace(), DOUBLE_SPACE_THRESHOLD);
                 
+                // Stop playing sound
                 this.player.stop();
                 try
                 {
@@ -130,14 +144,17 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
                 }
                 catch (IllegalStateException e)
                 {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
                 catch (IOException e)
                 {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
+                
+                // Switch Button Color
+                telegraphBtn = (Button) this.getActivity().findViewById(R.id.button_telegraph);
+                telegraphBtn.setBackgroundResource(R.drawable.grey_orb);
+                
                 break;
         }
         return true;
