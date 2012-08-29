@@ -1,8 +1,6 @@
 package robsoninc.morse;
 
 import java.io.IOException;
-import java.util.Timer;
-
 import robsoninc.morse.utilities.BeepPlayer;
 import robsoninc.morse.utilities.MorseStringConverter;
 import robsoninc.morse.utilities.OnMorseSignalSentListener;
@@ -17,7 +15,6 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.View.OnTouchListener;
-import android.widget.Button;
 import android.widget.TextView;
 
 public class FragmentTouchyMode extends Fragment implements OnTouchListener

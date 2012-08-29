@@ -209,7 +209,7 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
         // The following is not the black box way to retrieve
         // the controls textView, but the solo#getText method gives 
         // false negative results.
-        solo.getView(R.id.textView4).getLocationOnScreen(topLeftControlsCoordinate);
+        solo.getView(R.id.touchy_fragment).getLocationOnScreen(topLeftControlsCoordinate);
         
         // event time MUST be retrieved only by this way!
         long downTime = SystemClock.uptimeMillis();

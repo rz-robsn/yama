@@ -2,7 +2,6 @@ package robsoninc.morse.utilities;
 
 import java.io.IOException;
 
-import robsoninc.morse.ActivitySendMessage;
 import robsoninc.morse.R;
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;

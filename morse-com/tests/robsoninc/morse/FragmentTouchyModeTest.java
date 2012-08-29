@@ -4,10 +4,6 @@ import static org.easymock.EasyMock.createMock;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.reset;
 import static org.easymock.EasyMock.verify;
-import static org.easymock.EasyMock.expect;
-import static testingutilites.MorseSignalMessage.morseMessageSignal;
-import static testingutilites.MotionEventMessage.aMotionEventMessage;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,13 +11,10 @@ import org.junit.runner.RunWith;
 
 import robsoninc.morse.utilities.MorseStringConverter;
 import robsoninc.morse.utilities.OnMorseSignalSentListener;
-import robsoninc.morse.utilities.OnTouchListenerTouchyMode;
 
 import android.app.Activity;
 import android.media.MediaPlayer;
-import android.os.Handler;
 import android.os.SystemClock;
-import android.support.v4.app.FragmentActivity;
 import android.view.MotionEvent;
 import android.widget.TextView;
 
