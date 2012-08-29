@@ -19,38 +19,6 @@ public class ActivitySendMessage extends FragmentActivity implements OnMorseSign
     private TextView message;
     private TextView morse_message;
 
-    private MediaPlayer beepPlayer;
-    
-    private Handler modeListener = new Handler()
-    {    	
-        @Override
-        public void handleMessage(Message msg)
-        {
-	        super.handleMessage(msg);
-	        
-	        if (msg.arg1 != 0)
-	        {	        
-	        	appendStringToMessage(String.valueOf((char)msg.arg1));
-	        }
-	        else 
-	        {
-	        	switch(msg.arg2)
-	        	{
-	                case MotionEvent.ACTION_DOWN:
-	                	// Start Playing beep sound
-	                	beepPlayer = MediaPlayer.create(ActivitySendMessage.this, R.raw.bip);
-	                	beepPlayer.setLooping(true);
-	                	beepPlayer.start();
-	                    break;
-
-	                case MotionEvent.ACTION_UP:
-	                	beepPlayer.stop();
-	                    break;
-	        	}
-	        }
-        }
-    }; 
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -97,9 +65,6 @@ public class ActivitySendMessage extends FragmentActivity implements OnMorseSign
 				message.setText("");
 			}
 		});
-
-        findViewById(R.id.textView4).setOnTouchListener(new OnTouchListenerTouchyMode(this.modeListener));
-        //findViewById(R.id.button_telegraph).setOnTouchListener(new OnTouchListenerTelegraphMode(this.modeListener));
         
         this.findViewById(R.id.button_switch_mode).setOnClickListener(new View.OnClickListener()
         {
@@ -110,13 +75,7 @@ public class ActivitySendMessage extends FragmentActivity implements OnMorseSign
                 flippy.showNext();
             }
         });
-    }
-    
-    @Override
-    public Handler getHandler()
-    {
-        return this.modeListener;
-    }    
+    } 
     
     @Override
     public void onSignalSent(int morseSignal)
@@ -133,6 +92,12 @@ public class ActivitySendMessage extends FragmentActivity implements OnMorseSign
     {
         return morse_message;
     }
+
+    private void emptyMessageBoxes()
+    {
+        ((TextView) this.findViewById(R.id.message)).setText("");
+        ((TextView) this.findViewById(R.id.morse_message)).setText("");
+    }
     
     /**
      * Add character to morse message
@@ -147,12 +112,6 @@ public class ActivitySendMessage extends FragmentActivity implements OnMorseSign
                 appendStringToMessage(String.valueOf(s));
             }
         });
-    }
-
-    private void emptyMessageBoxes()
-    {
-        ((TextView) this.findViewById(R.id.message)).setText("");
-        ((TextView) this.findViewById(R.id.morse_message)).setText("");
     }
 
     private void appendStringToMessage(final String s)

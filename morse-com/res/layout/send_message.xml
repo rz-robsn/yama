@@ -79,13 +79,12 @@
                 android:text="@string/sndmsg_space_button_value" />
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/textView4"
+        <fragment
+            android:id="@+id/touchy_fragment"
+            android:name="robsoninc.morse.FragmentTouchyMode"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="@string/sndmsg_touchy_desc"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:layout_height="match_parent" />        
+        
     </ViewFlipper>
 
     <LinearLayout

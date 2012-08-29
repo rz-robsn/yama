@@ -18,6 +18,7 @@ import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class FragmentTouchyMode extends Fragment implements OnTouchListener
 {
@@ -58,9 +59,9 @@ public class FragmentTouchyMode extends Fragment implements OnTouchListener
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        Button b = (Button) inflater.inflate(R.layout.touchy_fragment, container);
-        b.setOnTouchListener(this);                
-        return b;
+    	TextView t = (TextView) inflater.inflate(R.layout.touchy_fragment, container);
+        t.setOnTouchListener(this);                
+        return t;
     }
 
     @Override
