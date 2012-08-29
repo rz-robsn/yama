@@ -30,7 +30,6 @@ import com.xtremelabs.robolectric.RobolectricTestRunner;
 @RunWith(RobolectricTestRunner.class)
 public class FragmentTouchyModeTest
 {
-    private FragmentActivity mockFragmentActivity;
     private OnMorseSignalSentListener mockListener;
     
     private FragmentTouchyMode touchyFragment;
@@ -42,11 +41,9 @@ public class FragmentTouchyModeTest
     public void setUp() throws Exception
     {
         // Setting up intent Mock.        
-        mockFragmentActivity = createMock(FragmentActivity.class);
         mockListener = createMock(OnMorseSignalSentListener.class);
         
         touchyFragment = new FragmentTouchyMode();
-        touchyFragment.setActivity(mockFragmentActivity);
         touchyFragment.setListener(mockListener);
         touchyFragment.setPlayer(new MediaPlayer());
         
