@@ -22,7 +22,7 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
 {
     private OnMorseSignalSentListener listener;
     private Activity activity;
-    private Button telegraphBtn;
+    private View telegraphBtn;
     
     private final long DIT_TO_DAH_THRESHOLD = 100;
     private final long SPACE_THRESHOLD = 400;
@@ -84,7 +84,7 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
     {
         super.onActivityCreated(savedInstanceState);
         
-        telegraphBtn = (Button) this.getActivity().findViewById(R.id.button_telegraph);
+        telegraphBtn = this.getActivity().findViewById(R.id.button_telegraph);
         
         setRetainInstance(true);
     }
@@ -111,7 +111,6 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
                 this.player.start();
                 
                 // Switch button color
-                telegraphBtn = (Button) this.getActivity().findViewById(R.id.button_telegraph);
                 telegraphBtn.setBackgroundResource(R.drawable.red_orb);
                 
                 break;
@@ -152,7 +151,6 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
                 }
                 
                 // Switch Button Color
-                telegraphBtn = (Button) this.getActivity().findViewById(R.id.button_telegraph);
                 telegraphBtn.setBackgroundResource(R.drawable.grey_orb);
                 
                 break;

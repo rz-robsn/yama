@@ -7,22 +7,22 @@
 
     <Button
         android:id="@+id/button_short"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:gravity="center"
         android:text="@string/sndmsg_short_button_value" />
 
     <Button
         android:id="@+id/button_long"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:gravity="center"
         android:text="@string/sndmsg_long_button_value" />
 
     <Button
         android:id="@+id/button_space"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:gravity="center"
         android:text="@string/sndmsg_space_button_value" />
 
