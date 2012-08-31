@@ -38,11 +38,9 @@ public class FragmentTelegraphModeTest
     public void setUp() throws Exception
     {
         // Setting up intent Mock.    
-        mockFragmentActivity = createMock(FragmentActivity.class);
         mockListener = createMock(OnMorseSignalSentListener.class);
         
         telegraphFragment = new FragmentTelegraphMode();
-        telegraphFragment.setActivity(mockFragmentActivity);
         telegraphFragment.setListener(mockListener);
         telegraphFragment.setPlayer(new MediaPlayer());
 
@@ -81,38 +79,26 @@ public class FragmentTelegraphModeTest
     {
     	mockListener.onSignalSent(MorseStringConverter.DIT);
     	
-    	// Assert that an "onSpace" Runnable has been called. 
-    	mockFragmentActivity.runOnUiThread(EasyMock.anyObject(Runnable.class));
-    	
+    	// Assert that an "onSpace" Runnable has been called.     	
         replay(mockListener);
-        replay(mockFragmentActivity);
      
         // Pressing the same spot for a short time
         telegraphFragment.onTouch(button, MotionEvent.obtain(downTime, downTime, MotionEvent.ACTION_DOWN, 0, 0, 0));
         telegraphFragment.onTouch(button, MotionEvent.obtain(downTime, downTime + 90, MotionEvent.ACTION_UP, 0, 0, 0));        
         this.waitFor(500);
-        
-        verify(mockFragmentActivity);
-        reset(mockFragmentActivity);
     }    
     
     @Test
     public void shouldCallDitAndTwoSpaces() throws Exception 
     {
     	mockListener.onSignalSent(MorseStringConverter.DIT);
-    	mockFragmentActivity.runOnUiThread(EasyMock.anyObject(Runnable.class));    	
-    	mockFragmentActivity.runOnUiThread(EasyMock.anyObject(Runnable.class));
     	
         replay(mockListener);  
-        replay(mockFragmentActivity);
      
         // Pressing the same spot for a short time        
         telegraphFragment.onTouch(button, MotionEvent.obtain(downTime, downTime, MotionEvent.ACTION_DOWN, 0, 0, 0));
         telegraphFragment.onTouch(button, MotionEvent.obtain(downTime, downTime + 90, MotionEvent.ACTION_UP, 0, 0, 0));        
         this.waitFor(1600);
-        
-        verify(mockFragmentActivity);
-        reset(mockFragmentActivity);
     }
 
     private void waitFor(long millis) throws InterruptedException

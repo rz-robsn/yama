@@ -8,7 +8,9 @@ import robsoninc.morse.utilities.BeepPlayer;
 import robsoninc.morse.utilities.MorseStringConverter;
 import robsoninc.morse.utilities.OnMorseSignalSentListener;
 import android.app.Activity;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -21,14 +23,15 @@ import android.widget.Button;
 public class FragmentTelegraphMode extends Fragment implements OnTouchListener
 {
     private OnMorseSignalSentListener listener;
-    private Activity activity;
     private View telegraphBtn;
     
     private final long DIT_TO_DAH_THRESHOLD = 100;
     private final long SPACE_THRESHOLD = 400;
     private final long DOUBLE_SPACE_THRESHOLD = 1500;
     
-    private MediaPlayer player;
+    private SoundPool beepSound;
+    private int beepSoundId;
+    private int beepStreamId;
 
     private long onSpaceCallTime = 0;
     private Timer onSpaceTimer = null;
@@ -41,7 +44,7 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
         @Override
         public void run()
         {
-            FragmentTelegraphMode.this.activity.runOnUiThread(new Runnable()
+            FragmentTelegraphMode.this.getActivity().runOnUiThread(new Runnable()
             {
                 @Override
                 public void run()
@@ -60,7 +63,6 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
         // the callback interface. If not, it throws an exception
         try
         {
-            this.activity = activity;
             this.listener = (OnMorseSignalSentListener) activity;
         }
         catch (ClassCastException e)
@@ -68,7 +70,8 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
             throw new ClassCastException(activity.toString() + " must implement OnMorseSignalSentListener");
         }
         
-        this.player = new BeepPlayer(activity);
+        this.beepSound = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        this.beepSoundId = this.beepSound.load(activity, R.raw.bip, 1);
     }
 
     @Override
@@ -108,7 +111,8 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
                 }
                 
                 // Play Sound
-                this.player.start();
+                beepStreamId = beepSound.play(beepSoundId, 0.5f, 0.5f, 1, -1, 1.0f);
+                
                 
                 // Switch button color
                 telegraphBtn.setBackgroundResource(R.drawable.red_orb);
@@ -136,19 +140,7 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
                 this.onSecondSpaceTimer.schedule(new TimerTaskCallListenerOnSpace(), DOUBLE_SPACE_THRESHOLD);
                 
                 // Stop playing sound
-                this.player.stop();
-                try
-                {
-                    this.player.prepare();
-                }
-                catch (IllegalStateException e)
-                {
-                    e.printStackTrace();
-                }
-                catch (IOException e)
-                {
-                    e.printStackTrace();
-                }
+				this.beepSound.stop(beepStreamId);
                 
                 // Switch Button Color
                 telegraphBtn.setBackgroundResource(R.drawable.grey_orb);
@@ -163,13 +155,8 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
         this.listener = listener;
     }
 
-    public void setActivity(Activity activity)
-    {
-        this.activity = activity;
-    }
-
-    public void setPlayer(MediaPlayer player)
-    {
-        this.player = player;
-    }
+	public void setBeepSound(SoundPool beepSound)
+	{
+		this.beepSound = beepSound;
+	}
 }
