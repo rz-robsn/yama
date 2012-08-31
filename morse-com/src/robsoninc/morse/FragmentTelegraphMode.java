@@ -31,7 +31,7 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
     
     private SoundPool beepSound;
     private int beepSoundId;
-    private int beepStreamId;
+    private int beepStreamId = 0;
 
     private long onSpaceCallTime = 0;
     private Timer onSpaceTimer = null;
@@ -71,7 +71,7 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
         }
         
         this.beepSound = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
-        this.beepSoundId = this.beepSound.load(activity, R.raw.bip, 1);
+        this.beepSoundId = this.beepSound.load(activity, R.raw.beep_5_seconds, 1);
     }
 
     @Override
@@ -111,8 +111,14 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
                 }
                 
                 // Play Sound
-                beepStreamId = beepSound.play(beepSoundId, 0.5f, 0.5f, 1, -1, 1.0f);
-                
+                if (beepStreamId == 0)
+                {
+                	beepStreamId = beepSound.play(beepSoundId, 0.5f, 0.5f, 1, -1, 1.0f);
+                }
+                else 
+                {
+                	beepSound.resume(beepStreamId);
+                }
                 
                 // Switch button color
                 telegraphBtn.setBackgroundResource(R.drawable.red_orb);
@@ -140,7 +146,7 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
                 this.onSecondSpaceTimer.schedule(new TimerTaskCallListenerOnSpace(), DOUBLE_SPACE_THRESHOLD);
                 
                 // Stop playing sound
-				this.beepSound.stop(beepStreamId);
+				this.beepSound.pause(beepStreamId);
                 
                 // Switch Button Color
                 telegraphBtn.setBackgroundResource(R.drawable.grey_orb);
