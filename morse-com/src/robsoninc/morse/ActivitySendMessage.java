@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
@@ -69,10 +70,31 @@ public class ActivitySendMessage extends FragmentActivity implements OnMorseSign
                 ViewFlipper flippy = (ViewFlipper) findViewById(R.id.viewFlipper1);
                 flippy.showNext();
             }
-        });
+        });        
     } 
-    
-    @Override
+
+	@Override
+    public void onWindowFocusChanged(boolean hasFocus)
+    {
+		super.onWindowFocusChanged(hasFocus);
+		
+		if (hasFocus)
+		{
+			// Resizing the height of the ViewFlipper to
+	        // reach the top of the footer
+	        View footer = this.findViewById(R.id.footer);
+	        int[] footerLocations = new int[2];
+	        footer.getLocationOnScreen(footerLocations);
+	        
+	        ViewFlipper flippy = (ViewFlipper) findViewById(R.id.viewFlipper1);
+	        int[] flippyLocations = new int[2];
+	        flippy.getLocationOnScreen(flippyLocations); 
+	        
+	        flippy.getLayoutParams().height = footerLocations[1] - flippyLocations[1];	
+		}
+    }
+
+	@Override
     public void onSignalSent(int morseSignal)
     {
         appendStringToMessage(String.valueOf((char)morseSignal));
