@@ -69,7 +69,7 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
 
         Assert.assertTrue("The Activity did not display \"sos\".", solo.searchText("sos"));
         Assert.assertTrue("The Activity did not display \"sos\" in morse.",
-                solo.searchText("\\.\\.\\.\\+\\-\\-\\-\\+\\.\\.\\."));
+                solo.searchText("\\.\\.\\. \\-\\-\\- \\.\\.\\."));
 
         this.sendMessage("sos");
     }
@@ -102,7 +102,7 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
         solo.clickLongOnText(this.controlViewText);
 
         Assert.assertTrue("The Activity did not display \"e t\".", solo.searchText("e t"));
-        Assert.assertTrue("The Activity did not display \"e t\" in morse.", solo.searchText("\\.\\+\\+\\-"));
+        Assert.assertTrue("The Activity did not display \"e t\" in morse.", solo.searchText("\\.  \\-"));
     }
 
     @Smoke

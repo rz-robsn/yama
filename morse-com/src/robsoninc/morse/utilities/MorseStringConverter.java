@@ -4,7 +4,7 @@ public class MorseStringConverter {
 
 	public static final char DIT = '.' ;
 	public static final char DAH = '-' ;
-	public static final char SPACE = '+' ;
+	public static final char SPACE = ' ' ;
 	
 	private static char[] letters = new char[] { 'a', 'b', 'c', 'd', 'e', 'f', 'g',
 			'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't',
