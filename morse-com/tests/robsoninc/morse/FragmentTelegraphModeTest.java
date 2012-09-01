@@ -42,7 +42,6 @@ public class FragmentTelegraphModeTest
         
         telegraphFragment = new FragmentTelegraphMode();
         telegraphFragment.setListener(mockListener);
-        telegraphFragment.setBeepSound(new SoundPool(0, 0, 0));
 
         downTime = SystemClock.uptimeMillis();
         button = new Button(new Activity());

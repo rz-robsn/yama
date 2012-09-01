@@ -1,7 +1,6 @@
 package robsoninc.morse;
 
 import java.io.IOException;
-import robsoninc.morse.utilities.BeepPlayer;
 import robsoninc.morse.utilities.MorseStringConverter;
 import robsoninc.morse.utilities.OnMorseSignalSentListener;
 import android.app.Activity;
@@ -9,6 +8,8 @@ import android.content.Context;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,7 +21,7 @@ public class FragmentTouchyMode extends Fragment implements OnTouchListener
 {
     private OnMorseSignalSentListener listener;
     
-    private MediaPlayer player;
+    private FragmentBeepPlayer beepFragment;
     
     // Defines the minimum distance the pointer has to traverse so that
     // the current gesture is seen as a line (and not as a tap).
@@ -49,7 +50,13 @@ public class FragmentTouchyMode extends Fragment implements OnTouchListener
         {
             throw new ClassCastException(activity.toString() + " must implement OnMorseSignalSentListener");
         }
-        this.player = new BeepPlayer(activity);
+        
+		// Adding a new FragmentBeepPlayer to play a sound. 
+		FragmentManager fragmentManager = this.getFragmentManager();
+		FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+		beepFragment = new FragmentBeepPlayer();
+		fragmentTransaction.add(beepFragment, "beepFragment");
+		fragmentTransaction.commit();
     }
 
     @Override
@@ -76,7 +83,9 @@ public class FragmentTouchyMode extends Fragment implements OnTouchListener
                 this.downX = event.getX();
                 this.downY = event.getY();
                 
-                this.player.start();
+				// Play Sound
+				beepFragment.playSound();
+
                 break;
 
             case MotionEvent.ACTION_MOVE:                
@@ -100,22 +109,10 @@ public class FragmentTouchyMode extends Fragment implements OnTouchListener
                 {
                     this.listener.onSignalSent(MorseStringConverter.DAH);
                 }
+
+                // Play Sound
+				beepFragment.pauseSound();
                 
-                this.player.stop();
-                try
-                {
-                    this.player.prepare();
-                }
-                catch (IllegalStateException e)
-                {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-                catch (IOException e)
-                {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
                 break;
                 
             case MotionEvent.ACTION_CANCEL:
@@ -128,11 +125,6 @@ public class FragmentTouchyMode extends Fragment implements OnTouchListener
     public void setListener(OnMorseSignalSentListener listener)
     {
         this.listener = listener;
-    }
-
-    public void setPlayer(MediaPlayer player)
-    {
-        this.player = player;
     }
     
     private static double getDistance(float x1, float y1, float x2, float y2)

@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import robsoninc.morse.utilities.BeepPlayer;
 import robsoninc.morse.utilities.MorseStringConverter;
 import robsoninc.morse.utilities.OnMorseSignalSentListener;
 import android.app.Activity;

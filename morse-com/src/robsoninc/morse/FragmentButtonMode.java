@@ -5,13 +5,17 @@ import robsoninc.morse.utilities.OnMorseSignalSentListener;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 public class FragmentButtonMode extends Fragment 
 {
 	private OnMorseSignalSentListener listener;
+    private FragmentBeepPlayer beepFragment;
 	
     @Override
     public void onAttach(Activity activity)
@@ -27,6 +31,13 @@ public class FragmentButtonMode extends Fragment
         {
             throw new ClassCastException(activity.toString() + " must implement OnMorseSignalSentListener");
         }
+        
+		// Adding a new FragmentBeepPlayer to play a sound. 
+		FragmentManager fragmentManager = this.getFragmentManager();
+		FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+		beepFragment = new FragmentBeepPlayer();
+		fragmentTransaction.add(beepFragment, "beepFragment");
+		fragmentTransaction.commit();
     }
 	
     @Override
@@ -40,30 +51,39 @@ public class FragmentButtonMode extends Fragment
     {
         super.onActivityCreated(savedInstanceState);
         
-        this.getActivity().findViewById(R.id.button_short).setOnClickListener(new View.OnClickListener()
+        Button bDit = (Button) this.getActivity().findViewById(R.id.button_short);
+        bDit.setSoundEffectsEnabled(false);
+        bDit.findViewById(R.id.button_short).setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
             	FragmentButtonMode.this.listener.onSignalSent(MorseStringConverter.DIT);
+            	FragmentButtonMode.this.beepFragment.play025SecondsSound();
             }
         });
         
-        this.getActivity().findViewById(R.id.button_long).setOnClickListener(new View.OnClickListener()
+        Button bDah = (Button) this.getActivity().findViewById(R.id.button_long);
+        bDah.setSoundEffectsEnabled(false);
+        bDah.findViewById(R.id.button_long).setOnClickListener(new View.OnClickListener()
 		{			
 			@Override
 			public void onClick(View v)
 			{
 				FragmentButtonMode.this.listener.onSignalSent(MorseStringConverter.DAH);
+				FragmentButtonMode.this.beepFragment.play025SecondsSound();
 			}
 		});
         
-        this.getActivity().findViewById(R.id.button_space).setOnClickListener(new View.OnClickListener()
+        Button bSpace = (Button) this.getActivity().findViewById(R.id.button_space);
+        bSpace.setSoundEffectsEnabled(false);
+        bSpace.findViewById(R.id.button_space).setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
             	FragmentButtonMode.this.listener.onSignalSent(MorseStringConverter.SPACE);
+            	FragmentButtonMode.this.beepFragment.play025SecondsSound();
             }
         });
         

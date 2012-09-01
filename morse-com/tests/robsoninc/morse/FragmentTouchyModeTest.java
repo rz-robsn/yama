@@ -37,9 +37,7 @@ public class FragmentTouchyModeTest
         mockListener = createMock(OnMorseSignalSentListener.class);
         
         touchyFragment = new FragmentTouchyMode();
-        touchyFragment.setListener(mockListener);
-        touchyFragment.setPlayer(new MediaPlayer());
-        
+        touchyFragment.setListener(mockListener);        
         downTime = SystemClock.uptimeMillis();
         textView = new TextView(new Activity());
     }
