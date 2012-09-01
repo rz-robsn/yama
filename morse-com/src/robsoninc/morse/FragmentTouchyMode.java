@@ -26,6 +26,9 @@ public class FragmentTouchyMode extends Fragment implements OnTouchListener
     // Defines the minimum distance the pointer has to traverse so that
     // the current gesture is seen as a line (and not as a tap).
     private static final float LINE_DRAW_THRESHOLD_DISTANCE = 10;
+    
+    private final long DIT_TO_DAH_THRESHOLD = 100;
+    
     private float downX;
     private float downY;    
     private boolean lineTouchDispatched = false;
@@ -101,7 +104,7 @@ public class FragmentTouchyMode extends Fragment implements OnTouchListener
                 {
                     this.lineTouchDispatched = false;
                 }
-                else if (event.getEventTime() - event.getDownTime() < ViewConfiguration.getLongPressTimeout()) // The gesture is a short press
+                else if (event.getEventTime() - event.getDownTime() < DIT_TO_DAH_THRESHOLD) // The gesture is a short press
                 {                    
                 	this.listener.onSignalSent(MorseStringConverter.DIT);
                 }
