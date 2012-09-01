@@ -16,6 +16,7 @@ import robsoninc.morse.utilities.OnMorseSignalSentListener;
 
 import android.app.Activity;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.SystemClock;
 import android.support.v4.app.FragmentActivity;
 import android.view.MotionEvent;
@@ -27,7 +28,6 @@ import com.xtremelabs.robolectric.RobolectricTestRunner;
 @RunWith(RobolectricTestRunner.class)
 public class FragmentTelegraphModeTest
 {
-    private FragmentActivity mockFragmentActivity;
     private OnMorseSignalSentListener mockListener;
     private FragmentTelegraphMode telegraphFragment;
     
@@ -42,7 +42,7 @@ public class FragmentTelegraphModeTest
         
         telegraphFragment = new FragmentTelegraphMode();
         telegraphFragment.setListener(mockListener);
-        telegraphFragment.setPlayer(new MediaPlayer());
+        telegraphFragment.setBeepSound(new SoundPool(0, 0, 0));
 
         downTime = SystemClock.uptimeMillis();
         button = new Button(new Activity());
