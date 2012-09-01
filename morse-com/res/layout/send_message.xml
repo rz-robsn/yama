@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:weightSum="1.0" >
+    android:layout_height="fill_parent" >
 
     <LinearLayout
+        android:id="@+id/snd_message_layout"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.2"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:minHeight="50dp"
         android:orientation="horizontal"
         android:weightSum="1.0" >
 
@@ -32,46 +33,46 @@
 
     <TextView
         android:id="@+id/morse_message"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/snd_message_layout"
         android:gravity="center"
+        android:minHeight="50dp"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <ViewFlipper
         android:id="@+id/viewFlipper1"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.52" >
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/morse_message" >
 
         <fragment
             android:id="@+id/telegraph_fragment"
             android:name="robsoninc.morse.FragmentTelegraphMode"
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            tools:layout="@layout/telegraph_fragment" />
 
         <fragment
             android:id="@+id/button_fragment"
             android:name="robsoninc.morse.FragmentButtonMode"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />        
-        
+            android:layout_height="match_parent" />
+
         <fragment
             android:id="@+id/touchy_fragment"
             android:name="robsoninc.morse.FragmentTouchyMode"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />        
-        
+            android:layout_height="match_parent" />
     </ViewFlipper>
 
     <LinearLayout
         android:id="@+id/footer"
         style="@android:style/ButtonBar"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:minHeight="25dp"
-        android:layout_weight="0.08"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:orientation="horizontal"
         android:weightSum="1.0" >
 
@@ -90,4 +91,4 @@
             android:text="@string/sndmsg_switch_mode" />
     </LinearLayout>
 
-</LinearLayout>
+</RelativeLayout>
