@@ -6,7 +6,7 @@
     <string name="sndmsg_long_button_value">-</string>
     <string name="sndmsg_space_button_value"> </string>
     <string name="sndmsg_send_message_activity_title">Create Morse Code</string>
-    <string name="sndmsg_send_button_value">Send</string>
+    <string name="sndmsg_send_button_value">Share Message</string>
     <string name="sndmsg_message_to_send">Message To send :</string>
     <string name="sndmsg_morse_message_to_send">Morse Equivalent :</string>
     <string name="sndmsg_tap_buttons">Tap your message :</string>
@@ -15,7 +15,7 @@
     <string name="sndmsg_send_success_message">Message Successfully sent to %s.</string>
     <string name="sndmsg_send_fail_message">There has been an error trying to send your message, please try again.</string>
     <string name="sndmsg_sending_message">Sending Message</string>
-    <string name="sndmsg_switch_mode">Switch Mode</string>
+    <string name="sndmsg_switch_mode">Switch</string>
     <string name="sndmsg_touchy_desc">controls :\nshort = short tap\nlong = long tap\ngap = line</string>
 
 </resources>
