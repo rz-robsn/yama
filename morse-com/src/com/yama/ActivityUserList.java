@@ -1,11 +1,11 @@
-package robsoninc.morse;
+package com.yama;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONArray;
 
-import robsoninc.morse.utilities.AsyncTaskDownloadUserList;
+import com.yama.utilities.AsyncTaskDownloadUserList;
 
 import android.app.ListActivity;
 import android.content.Intent;
@@ -55,7 +55,7 @@ public class ActivityUserList extends ListActivity {
 
 						Intent i = new Intent(view.getContext(),
 								ActivitySendMessage.class);
-						i.putExtra("robsoninc.morse.recipient_user_id",
+						i.putExtra("com.yama.recipient_user_id",
 								textView.getText().toString());
 						startActivity(i);
 					}

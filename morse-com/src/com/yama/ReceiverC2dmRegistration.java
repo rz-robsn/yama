@@ -1,6 +1,7 @@
-package robsoninc.morse;
+package com.yama;
 
-import robsoninc.morse.utilities.ThreadServerRegistration;
+import com.yama.utilities.ThreadServerRegistration;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;

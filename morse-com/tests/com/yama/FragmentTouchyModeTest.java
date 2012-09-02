@@ -1,4 +1,4 @@
-package robsoninc.morse;
+package com.yama;
 
 import static org.easymock.EasyMock.createMock;
 import static org.easymock.EasyMock.replay;
@@ -9,16 +9,15 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import robsoninc.morse.utilities.MorseStringConverter;
-import robsoninc.morse.utilities.OnMorseSignalSentListener;
-
 import android.app.Activity;
-import android.media.MediaPlayer;
 import android.os.SystemClock;
 import android.view.MotionEvent;
 import android.widget.TextView;
 
 import com.xtremelabs.robolectric.RobolectricTestRunner;
+import com.yama.FragmentTouchyMode;
+import com.yama.utilities.MorseStringConverter;
+import com.yama.utilities.OnMorseSignalSentListener;
 
 @RunWith(RobolectricTestRunner.class)
 public class FragmentTouchyModeTest

@@ -4,7 +4,7 @@ import static org.easymock.EasyMock.reportMatcher;
 
 import org.easymock.IArgumentMatcher;
 
-import robsoninc.morse.utilities.MorseStringConverter;
+import com.yama.utilities.MorseStringConverter;
 
 import android.os.Message;
 

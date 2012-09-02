@@ -1,6 +1,6 @@
-package robsoninc.morse;
+package com.yama;
 
-import robsoninc.morse.utilities.Config;
+import com.yama.utilities.Config;
 
 public class Constants {
 

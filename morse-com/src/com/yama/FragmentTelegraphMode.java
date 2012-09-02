@@ -1,19 +1,14 @@
-package robsoninc.morse;
+package com.yama;
 
-import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import robsoninc.morse.utilities.MorseStringConverter;
-import robsoninc.morse.utilities.OnMorseSignalSentListener;
+import com.yama.utilities.MorseStringConverter;
+import com.yama.utilities.OnMorseSignalSentListener;
+
 import android.app.Activity;
-import android.content.Context;
-import android.media.AudioManager;
-import android.media.MediaPlayer;
-import android.media.SoundPool;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
@@ -21,7 +16,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 public class FragmentTelegraphMode extends Fragment implements OnTouchListener
 {

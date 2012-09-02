@@ -1,29 +1,24 @@
-package robsoninc.morse;
+package com.yama;
 
 import static org.easymock.EasyMock.createMock;
 import static org.easymock.EasyMock.replay;
 import static org.easymock.EasyMock.reset;
 import static org.easymock.EasyMock.verify;
-import org.easymock.EasyMock;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import robsoninc.morse.FragmentTelegraphMode;
-import robsoninc.morse.utilities.MorseStringConverter;
-import robsoninc.morse.utilities.OnMorseSignalSentListener;
-
 import android.app.Activity;
-import android.media.MediaPlayer;
-import android.media.SoundPool;
 import android.os.SystemClock;
-import android.support.v4.app.FragmentActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import com.xtremelabs.robolectric.Robolectric;
 import com.xtremelabs.robolectric.RobolectricTestRunner;
+import com.yama.FragmentTelegraphMode;
+import com.yama.utilities.MorseStringConverter;
+import com.yama.utilities.OnMorseSignalSentListener;
 
 @RunWith(RobolectricTestRunner.class)
 public class FragmentTelegraphModeTest

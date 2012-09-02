@@ -1,12 +1,12 @@
-package robsoninc.morse;
+package com.yama;
 
-import robsoninc.morse.utilities.MorseStringConverter;
-import robsoninc.morse.utilities.OnMorseSignalSentListener;
+import com.yama.utilities.MorseStringConverter;
+import com.yama.utilities.OnMorseSignalSentListener;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 

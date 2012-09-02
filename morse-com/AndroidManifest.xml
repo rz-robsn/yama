@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="robsoninc.morse"
+    package="com.yama"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -8,23 +8,6 @@
         android:minSdkVersion="8"
         android:targetSdkVersion="8" />
 
-    <!-- Only the morse-com application can receive the messages and registration result -->
-    <permission
-        android:name="robsoninc.morse.permission.C2D_MESSAGE"
-        android:protectionLevel="signature" />
-
-    <uses-permission android:name="robsoninc.morse.permission.C2D_MESSAGE" />
-
-    <!-- Permission request to google servers to register and receive messages -->
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-
-    <!-- Permission request to use the internet -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    
-    <!-- GCM requires a Google account. -->
-	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
-	<!-- Keeps the processor from sleeping when a message is received. -->
-	<uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:name=".ApplicationMorse"
@@ -40,7 +23,7 @@
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
 
-                <category android:name="robsoninc.morse" />
+                <category android:name="com.yama" />
             </intent-filter>
         </receiver>
         
@@ -52,7 +35,7 @@
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
 
-                <category android:name="robsoninc.morse" />
+                <category android:name="com.yama" />
             </intent-filter>
         </receiver>
 

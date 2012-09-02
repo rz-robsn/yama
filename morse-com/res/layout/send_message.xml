@@ -48,7 +48,7 @@
 
         <fragment
             android:id="@+id/telegraph_fragment"
-            android:name="robsoninc.morse.FragmentTelegraphMode"
+            android:name="com.yama.FragmentTelegraphMode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -56,13 +56,13 @@
 
         <fragment
             android:id="@+id/button_fragment"
-            android:name="robsoninc.morse.FragmentButtonMode"
+            android:name="com.yama.FragmentButtonMode"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
         <fragment
             android:id="@+id/touchy_fragment"
-            android:name="robsoninc.morse.FragmentTouchyMode"
+            android:name="com.yama.FragmentTouchyMode"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 

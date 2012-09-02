@@ -1,4 +1,4 @@
-package robsoninc.morse;
+package com.yama;
 
 import static org.easymock.EasyMock.*;
 import static org.hamcrest.CoreMatchers.*;
@@ -20,6 +20,8 @@ import com.xtremelabs.robolectric.RobolectricTestRunner;
 import com.xtremelabs.robolectric.shadows.ShadowApplication;
 import com.xtremelabs.robolectric.shadows.ShadowHandler;
 import com.xtremelabs.robolectric.shadows.ShadowNotificationManager;
+import com.yama.Constants;
+import com.yama.ReceiverMessageReceivedPushNotification;
 
 @RunWith(RobolectricTestRunner.class)
 public class ReceiverMessageReceivedPushNotificationTest

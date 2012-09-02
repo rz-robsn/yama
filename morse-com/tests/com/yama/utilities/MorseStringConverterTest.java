@@ -1,9 +1,10 @@
-package robsoninc.morse.utilities;
+package com.yama.utilities;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.xtremelabs.robolectric.RobolectricTestRunner;
+import com.yama.utilities.MorseStringConverter;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.assertThat;

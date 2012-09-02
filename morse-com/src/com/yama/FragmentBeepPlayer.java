@@ -1,4 +1,4 @@
-package robsoninc.morse;
+package com.yama;
 
 import android.media.AudioManager;
 import android.media.SoundPool;

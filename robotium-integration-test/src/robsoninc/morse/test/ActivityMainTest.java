@@ -1,9 +1,9 @@
 package robsoninc.morse.test;
 
 import com.jayway.android.robotium.solo.Solo;
+import com.yama.ActivityMain;
+import com.yama.ActivitySendMessage;
 
-import robsoninc.morse.ActivityMain;
-import robsoninc.morse.ActivitySendMessage;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.Smoke;
 
@@ -13,7 +13,7 @@ public class ActivityMainTest extends ActivityInstrumentationTestCase2<ActivityM
 
     public ActivityMainTest()
     {
-        super("robsoninc.morse.test", ActivityMain.class);
+        super("com.yama.test", ActivityMain.class);
     }
 
     @Override

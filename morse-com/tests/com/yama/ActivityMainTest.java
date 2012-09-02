@@ -1,8 +1,9 @@
-package robsoninc.morse;
+package com.yama;
 
-import robsoninc.morse.ActivityMain;
-import robsoninc.morse.R;
 import com.xtremelabs.robolectric.RobolectricTestRunner;
+import com.yama.R;
+import com.yama.ActivityMain;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 

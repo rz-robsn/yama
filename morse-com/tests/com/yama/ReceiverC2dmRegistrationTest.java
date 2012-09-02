@@ -1,4 +1,4 @@
-package robsoninc.morse;
+package com.yama;
 
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.CoreMatchers.*;
@@ -7,14 +7,14 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import robsoninc.morse.utilities.ThreadServerRegistration;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import com.xtremelabs.robolectric.Robolectric;
 import com.xtremelabs.robolectric.RobolectricTestRunner;
+import com.yama.ReceiverC2dmRegistration;
+import com.yama.utilities.ThreadServerRegistration;
 
 @RunWith(RobolectricTestRunner.class)
 public class ReceiverC2dmRegistrationTest

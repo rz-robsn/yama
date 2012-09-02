@@ -3,14 +3,14 @@ package robsoninc.morse.test;
 import junit.framework.Assert;
 
 import com.jayway.android.robotium.solo.Solo;
+import com.yama.ActivitySendMessage;
+import com.yama.R;
 
-import robsoninc.morse.ActivitySendMessage;
 import android.app.Instrumentation;
 import android.os.SystemClock;
 import android.test.ActivityInstrumentationTestCase2;
 import android.test.suitebuilder.annotation.Smoke;
 import android.view.MotionEvent;
-import robsoninc.morse.R;
 
 public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<ActivitySendMessage>
 {
@@ -21,7 +21,7 @@ public class ActivitySendMessageTest extends ActivityInstrumentationTestCase2<Ac
 
     public ActivitySendMessageTest()
     {
-        super("robsoninc.morse.test", ActivitySendMessage.class);
+        super("com.yama.test", ActivitySendMessage.class);
     }
 
     @Override

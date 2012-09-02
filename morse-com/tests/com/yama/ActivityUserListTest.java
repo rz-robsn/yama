@@ -1,4 +1,4 @@
-package robsoninc.morse;
+package com.yama;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

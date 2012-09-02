@@ -1,4 +1,4 @@
-package robsoninc.morse;
+package com.yama;
 
 import android.app.Activity;
 import android.content.Intent;

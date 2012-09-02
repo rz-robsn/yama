@@ -1,4 +1,4 @@
-package robsoninc.morse.utilities;
+package com.yama.utilities;
 
 import org.json.JSONArray;
 
