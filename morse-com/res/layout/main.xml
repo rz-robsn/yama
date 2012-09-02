@@ -8,16 +8,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.5"
+        android:layout_weight="0.4"
         android:orientation="vertical"
         android:paddingTop="50dp" >
 
-        <TextView
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/main_welcome"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:contentDescription="@string/main_welcome"
+            android:paddingBottom="30dp"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:src="@drawable/yama_welcome" />
 
         <ImageView
             android:id="@+id/imageView1"
@@ -31,7 +34,7 @@
         android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0.5"
+        android:layout_weight="0.6"
         android:gravity="center"
         android:orientation="vertical" >
 
