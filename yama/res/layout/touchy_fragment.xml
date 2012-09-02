@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/touchy_text"
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/touchy_control_img"
+    android:contentDescription="@string/sndmsg_touchy_desc"
     android:gravity="center"
-    android:text="@string/sndmsg_touchy_desc"
-    android:textAppearance="?android:attr/textAppearanceMedium" />
+    android:src="@drawable/touchy_controls" />
+

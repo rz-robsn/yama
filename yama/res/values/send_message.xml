@@ -16,6 +16,6 @@
     <string name="sndmsg_send_fail_message">There has been an error trying to send your message, please try again.</string>
     <string name="sndmsg_sending_message">Sending Message</string>
     <string name="sndmsg_switch_mode">Switch Mode</string>
-    <string name="sndmsg_touchy_desc">controls :\nshort = shorp tap\nlong = long tap\ngap = line</string>
+    <string name="sndmsg_touchy_desc">controls :\nshort = short tap\nlong = long tap\ngap = line</string>
 
 </resources>
