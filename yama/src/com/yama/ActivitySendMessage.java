@@ -4,6 +4,7 @@ import com.yama.utilities.MorseStringConverter;
 import com.yama.utilities.OnMorseSignalSentListener;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
@@ -22,11 +23,17 @@ public class ActivitySendMessage extends FragmentActivity implements OnMorseSign
         super.onCreate(savedInstanceState);
         setContentView(R.layout.send_message);
 
+        this.setTitle(getString(R.string.sndmsg_send_message_activity_title));
+                
         message = (TextView) this.findViewById(R.id.message);
         morse_message = (TextView) this.findViewById(R.id.morse_message);
-
-        this.setTitle(getString(R.string.sndmsg_send_message_activity_title));
-
+        
+        // Changing the font for message Views
+        Typeface tf = Typeface.createFromAsset(getAssets(), "fonts/product.ttf");
+        message.setTypeface(tf);
+        morse_message.setTypeface(tf);
+        
+        /* Registering listeners on callback functions */
         this.setOnClickListenerToAppendStringToMessage(findViewById(R.id.button_short), MorseStringConverter.DIT);
         this.setOnClickListenerToAppendStringToMessage(findViewById(R.id.button_long), MorseStringConverter.DAH);
         this.setOnClickListenerToAppendStringToMessage(findViewById(R.id.button_space), MorseStringConverter.SPACE);

@@ -14,30 +14,31 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
 
-        <!-- Declares Only C2DM servers can send messages to this receiver. If android:permission is not set, any other app can generate it -->
+        <!-- Declares Only C2DM servers can send messages to this receiver. If android:permission is not set, any other app can generate it
         <receiver
             android:name=".ReceiverC2dmRegistration"
             android:permission="com.google.android.c2dm.permission.SEND" >
 
-            <!-- Declares this receiver can receive cd2m.intent.REGISTRATION intents (which contains the c2dm key) -->
+            Declares this receiver can receive cd2m.intent.REGISTRATION intents (which contains the c2dm key)
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
 
                 <category android:name="com.yama" />
             </intent-filter>
-        </receiver>
+        </receiver>  -->
         
+        <!--
         <receiver
             android:name=".ReceiverMessageReceivedPushNotification"
             android:permission="com.google.android.c2dm.permission.SEND" >
 
-            <!-- Declares this receiver can receive cd2m.intent.RECEIVE intents -->
+             Declares this receiver can receive cd2m.intent.RECEIVE intents
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
 
                 <category android:name="com.yama" />
             </intent-filter>
-        </receiver>
+        </receiver> -->
 
         <activity
             android:name=".ActivityMain"

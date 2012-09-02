@@ -18,7 +18,7 @@
 		<link>
 			<name>tests</name>
 			<type>2</type>
-			<locationURI>WORKSPACE_LOC/morse-com/tests</locationURI>
+			<locationURI>WORKSPACE_LOC/yama/tests</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>
