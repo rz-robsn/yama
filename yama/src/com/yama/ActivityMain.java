@@ -2,6 +2,7 @@ package com.yama;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
@@ -24,6 +25,20 @@ public class ActivityMain extends Activity
                 startActivity(i);
             }
         });
+        
+        findViewById(R.id.tuto_btn).setOnClickListener(new View.OnClickListener()
+		{
+			
+			@Override
+			public void onClick(View v)
+			{
+				Intent i = new Intent();
+				i.setAction(Intent.ACTION_VIEW);
+				i.setData(Uri.parse(Constants.TUTO_VID_ADDRESS));
+				
+				startActivity(i);
+			}
+		});
     }
 
     @Override

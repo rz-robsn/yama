@@ -18,4 +18,7 @@ public class Constants {
 	
 	/* Notification Id */
 	public final static int NOTIFICATION_NEW_MESSAGE_ID = 1 ;
+	
+	/* Youtube tutorial Address */
+	public final static String TUTO_VID_ADDRESS = "http://www.youtube.com/watch?v=DQj74Y2H8xQ&feature=share&list=PL3EAE5C2180CE2F0D";
 }

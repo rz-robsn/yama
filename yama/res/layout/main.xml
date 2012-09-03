@@ -43,6 +43,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/main_choose_recipient_button_value" />
+
+        <Button
+            android:id="@+id/tuto_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/watch_tuto" />
+
     </LinearLayout>
 
 </LinearLayout>
