@@ -8,6 +8,7 @@ import com.yama.utilities.OnMorseSignalSentListener;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -105,17 +106,8 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
 				// Cancel spaces if the user has pressed action_down within the
 				// time interval from the
 				// last action_up.
-				if (onSecondSpaceTimer != null
-				        && event.getEventTime() < this.onSecondSpaceCallTime)
-				{
-					this.onSecondSpaceTimer.cancel();
-				}
-				if (onSpaceTimer != null
-				        && event.getEventTime() < this.onSpaceCallTime)
-				{
-					this.onSpaceTimer.cancel();
-				}
-
+				this.cancelTimers(event.getEventTime());
+				
 				// Play Sound
 				beepFragment.playSound();
 				
@@ -159,9 +151,30 @@ public class FragmentTelegraphMode extends Fragment implements OnTouchListener
 		return true;
 	}
 
+	@Override
+    public void onStop()
+    {
+	    super.onStop();
+	    this.cancelTimers(SystemClock.uptimeMillis());
+    }	
+	
 	public void setListener(OnMorseSignalSentListener listener)
 	{
 		this.listener = listener;
+	}
+	
+	private void cancelTimers(long currentTime)
+	{
+		if (onSecondSpaceTimer != null
+		        && currentTime < this.onSecondSpaceCallTime)
+		{
+			this.onSecondSpaceTimer.cancel();
+		}
+		if (onSpaceTimer != null
+		        && currentTime < this.onSpaceCallTime)
+		{
+			this.onSpaceTimer.cancel();
+		}		
 	}
 
 }
