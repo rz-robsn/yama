@@ -5,6 +5,7 @@
     <string name="app_name">Yama</string>
     <string name="dialog_ok_button">OK</string>
     <string name="dialog_cancel_button">Cancel</string>
+    <string name="ref_menu">Translation Table</string>
 
     <!-- Main Activity -->
     <string name="main_welcome">Yet Another Morse App</string>

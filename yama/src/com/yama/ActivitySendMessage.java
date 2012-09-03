@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
@@ -99,6 +101,14 @@ public class ActivitySendMessage extends FragmentActivity implements OnMorseSign
 	        
 	        flippy.getLayoutParams().height = footerLocations[1] - flippyLocations[1];	
 		}
+    }
+
+	@Override
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.send_message_menu, menu);
+	    return true;
     }
 
 	@Override
