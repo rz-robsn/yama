@@ -10,17 +10,19 @@
         android:id="@+id/button_short"
         android:layout_width="0dp"
         android:layout_height="fill_parent"
+        android:layout_weight="0.4"
         android:gravity="center"
         android:text="@string/sndmsg_short_button_value"
-        android:layout_weight="0.4" />
+        android:textSize="200dp" />
 
     <Button
         android:id="@+id/button_long"
         android:layout_width="0dp"
         android:layout_height="fill_parent"
+        android:layout_weight="0.4"
         android:gravity="center"
         android:text="@string/sndmsg_long_button_value"
-        android:layout_weight="0.4" />
+        android:textSize="200dp" />
 
     <Button
         android:id="@+id/button_space"
