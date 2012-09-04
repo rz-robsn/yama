@@ -1,14 +1,21 @@
 package com.yama;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 import com.yama.utilities.MorseStringConverter;
 import com.yama.utilities.OnMorseSignalSentListener;
 
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
@@ -153,4 +160,48 @@ public class ActivitySendMessage extends FragmentActivity implements OnMorseSign
         message.setText(MorseStringConverter.ConvertMorseToText(morse_message.getText() + s));
         morse_message.append(s);
     }
+   
+
+	@Override
+	public boolean onMenuItemSelected(int featureId, MenuItem item)
+	{
+		switch (item.getItemId())
+		{
+			case R.id.ref_menu:
+
+				// Copying 
+		        InputStream is = getResources().openRawResource(R.raw.international_morse_code);
+		        OutputStream os;
+		        
+                try
+                {                	
+	                os = this.openFileOutput("international_morse_code.png", MODE_WORLD_READABLE);
+			        byte[] data = new byte[is.available()];
+			        is.read(data);
+			        os.write(data);
+			        is.close();
+			        os.close();
+                }
+                catch (FileNotFoundException e)
+                {
+	                // TODO Auto-generated catch block
+	                e.printStackTrace();
+                }
+                catch (IOException e)
+                {
+	                // TODO Auto-generated catch block
+	                e.printStackTrace();
+                }		
+                
+				// start intent for viewing the translation table.
+				Intent intent = new Intent();
+				intent.setAction(Intent.ACTION_VIEW);
+				intent.setData(Uri.parse("content://com.yama.contentprovidertranslationtable/"));
+				startActivity(intent);
+				return true;
+
+			default:
+				return super.onOptionsItemSelected(item);
+		}
+	}
 }
