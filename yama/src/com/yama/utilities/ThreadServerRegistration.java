@@ -74,7 +74,7 @@ public class ThreadServerRegistration extends Thread {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 		} catch (Exception e) {
-			e.printStackTrace();
+			// TODO Auto-generated catch block
 		}
 	}
 

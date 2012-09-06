@@ -133,7 +133,6 @@ public class ActivitySendMessage extends FragmentActivity implements OnMorseSign
     {
         return morse_message;
     }
-
     private void emptyMessageBoxes()
     {
         ((TextView) this.findViewById(R.id.message)).setText("");
@@ -185,12 +184,10 @@ public class ActivitySendMessage extends FragmentActivity implements OnMorseSign
                 catch (FileNotFoundException e)
                 {
 	                // TODO Auto-generated catch block
-	                e.printStackTrace();
                 }
                 catch (IOException e)
                 {
 	                // TODO Auto-generated catch block
-	                e.printStackTrace();
                 }		
                 
 				// start intent for viewing the translation table.

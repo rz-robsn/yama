@@ -11,7 +11,8 @@
     <application
         android:name=".ApplicationMorse"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name" >
+        android:label="@string/app_name"
+        android:debuggable="false" >
 
         <!--
         Declares Only C2DM servers can send messages to this receiver. If android:permission is not set, any other app can generate it

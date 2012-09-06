@@ -88,12 +88,10 @@ public class ActivityMain extends Activity
                 catch (FileNotFoundException e)
                 {
 	                // TODO Auto-generated catch block
-	                e.printStackTrace();
                 }
                 catch (IOException e)
                 {
 	                // TODO Auto-generated catch block
-	                e.printStackTrace();
                 }		
                 
 				// start intent for viewing the translation table.
